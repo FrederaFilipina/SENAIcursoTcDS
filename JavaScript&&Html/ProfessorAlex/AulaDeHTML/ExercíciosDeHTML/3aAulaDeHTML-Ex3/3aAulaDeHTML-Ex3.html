@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ª Aula de HTML - Ex3</title>
+</head>
+<body>
+    <h3>Vamos calcular o seu IMC</h3>
+    <div>
+        <label for = "nomeUs">Qual é seu nome: </label>
+        <input type = "text" id="nomeUs">
+
+        <label for = "altUs">Qual é a sua altura (metros): </label>
+        <input type = "number" id="altUs">
+
+        <label for = "pesoUs">Qual é seu peso (quilos):</label>
+        <input type = "number" id="pesoUs">
+        <hr>
+        <br>
+        <button onclick="rodPro()">Calcular</button>
+    </div>
+    <div>
+        <h3>Resultado</h3>
+        <p id = "valorImc"></p>
+    </div>
+    <script src="3aAulaDeHTML-Ex3.JS"></script>
+</body>
+</html>
