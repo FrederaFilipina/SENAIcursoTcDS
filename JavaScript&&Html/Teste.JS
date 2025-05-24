@@ -1,7 +1,9 @@
 //Comentário Padrão
-/*Comentário Padrao*/
+/*Comentário Padrao
 
-//!!> Comentário de Alerta
-//!?> Comentário de Alerta
-// >> Comentário de próximos passos
-//**> Comentário de funcionamento
+!!>     Comentário de Alerta
+!?>     Comentário de Alerta
+>>      Comentário de próximos passos
+**>     Comentário de funcionamento
+//      Comentário riscado
+*/
