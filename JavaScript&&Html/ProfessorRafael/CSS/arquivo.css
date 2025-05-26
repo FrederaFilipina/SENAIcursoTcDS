@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+#MenuExterno{
+    display: flex;
+    border: 2.5px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 5px;
+    width: 300px;
+    min-height: 125px;    
+}
+
+#MenuInterno1{
+    display: flex;
+    border: 2.5px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    padding: 5px;
+    width: 300px;
+    min-height: 125px;    
+}
