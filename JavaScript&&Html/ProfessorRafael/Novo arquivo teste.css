@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 0, 0);
 }
 #login{
     display: flex;
@@ -11,7 +11,7 @@ body{
     background-color: #123d66;
     border-radius: 10px;
     padding: 15px;
-    margin: 10px;
+    margin: 50px;
     width: 300px;
     min-height: 200px;
     box-shadow: 2.5px 2.5px 10px #ffffff
