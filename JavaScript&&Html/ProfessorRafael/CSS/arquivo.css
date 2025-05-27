@@ -2,20 +2,54 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
-#MenuExterno{
+#AreaExternaLinha{
     display: flex;
-    border: 2.5px solid rgb(0, 0, 0);
-    border-radius: 15px;
-    padding: 5px;
-    width: 300px;
-    min-height: 125px;    
+    width: 100%;
+    gap:10px;
+}
+
+#MenuExternoEsq{
+    display: block;
+    flex-direction: column;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 15px;
+    width: 25%;
+    height: 90vh;    
 }
 
 #MenuInterno1{
-    display: flex;
-    border: 2.5px solid rgb(0, 0, 0);
-    border-radius: 15px;
-    padding: 5px;
-    width: 300px;
-    min-height: 125px;    
+    display: block;
+    flex-direction: column;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 15px;
+    width: 75%;   
+}
+
+#MenuInterno2{
+    display: block;
+    flex-direction: column;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 15px;
+    width: 25%;    
+}
+#MenuInterno3{
+    display: block;
+    flex-direction: column;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 15px;
+    width: 5%;    
+}
+
+#MenuExternoDir{
+    display: block;
+    flex-direction: column;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 15px;
+    width: 75%;
+    height: 90vh;    
 }
