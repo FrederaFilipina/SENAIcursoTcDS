@@ -6,50 +6,128 @@ body{
     display: flex;
     width: 100%;
     gap:10px;
+    /* font-size: larger;  */
 }
 
 #MenuExternoEsq{
-    display: block;
+    display: flex;
     flex-direction: column;
     border: 5px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    padding: 15px;
+    border-radius: 15px;
+    padding: 0.5%;
     width: 25%;
-    height: 90vh;    
+    height: 93vh; 
 }
 
-#MenuInterno1{
-    display: block;
-    flex-direction: column;
-    border: 5px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    padding: 15px;
-    width: 75%;   
-}
+    #MenuInterno0{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 94%;
+    
+    }
+
+    #MenuInterno1{
+        border: 2.5px solid rgb(0, 0, 0);
+        border-radius: 15px;
+        width: 99%;
+        height: 12%;
+        margin-bottom: 5%;
+        font-size: medium;   
+    }
+        #LoginHead{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            border-bottom: 1.5px solid rgb(0, 0, 0);
+            height: 25%;
+            /* padding: 0px 12.5px 0px; */
+            padding-left: 12.5px;
+        }
+
+        #LoginBody{
+            display: flex;
+            flex-direction: column;
+            display: flex;
+            height: 75%;
+            padding: 0.5px 52px 0.5px;
+        }
+
+            #LoginNome{
+                font-size: medium;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: left;
+                border: 1.5px solid rgb(255, 0, 0);
+                padding: 0.5px 3px 0.5px;
+                height: 40%;
+                           
+            }
+
+            /* #LoginNomeLabel{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: left;
+                border: 1.5px solid rgb(255, 255, 255);
+                padding: 0.5px 3px 0.5px;
+                height: 40%;
+                width:  35.5%;                            
+            } */
+
+
+            #LoginSenha{
+                font-size: medium;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: left;
+                border: 1.5px solid rgb(255, 0, 0);
+                padding: 0.5px 3px 0.5px;
+                height: 40%;
+                           
+            }
+
+            /* #LoginSenhaLabel{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: left;
+                border: 1.5px solid rgb(255, 255, 255);
+                padding: 0.5px 3px 0.5px;
+                height: 40%;
+                width:  35.5%;                            
+            } */
+
+            
+
 
 #MenuInterno2{
-    display: block;
+    display: flex;
     flex-direction: column;
-    border: 5px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    padding: 15px;
-    width: 25%;    
+    border: 2.5px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    width: 99%;
+    height: 25%;
+    margin-bottom: 12.5px;    
 }
 #MenuInterno3{
-    display: block;
+    display: flex;
     flex-direction: column;
-    border: 5px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    padding: 15px;
-    width: 5%;    
+    border: 2.5px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    width: 99%;
+    height: 35%;    
 }
 
 #MenuExternoDir{
-    display: block;
+    display: flex;
     flex-direction: column;
     border: 5px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    padding: 15px;
+    border-radius: 15px;
+    padding: 0.5%;
     width: 75%;
-    height: 90vh;    
+    height: 93vh;    
 }
