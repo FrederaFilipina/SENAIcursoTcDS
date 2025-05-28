@@ -1,0 +1,80 @@
+body {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: left;
+    
+}
+
+.areaMaisExterna{
+    display:flex;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 0px;
+    width: 100%;
+    height: 96.5vh;
+    padding: 5px 5px 1.5px;    
+}
+
+.menuPessoalRecolhido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    width: 60px;
+    height: 60px;
+}
+
+#botaoIcone {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    z-index: 1;
+    border: 0px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.menuPessoalExtentido {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    width: 220px;
+    height: 60px;
+    padding-left: 65px;
+}
+
+.nomeEcurso{
+    align-items: center;
+    text-align: left;
+    border: 1px solid rgba(255, 0, 0, 0);
+    width: 220px;
+    height: 60px;
+}
+
+#botaoTexto {
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    border: 0px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    width: 220px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.menuLinguagem{
+    display: flex;
+    position: absolute;
+    top: 85px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    width: 280px;
+    height: 50px;
+    padding: 5px 5px 1.5px; 
+}
