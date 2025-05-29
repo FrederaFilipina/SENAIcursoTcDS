@@ -1,9 +1,9 @@
-function mostrar_menuPessoalExtentido(){
+function mostrar_menuPessoalEstendido(){
     document.getElementById("menuPessoalRecolhido").style.display = "flex"
-    document.getElementById("menuPessoalExtentido").style.display = "flex"
+    document.getElementById("menuPessoalEstendido").style.display = "flex"
 }
 
-function esconder_menuPessoalExtentido(){
+function esconder_menuPessoalEstendido(){
     document.getElementById("menuPessoalRecolhido").style.display = "flex"
-    document.getElementById("menuPessoalExtentido").style.display = "none"
+    document.getElementById("menuPessoalEstendido").style.display = "none"
 }
