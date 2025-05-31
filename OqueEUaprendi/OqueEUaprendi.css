@@ -3,3 +3,131 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    display: flex;
+    padding-top: 0.25%;
+    padding-left: 0.25%;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+}
+
+#menuEsq {
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    align-items: left;
+    text-align: left;
+    border-style: dashed;
+    border-color: rgb(0, 0, 255,0);
+    width: 270px;
+    height: 600px;
+    gap: 5px;
+}
+
+#infPessoalRecolhido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* border: 3px solid rgb(0, 0, 0, 1); */
+    /* border-radius: 25px; */
+    width: 60px;
+    height: 60px;
+}
+
+.iconeInf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 255, 0);
+    /* Pesquisar para ver se não tem alguma opção para deixar transparente o fundo sem precisar usar a escala de transparência */
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    width: 60px;
+    height: 60px;
+    padding-bottom: 4.8px;
+    cursor: pointer;
+}
+
+#infPessoalEstendido {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    background-color: rgb(255, 0, 255, 0);
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;
+    width: 265px;
+    height: 60px;
+    padding-left: 4.8px;
+}
+
+#nomeEcurso {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 0, 255, 0);
+    border: 3px solid rgb(255, 0, 255, 0);
+    border-radius: 25px;
+    text-align: left;
+}
+
+#menuLinguagem {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 0, 255, 0);
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;    
+    width: 265px;
+    height: 60px;
+    gap: 35px;
+}
+
+.iconeMenuLinguagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 0, 255, 0);
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 18px;
+    width: 45px;
+    min-height: 45px;
+    cursor: pointer;
+}
+
+#areaSumario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 0, 255, 0);
+    border: 3px solid rgb(0, 0, 0,0);
+    border-radius: 25px;    
+    width: 265px;
+    height: 460px;
+    padding: 5px;
+    gap:2.5px
+ 
+}
+#pesquisa{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 0, 255, 0);
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;    
+    width: 255px;
+    height: 45px;
+}
+.sumario{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(255, 0, 255, 0);
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 25px;    
+    width: 255px;
+    height: 400px;
+}
