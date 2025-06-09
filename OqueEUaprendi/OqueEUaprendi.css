@@ -4,12 +4,19 @@
     box-sizing: border-box;
 }
 
+.new-rocker-regular {
+  font-family: "New Rocker", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
+
 body {
     display: flex;
     padding-top: 0.25%;
     padding-left: 0.25%;
     flex-direction: row;
     background-color: rgb(255, 255, 255);
+    font-family: New Rocker;
 }
 
 #menuEsq {
@@ -19,7 +26,7 @@ body {
     align-items: left;
     text-align: left;
     border-style: dashed;
-    border-color: rgb(0, 0, 255,0);
+    border-color: rgb(0, 0, 255, 0);
     width: 270px;
     height: 600px;
     gap: 5px;
@@ -55,7 +62,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: left;
-    background-color: rgb(255, 0, 255, 0);
+    background-color: rgb(255, 0, 255, );
     border: 3px solid rgb(0, 0, 0);
     border-radius: 25px;
     width: 265px;
@@ -64,6 +71,7 @@ body {
 }
 
 #nomeEcurso {
+    font-family: New Rocker;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 0, 255, 0);
     border: 3px solid rgb(255, 0, 255, 0);
@@ -78,7 +86,7 @@ body {
     align-items: center;
     background-color: rgb(255, 0, 255, 0);
     border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;    
+    border-radius: 25px;
     width: 265px;
     height: 60px;
     gap: 35px;
@@ -96,38 +104,41 @@ body {
     cursor: pointer;
 }
 
-#areaSumario{
+#areaSumario {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 0, 255, 0);
-    border: 3px solid rgb(0, 0, 0,0);
-    border-radius: 25px;    
+    background-color: rgb(255, 0, 255, 1);
+    border: 3px solid rgb(0, 0, 0, 1);
+    border-radius: 25px;
     width: 265px;
     height: 460px;
     padding: 5px;
-    gap:2.5px
- 
+    gap: 2.5px;
+    font-size: large;
+
 }
-#pesquisa{
+
+#pesquisa {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 0, 255, 0);
     border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;    
+    border-radius: 25px;
     width: 255px;
-    height: 45px;
+    height: 35px;
 }
-.sumario{
+
+.sumario {
     display: flex;
     flex-direction: row;
     justify-content: center;
     background-color: rgb(255, 0, 255, 0);
     border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;    
+    border-radius: 25px;
     width: 255px;
     height: 400px;
 }
