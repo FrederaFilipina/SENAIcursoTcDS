@@ -12,8 +12,6 @@
 
 body {
     display: flex;
-    padding-top: 0.25%;
-    padding-left: 0.25%;
     flex-direction: row;
     background-color: rgb(255, 255, 255);
     font-family: New Rocker;
@@ -26,9 +24,9 @@ body {
     align-items: left;
     text-align: left;
     border-style: dashed;
-    border-color: rgb(0, 0, 255, 0);
+    border-color: rgb(255, 0, 255, 1);
     width: 270px;
-    height: 600px;
+    height: 100vh;
     gap: 5px;
 }
 
@@ -50,7 +48,7 @@ body {
     background-color: rgba(255, 0, 255, 0);
     /* Pesquisar para ver se não tem alguma opção para deixar transparente o fundo sem precisar usar a escala de transparência */
     border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;
+    border-radius: 50px;
     width: 60px;
     height: 60px;
     padding-bottom: 4.8px;
@@ -64,7 +62,7 @@ body {
     text-align: left;
     background-color: rgb(255, 0, 255, );
     border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;
+    border-radius: 50px;
     width: 265px;
     height: 60px;
     padding-left: 4.8px;
