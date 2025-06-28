@@ -170,3 +170,46 @@ ${JSON.stringify(novoArryNomePreco)}`)
 let valorMaisV = produtos.every(valor => valor.preco > 5.00) ? `Sim` : `Não`
 console.log(`Exercício 10- Verificar se todos os produtos custam mais de R$ 5
 ${JSON.stringify(valorMaisV)}`)
+
+// >> Exercícios Bônus ----------------------------------------------------------------
+console.log(`Desafios com Lógica ------------------------------------------------------`)
+
+//Exercício 01 - Dado o array  numeros, crie um array apenas com os quadrados dos números pares
+function numQuadradoPares(numeros){
+    return numeros.filter(pares => (pares % 2) === 0,0)
+    .map(pares => pares * pares)
+}
+let numquadrado = numQuadradoPares(numeros)
+console.log(`Ex.01 - Dado o array  numeros, crie um array apenas com os quadrados dos números pares
+${numquadrado}`)
+
+//Exercício 02 - A partir de  nomes, retorne o nome com maior quantidade de letras
+let nomeQntLetras = nomes.reduce((max, nome) => Math.max(max, nome.length),0)
+let maiorNome = nomes.filter(nome => nome.length === nomeQntLetras)
+console.log(`Ex.02 - A partir de  nomes, retorne o nome com maior quantidade de letras
+${nomeQntLetras}, ${maiorNome}`)
+
+//Exercício 03 -  Verifique se todos os nomes terminam com uma vogal
+let nomesTerminaVolgal = nomes.every(nome => nome.endsWith(`a`) || nome.endsWith(`e`) ||nome.endsWith(`i`) || nome.endsWith(`o`) || nome.endsWith(`u`)) ? `Sim` :`Não`
+console.log(`Ex.03 -  Verifique se todos os nomes terminam com uma vogal
+${nomesTerminaVolgal}`)
+
+//Exercício 04 - Junte os arrays  numeros e nomes em um único array
+let arryNN = numeros.concat(nomes)
+console.log(`Ex.04 - Junte os arrays  numeros e nomes em um único array
+${arryNN}`)
+
+//Exercício 05 - Crie um array com os nomes dos produtos que custam menos de R$100 e pertencem a “Roupasˮ
+let prodRoupaC = produtos.filter(prod => prod.categoria ==="Roupas" && prod.preco < 100)
+console.log(`Ex.05 - Crie um array com os nomes dos produtos que custam menos de R$100 e pertencem a “Roupasˮ
+${JSON.stringify(prodRoupaC)}`)
+
+//Exercício 06 - Crie uma função que calcule o valor médio dos produtos da categoria “Eletrônicosˮ
+function mediaProdEle(produtos){
+    let qntProdElet = produtos.filter(prod => prod.categoria ==="Eletrônicos").length
+    let valorMedElet = produtos.filter(prod => prod.categoria ==="Eletrônicos")
+    .reduce((prodAcumulado, prodElet) => prodAcumulado + prodElet.preco, 0) / qntProdElet
+    return valorMedElet.toFixed(2)
+}
+console.log(`Ex.06 - Crie uma função que calcule o valor médio dos produtos da categoria “Eletrônicosˮ
+${mediaProdEle(produtos)}`)
