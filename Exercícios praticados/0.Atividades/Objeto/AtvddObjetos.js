@@ -226,15 +226,131 @@ lstAlunos.innerHTML = JSON.stringify(alunos)
 
 function lstAprovados(){
     let notaAprovação = Number(prompt(`Qual a nota de corte?`))
+    let notasOK = alunos
+    .filter(aprovados => aprovados.nota > notaAprovação)
+    .map(listaAluno => listaAluno.nome)
 
-    let notasOK = alunos.filter(aprovados => aprovados.nota > notaAprovação)
-    .map(nomes => {
-    let nome = Object.keys(nomes)
-    return nome.filter(nomeApv => nomeApv === 'nome').map(nomeApv =>nomes[nomeApv])
-    })
     let lstAlunos = document.getElementById('Aprovados')
     lstAlunos.innerHTML = JSON.stringify(notasOK)
 }
 
 
-// >> ----------------------------------------------------------
+/*08. Conversor de Moedas - Crie um objeto moeda com taxas de conversão
+e um método converter(valor, de, para) que retorna o valor convertido */
+const moeda = { câmbio:``, valorReal: ``, valorDolar: ``, valorEuro:``,
+    infValor: function() {
+        let tipoMoeda = prompt(`Qual a moeda, Real, Dolar ou Euro?`)
+        let qntvalor = Number(prompt(`Qual é o valor?`))
+        this.câmbio = tipoMoeda
+        if(moeda.câmbio === `Real`){
+            this.valorReal = qntvalor;
+        }
+        else if(moeda.câmbio === `Dolar`){
+            this.valorDolar = qntvalor;
+        }
+        else if(moeda.câmbio === `Euro`){
+            this.valorEuro = qntvalor;
+        }
+    },
+    real: function(){
+        if(moeda.câmbio === `Real`){
+            alert(`O valor já encontra-se em ${moeda.câmbio}`)
+        }
+        else if(moeda.câmbio === `Dolar`){
+            let vlrDolar = 5.45
+            let vlrEmDolar = moeda.valorDolar * vlrDolar
+            this.valorReal = vlrEmDolar.toFixed(2)       
+        }
+        else if(moeda.câmbio === `Euro`){
+            let vlrEuro = 6.45
+            let vlrEmEuro = moeda.valorEuro * vlrEuro
+            this.valorReal = vlrEmEuro.toFixed(2)        
+    }
+    },
+    dolar: function(){
+        if(moeda.câmbio === `Dolar`){
+            alert(`O valor já encontra-se em ${moeda.câmbio}`)
+        }
+        else if(moeda.câmbio === `Real`){
+            let vlrDolar = 5.45
+            let vlrEmReal = moeda.valorReal / vlrDolar
+            this.valorDolar = vlrEmReal.toFixed(2)
+
+        }
+        else if(moeda.câmbio === `Euro`){
+            let vlrDolar = 5.45
+            let vlrEmEuro = moeda.valorEuro / vlrDolar
+            this.valorDolar = vlrEmEuro.toFixed(2)
+
+        }
+
+    },
+    euro: function(){
+        if(moeda.câmbio === `Euro`){
+            alert(`O valor já encontra-se em ${moeda.câmbio}`)
+        }
+        else if(moeda.câmbio === `Real`){
+            let vlrEuro = 6.45
+            let vlrEmReal = moeda.valorReal / vlrEuro
+            this.valorEuro = vlrEmReal.toFixed(2)
+        }
+        else if(moeda.câmbio === `Dolar`){
+            let vlrEuro= 6.45
+            let vlrEmEuro = moeda.valorDolar / vlrEuro
+            this.valorEuro = vlrEmEuro.toFixed(2)
+    }
+}
+}
+function valorInf(){
+    moeda.infValor()
+    if(moeda.câmbio === `Real`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`R$: ${moeda.valorReal}`)
+    }
+    else if(moeda.câmbio === `Dolar`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`US$: ${moeda.valorDolar}`)
+
+    }
+    else if(moeda.câmbio === `Euro`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`€$: ${moeda.valorEuro}`)
+    }
+}
+function real(){
+    moeda.real()
+    if(moeda.câmbio === `Dolar`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`US$: ${moeda.valorDolar} => R$: ${moeda.valorReal}`)
+    }
+    else if(moeda.câmbio === `Euro`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`€$: ${moeda.valorEuro} => R$: ${moeda.valorReal}`)
+}
+    console.log(moeda.valorReal)
+}
+function dolar(){
+    moeda.dolar()
+    if(moeda.câmbio === `Real`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`R$: ${moeda.valorReal} => US$: ${moeda.valorDolar}`)
+    }
+    else if(moeda.câmbio === `Euro`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`€$: ${moeda.valorEuro} => US$: ${moeda.valorDolar}`)
+    console.log(moeda.valorDolar)
+
+}
+}
+function euro(){
+    moeda.euro()
+    if(moeda.câmbio === `Real`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`R$: ${moeda.valorReal} => €$: ${moeda.valorEuro}`)
+    }
+    else if(moeda.câmbio === `Dolar`){
+        let vltrValor = document.getElementById('Moeda')
+            vltrValor.innerHTML = JSON.stringify(`US$: ${moeda.valorDolar} => €$: ${moeda.valorEuro}`)
+    console.log(moeda.valorEuro)
+}
+}
