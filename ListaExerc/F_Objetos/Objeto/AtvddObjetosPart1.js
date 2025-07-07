@@ -1,4 +1,4 @@
-// >> Exercícios com Objetos --------------------------------------------------------------
+// >> Exercícios com Objetos Parte 1 -----------------------------------------------------------------------------------------
 
 /* 01. Catálogo de Produtos - Crie um array com objetos representando produtos de uma loja.
 Implemente uma função que recebe um nome e retorna o produto correspondente.*/
