@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="G_LocalStorage.css">
+</head>
+<body class="fundoCor" id="corFundo">
+
+    <p>01 - Contador Persistente
+    <br>Crie um contador com botões “+ˮ e “−ˮ. O número deve ser salvo no localStorage e restaurado ao recarregar a página</p>
+    <button onclick="somar()"> + </button>
+    <button onclick="diminuir()"> - </button>
+    <button onclick="salvar()"> Salvar Contador </button>
+    <button onclick="atualizar()"> Resgatar Contador </button>
+    <p id="valorcC"></p>
+    <hr>
+    <p>02 - Texto Salvo
+    <br>Crie um textarea onde o texto digitado seja salvo automaticamente no localStorage a cada digitação. Aorecarregar a página, o texto deve reaparecer</p>
+    <textarea id="areatexto"></textarea>
+    <hr>
+    <p>03 - Checkbox Persistente
+    <br>Faça uma lista de tarefas com checkboxes. Ao marcar uma tarefa como feita, essa informação deve ser salva no localStorage.</p>
+    <input type="text" id="novaTarefa" placeholder="Nova tarefa..." />
+    <button onclick="adicionarTarefa()">Adicionar</button>
+    <p>Lista de Tarefas</p>
+    <ul id="listaTarefas"></ul>
+    <hr>
+    <p>04 - Nome do Usuário
+    <br>Ao acessar a página, pergunte o nome do usuário (via prompt ou input).
+    Salve esse nome e cumprimente o usuário nas visitas seguintes: “Olá, [nome]!</p>
+    <button onclick="nomeUsuario()">Qual seu nome?</button>
+    <hr>
+    <p>05 - Escolha de Cor
+    <br>Crie três botões com cores diferentes. Quando o usuário clicar em uma cor,
+    o fundo da página muda e essa preferência é salva no localStorage!</p>
+    <p>Clique para definira cor de fundo: </p>
+    <button onclick="corA()">Azul</button>
+    <button onclick="corB()">Bege</button>
+    <button onclick="corC()">Cinza</button>
+    <hr>
+    <p>06 - Modo Noturno
+    <br>Adicione um botão “Modo Escuroˮ. Quando ativado, o fundo e os textos da página mudam, e essa escolha é salva para manter o tema mesmo após recarregar a página.</p>
+    <button onclick="modoEscuro()">Modo Escuro</button>
+    <hr>
+    <p>07 -  Visita Diária
+    <br>Mostre uma mensagem como “Bem-vindo de volta!ˮ caso a última visita tenha sido no mesmo dia, e “Saudades de você!ˮ se foi em outro dia. Use localStorage para salvar a data</p>
+    <p id="msgUsuario"></p>
+    <p>08 -  Última Visita
+    <br>Salve a data e hora da última visita do usuário e mostre-a ao entrar novamente na página: “Última visita: 29/06/2025 2230ˮ</p>
+    <p id="msgUsuario2"></p>
+
+
+
+    
+
+    <script src="G_LocalStorage.js"></script>
+</body>
+</html>
