@@ -4,139 +4,155 @@
     box-sizing: border-box;
 }
 
-.new-rocker-regular {
-  font-family: "New Rocker", system-ui;
-  font-weight: 200;
-  font-style: normal;
-}
-
-body {
+.area-Ttl{
     display: flex;
     flex-direction: row;
-    background-color: rgb(255, 255, 255);
-    font-family: New Rocker;
-}
-
-#menuEsq {
-    display: flex;
-    flex-direction: column;
-    justify-content: first baseline;
-    align-items: left;
-    text-align: left;
-    border-style: dashed;
-    border-color: rgb(255, 0, 255, 1);
-    width: 270px;
     height: 100vh;
-    gap: 5px;
+    width: 100vw;
 }
-
-#infPessoalRecolhido {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    /* border: 3px solid rgb(0, 0, 0, 1); */
-    /* border-radius: 25px; */
-    width: 60px;
-    height: 60px;
-}
-
-.iconeInf {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 0, 255, 0);
-    /* Pesquisar para ver se não tem alguma opção para deixar transparente o fundo sem precisar usar a escala de transparência */
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 50px;
-    width: 60px;
-    height: 60px;
-    padding-bottom: 4.8px;
-    cursor: pointer;
-}
-
-#infPessoalEstendido {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    background-color: rgb(255, 0, 255, );
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 50px;
-    width: 265px;
-    height: 60px;
-    padding-left: 4.8px;
-}
-
-#nomeEcurso {
-    font-family: New Rocker;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 0, 255, 0);
-    border: 3px solid rgb(255, 0, 255, 0);
-    border-radius: 25px;
-    text-align: left;
-}
-
-#menuLinguagem {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 0, 255, 0);
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    width: 265px;
-    height: 60px;
-    gap: 35px;
-}
-
-.iconeMenuLinguagem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 0, 255, 0);
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 18px;
-    width: 45px;
-    min-height: 45px;
-    cursor: pointer;
-}
-
-#areaSumario {
+/* ---------------------------------- */
+.area-Menu{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 0, 255, 1);
-    border: 3px solid rgb(0, 0, 0, 1);
-    border-radius: 25px;
-    width: 265px;
-    height: 460px;
-    padding: 5px;
-    gap: 2.5px;
-    font-size: large;
 
+    border: 2px solid rgb(0, 0, 0);
+    margin: 1px;
+    padding: 1px;
+    gap:1%;
+
+    height: 99.7vh;
+    min-width: 20vw;
+
+    /* background-image: url();
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat; */
+    
 }
 
-#pesquisa {
+
+.menu-BtsPesq{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    border: 1.5px solid rgb(0, 0, 0);
+    height: 15%;
+    width: 99%;
+    gap:1%;
+    padding: 0.25%;
+
+}
+.menu-Bts{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 1.5px solid rgb(255, 255, 255);
+    height: 60%;
+    width: 100%;
+}
+#bts-Icone{
+    background-color: rgb(255, 255, 255,0);
+    border: none;
+    cursor: pointer;
+}
+.menu-Pesq{
+    display: flex;
+    align-items: center;
+
+    border: none;
+    height: 40%;
+    width: 100%;
+    padding-left: 1%;
+    padding-right: 1%;
+    gap: 1%;
+}
+.pesq-Barra{
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    width: 90%;
+}
+#pesq-Barra{
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 0, 255, 0);
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    width: 255px;
-    height: 35px;
+
+    padding: 2%;
+    height: 75%;
+    width: 100%;
+    border-radius: 6px;
+    
+    font-size: 1vw;
+}
+.pesq-Icone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 10%;
+}
+#pesq-Icone{
+    height: 85%;
+    width: 85%;
+    cursor: pointer;   
 }
 
-.sumario {
+.menu-Lista{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1.5px solid rgb(0, 0, 0);
+    height: 85%;
+    width: 99%;
+    padding: 1%;
+    gap: 2%;
+}
+.lista-NomeConteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 10%;
+    width: 100%;
+    background-color: rgb(0, 0, 255,0);
+}
+.lista-LstConteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 90%;
+    width: 100%;
+    padding: 1%;
+    gap: 1%;
+    background-color: rgb(0, 255, 0,0);
+}
+#lstConteudo-Nome{
+    display: flex;
+    height: 5%;
+    width: 100%;
+    cursor: pointer;
+    background-color: rgb(247, 0, 255,0);
+}
+/* ---------------------------------- */
+.area-lousa{
+    display: flex;
     justify-content: center;
-    background-color: rgb(255, 0, 255, 0);
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 25px;
-    width: 255px;
-    height: 400px;
+    align-items: center;
+
+    border: 2px solid rgb(0, 0, 0);
+    margin: 1px;
+    height: 99.7vh;
+    width: 80vw;
+
+    /* background-image: url();
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat; */
 }
