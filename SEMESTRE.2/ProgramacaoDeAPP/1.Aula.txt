@@ -1,0 +1,39 @@
+Foco do semestre:
+
+3 Unidades de Curricular:
+    A. Banco de Dados:
+        1. Produzir o Banco de Dados aplicando métodos de normalização e de forma
+        estruturada, considerando as entidades, atributos e relacionamentos apontados no
+        DER (Diagrama Entidade-Relacionamento);
+        
+        2. Criar no Banco de Dados, as tabelas (Cadastro de usuário, Cadastro de produtos / serviços)
+        relativas às informações da aplicação;
+        
+        3. Banco de Dados está conectado ao Back-End;
+
+    B. Banco de Dados:
+        4.
+    
+    C. Modelagem de Sistemas:
+        5. Entregaram protótipo com wireframes, fluxo das telas e protótipo de alta fidelidade;
+        6. Entregaram documentação com elicitação de requisitos funcionais e não-funcionais.
+        7. Elaboraram todos os diagramas UML solicitados;
+        8. Relacionaram na documentação as referências bibliográficas
+
+
+S.A.
+    Entraga:
+            - Aplicação funcional contendo no mínimo:
+            - Cadastro e login de usuário;
+            - Um CRUD de negócio (uma tabela além da tabela de ‘usuários’);
+            - Um dashboard que compila os dados armazenados na aplicação;
+            - Frontend em react;
+            - Backend em NodeJS;
+            - Banco de dados MySQL.
+
+    Cronograma: https://rafaellindemann.notion.site/Sprints-SA-2a-Fase-2025-2-230d393ff68e80479ce9faf0295ebc10
+
+
+links:
+    - https://rafaellindemann.notion.site/Geral-do-React-JS-e4cf31e0fc1e465190610e0c440571b2
+    - https://rafaellindemann.notion.site/Cria-o-do-projeto-em-React-da47d7c09115436e841f5c542bd9cb08
