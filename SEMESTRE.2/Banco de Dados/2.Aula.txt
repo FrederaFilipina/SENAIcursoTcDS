@@ -1,0 +1,37 @@
+Sistema de Avaliação
+    Prova 01 - Teórica  Setembro    Peso 10
+    Prova 02 - Prática  Outubro     Peso 10
+    Prova 03 - Teórica  Novembro    Peso 10
+    Prova 04 - Prática  Dezembro    Peso 10
+    Atividades Avaliativas          Peso 10
+    S.A
+
+
+D.E.R. - Diagrama Entidade Relacionamento
+    Diagrama - Desenho Representação
+    Entidade - Tabela
+    Relacionamento - Interação
+É uma representação gráfica do funcionamento do Banco de Dados
+
+Modelo:
+    - Conceitual
+    - Lógico
+    - Físico
+
+Composição:
+    Retangulo - Entidade (tabela)
+        ex.: Cliente; Pessoa; Veículo;
+    Seta/Risco - Relacionamento
+        ex.: Pessoa---Veículo
+    Cardinalidade:
+        1:1 - um p/ um
+        N:1 - vários p/ um
+        1:N - um p/ vários
+        N:N - vários p/ vários
+        N = Vários
+    
+    Exemplo:
+     - CPF      Pessoa  (1) <-----> (1) CPF
+     - Ex1      Cliente (1) <---->  (N) Produto
+     - Ex2      Gerente (1) <---->  (1) Setor
+     - Ex3      Seleção (1) <---->  (N) Seleção
