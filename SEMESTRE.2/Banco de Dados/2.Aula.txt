@@ -35,3 +35,27 @@ Composição:
      - Ex1      Cliente (1) <---->  (N) Produto
      - Ex2      Gerente (1) <---->  (1) Setor
      - Ex3      Seleção (1) <---->  (N) Seleção
+
+     Na tabela todos tem ID (Chave Primaria)
+     Também tem chave extrangeira, que são as Chaves Primaria porem dentro das outras Entidades,
+     nesse caso o nome é invertido e quem ter a cardinalidade N recebe as chaves extrangerias
+
+     ID_ChavePrimaria ---> ChavePrimaria_ID
+
+
+
+     Tipos de dados mais usados:
+        Para números:
+                            - Int (10 digitos)
+                            - BigInt (20 digitos)
+                            - Decimal (nº quebrados ex.: 8,3
+                                O nº8 representa a quantidade de dígitos a ser usados
+                                e o nº3 representa onde a virgula vai ficar 12345,678)
+        Para Strings:
+                            - VarChar (da para limitar o nº de caracteres)
+                            - Text
+                            - Enum
+        Data e Horários:
+                            - Date (Na data usar o padrão do EUA YYYY/MM/Dados)
+                            - Time (hh:mm:ss)
+                            
