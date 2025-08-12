@@ -17,3 +17,7 @@ Primary Key     (IDAluno)
 
 ---- Tracejado pontilhado (Não identificado)
 ____ Tracejado continuo (Identificado) --> ver a diferença!
+
+Para nome de tabela
+    > Letra Minuscula
+    > No Singular
