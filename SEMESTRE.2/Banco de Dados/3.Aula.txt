@@ -1,2 +1,19 @@
 Modelo do Banco de Dados:
     Conceitual >> Lógico >> Físico
+
+Nível de Abstração:
+    Alto nível - linguagem mais parecida com a humana de entender
+    Baixo nível - linguagem mais parecida com a maquina vai entender
+
+PK - Primary Key (Chame Primaria)
+
+Atributos (Colunas) / Registro (Linha)
+
+IDAluno         INT NOT NULL, (Não pode ficar fazio)
+Nome            VarChar(45),
+DTNascimento    Date,
+Primary Key     (IDAluno)
+
+
+---- Tracejado pontilhado (Não identificado)
+____ Tracejado continuo (Identificado) --> ver a diferença!
