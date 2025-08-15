@@ -1,0 +1,23 @@
+Nome: Shadown of Books;
+
+Problema a ser resolvido: Estimular a leitura na fase onde se mais tem abandonadas por conta do
+exceço de outros estimulos
+
+Público alvo: Adolescentes (12-18 anos);
+
+Funcionamento de modo geral: Essa aplicação ao receber os dados básicos do livro como: Título e 
+Autor/Autora, vai acompanhar o ritimo de leitura do usuário, instigando o leitor a responder algumas
+perguntas sobre como ele está enchergando o livro, por exemplo caracteristicas do personagem, lugar,
+histório e etc, para ao final de cada capítulo gerar um resumo holográfico unindo o conhecimento
+existente sobre o livro com as respostas fornecidas do usuário.
+
+Funcionalidades:
+ > Leitura e compreenção do livro;
+ > Acompanhar o rítimo de leitura do usuário;
+ > Interação com perguntas focadas no livro em si;
+ > Capacidade de criar um resumo;
+ > Geração de hologramas;
+
+Dispositivos contemplados: Celulares e leitores de ebooks;
+
+Tecnologias e Ferramentas usadas
