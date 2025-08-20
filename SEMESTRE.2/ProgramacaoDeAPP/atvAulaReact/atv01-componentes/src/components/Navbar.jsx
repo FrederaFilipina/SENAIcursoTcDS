@@ -3,10 +3,10 @@ import './NavBar.css'
 function Navbar() {
   return (
     <div className='navbar-container'>
-      <a href=''>Perfil </a>
-      <a href=''>Home </a>
-      <a href=''>Contato </a>
-      <a href=''>Dashboard </a>
+      <a href=''> <img src='./imagens/ic--baseline-person.svg' alt=''></img> </a>
+      <a href=''> <img src='./imagens/ic--round-home.svg' alt=''></img> </a>
+      <a href=''> <img src='./imagens/ic--baseline-contact-phone.svg' alt=''></img> </a>
+      <a href=''> <img src='./imagens/ic--round-dashboard.svg' alt=''></img> </a>
     </div>
   )
 }
