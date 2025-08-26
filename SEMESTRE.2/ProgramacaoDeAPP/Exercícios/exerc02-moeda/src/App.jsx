@@ -1,12 +1,14 @@
 import './App.css'
-import CorpoPg from './components/corpopg'
-
+import CorpoPg from './components/CorpoPg'
 
 function App() {
+
+
   return (
     <div>
       <CorpoPg />
     </div>
+
   )
 }
 
