@@ -1,0 +1,20 @@
+Criando um Banco de Dados:
+    CREATE DATABASE nome_do_banco_de_dados;
+
+Ativando o Banco de Dados:
+    USE nome_do_banco_de_dados;
+
+Criando uma Tabela/Coluna e informando os Tipos de Dados que ela recebe:
+       CREATE TABLE nome_da_tabela (
+        id_nome_da_coluna   INT NOT NULL PRIMARY KEY,
+        nome_da_coluna      VARCHAR(45),
+        nome_da_coluna      TEXT,
+        nome_da_coluna      BIGINT,
+       );
+
+       > Obs.: INT NOT NULL PRIMARY KEY
+            >> INT              Informa que é um número;
+            >> NOT NULL         Informa que é obrigatório ser preenchido;
+            >> PRIMARY KEY      Informa que a Coluna é uma Chave Primária;
+
+

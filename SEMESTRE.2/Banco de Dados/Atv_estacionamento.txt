@@ -1,0 +1,98 @@
+Criando um Banco de Dados:
+Parte 1 ---___ --- I
+    CREATE DATABASE estacionamento;
+    USE estacionamento;
+
+    CREATE TABLE ticket (
+    id_ticket INT NOT NULL PRIMARY KEY,
+    codigo_barra VARCHAR(45),
+    observacao TEXT);
+
+    CREATE TABLE estacionamento (
+    id_estacionamento INT NOT NULL PRIMARY KEY,
+    nome VARCHAR(45),
+    cnpj BIGINT(14),
+    ticket_id INT);
+
+    ALTER TABLE estacionamento
+    ADD FOREIGN KEY (ticket_id)
+    REFERENCES ticket (id_ticket);
+
+    CREATE TABLE setor (
+    id_setor INT NOT NULL PRIMARY KEY,
+    nome VARCHAR(45),
+    descricao VARCHAR(45),
+    estacionamento_id INT);
+
+    ALTER TABLE setor
+    ADD FOREIGN KEY (estacionamento_id)
+    REFERENCES estacionamento (id_estacionamento);
+
+    CREATE TABLE vaga (
+    id_vaga INT NOT NULL PRIMARY KEY,
+    numero_vagas VARCHAR(45),
+    setor_id INT);
+
+    ALTER TABLE vaga
+    ADD FOREIGN KEY (setor_id)
+    REFERENCES setor (id_setor);
+Parte 1 ---___ --- F
+
+Deletar uma tabela que tem agregado a ela uma Chave Estrangeira:
+Parte 2 ---___ --- I
+    ALTER TABLE setor
+    ADD FOREIGN KEY (estacionamento_id)
+    REFERENCES estacionamento (id_estacionamento);
+
+    DROP TABLE ticket;
+Parte 2 ---___ --- F
+
+Criar a tabela novamente e adicionar a Chave Estrangeira:
+Parte 3 ---___ --- I
+    CREATE TABLE ticket (
+    id_ticket INT NOT NULL PRIMARY KEY,
+    codigo_barra VARCHAR(45),
+    observacao TEXT);
+
+    ALTER TABLE estacionamento
+    ADD FOREIGN KEY (ticket_id)
+    REFERENCES ticket (id_ticket);
+Parte 3 ---___ --- F
+
+Criar uma Coluna em uma Tabela já existente:
+Parte 4 ---___ --- I
+    ALTER TABLE vaga
+    ADD COLUMN descricao VARCHAR (50);
+Parte 4 ---___ --- F
+
+Ajustar ou Alterar o tipo do Dado:
+Parte 5 ---___ --- I
+    ALTER TABLE estacionamento
+    MODIFY COLUMN nome VARCHAR(100);
+Parte 5 ---___ --- F
+
+Deletar uma Coluna de Dentro de uma Tabela
+Parte 6 ---___ --- I
+Parte 6 ---___ --- F
+
+Alterar o nome de uma Coluna
+Parte 7 ---___ --- I
+    ALTER TABLE ticket
+    RENAME COLUMN codigo_barra TO codigo;
+Parte 7 ---___ --- F
+
+Alterar o nome da Tabela:
+Parte 8 ---___ --- I
+    ALTER TABLE estacionamento
+    RENAME TO parking;
+Parte 8 ---___ --- F
+
+Consultar uma tabela
+Parte 9 ---___ --- I
+    SELECT * FROM setor;
+Parte 9 ---___ --- F
+
+Consultar o Tipo de Dados de uma tabela
+Parte 10 ---___ --- I
+    DESCRIBE setor;
+Parte 10 ---___ --- F
