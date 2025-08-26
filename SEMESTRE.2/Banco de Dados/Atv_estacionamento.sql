@@ -26,13 +26,6 @@ ALTER TABLE setor
 ADD FOREIGN KEY (estacionamento_id)
 REFERENCES estacionamento (id_estacionamento);
 
-CREATE TABLE vafa (
-id_vaga INT NOT NULL PRIMARY KEY,
-numero_vagas VARCHAR(45),
-setor_id INT);
-
-DROP TABLE vafa;
-
 CREATE TABLE vaga (
 id_vaga INT NOT NULL PRIMARY KEY,
 numero_vagas VARCHAR(45),
@@ -41,3 +34,29 @@ setor_id INT);
 ALTER TABLE vaga
 ADD FOREIGN KEY (setor_id)
 REFERENCES setor (id_setor);
+
+
+ALTER TABLE estacionamento
+DROP FOREIGN KEY estacionamento_ibfk_1;
+
+
+ALTER TABLE estacionamento
+ADD FOREIGN KEY (ticket_id)
+REFERENCES ticket (id_ticket);
+
+ALTER TABLE vaga
+ADD COLUMN descricao VARCHAR (50);
+
+ALTER TABLE estacionamento
+MODIFY COLUMN nome VARCHAR(100);
+
+ALTER TABLE estacionamento
+DROP COLUMN cnpj;
+
+ALTER TABLE ticket
+RENAME COLUMN codigo_barra TO codigo;
+
+ALTER TABLE estacionamento
+RENAME TO parking;
+
+SELECT * FROM setor;
