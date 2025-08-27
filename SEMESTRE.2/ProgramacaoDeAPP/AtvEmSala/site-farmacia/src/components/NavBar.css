@@ -1,0 +1,59 @@
+.NavBar-containerPai{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    width: 100vw;
+    background-color: rgb(255,0,255,1);
+}
+
+.NavBar-contTitulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-2);
+    height: 60%;
+    width: 100vw;
+    overflow: hidden;
+}
+.NavBar-Nome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+}
+.NavBar-logoP{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+}
+.logop{
+    width: 80%;
+}
+
+.NavBar-contBttns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    background-color: var(--cor-1);
+    gap: 20px;
+}
+.bttns-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--cor-1);
+    border: none;
+
+    height: 3%;
+    width: 3%;
+}
