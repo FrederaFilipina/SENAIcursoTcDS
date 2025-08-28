@@ -1,59 +1,72 @@
-.NavBar-containerPai{
+.Container-NavBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 115px;
+    width: 100vw;
+}
+
+
+
+.NavBar-nome_icons{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 75px;
-    width: 100vw;
-    background-color: rgb(255,0,255,1);
-}
+    height: 100%;
+    width: calc(100% - var(--NavBar_Placa));
+    background-color: rgb(240,240,243,1);
 
-.NavBar-contTitulo{
+
+}
+.NavBar-nome{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    background-color: var(--cor-2);
+    align-items:end;
+    font-size: 3vh;
+    color: var(--cor-4);
+    gap:25px;
+    padding-left: 11.2%;
     height: 60%;
-    width: 100vw;
-    overflow: hidden;
-}
-.NavBar-Nome{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-}
-.NavBar-logoP{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 5%;
-}
-.logop{
-    width: 80%;
+    width: 100%;
 }
 
-.NavBar-contBttns{
+.NavBar-menu{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 40%;
     width: 100%;
-    background-color: var(--cor-1);
-    gap: 20px;
+    background-color: rgb(240,240,243,1);
 }
-.bttns-icon{
+.Menu-icons{
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    background-color: var(--cor-1);
     border: none;
+    background-color:  rgb(240,240,243,1);
+}
+.Icons-bttn{
 
-    height: 3%;
-    width: 3%;
+}
+.Icons-icon{
+    height: 46px;
+}
+
+
+
+.Nome-placa{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100%;
+    width: var(--NavBar_Placa);
+    overflow: hidden;
+}
+.PlacaNavbar{
+    min-height: 10%;
 }

@@ -6,7 +6,7 @@ import CorpoPg from './components/CorpoPg'
 
 function App() {
   return (
-    <div>
+    <div className='Container-App'>
       <NavBar />
       <CorpoPg />
     </div>

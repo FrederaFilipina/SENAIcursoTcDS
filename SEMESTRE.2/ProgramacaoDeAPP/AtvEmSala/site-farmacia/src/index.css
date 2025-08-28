@@ -5,7 +5,9 @@
 }
 
 html, body, #root{
-    min-height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    background-color: var(--cor-2);
 }
 
 :root{
@@ -15,4 +17,5 @@ html, body, #root{
     --cor-4: #ce1f3a;
     --cor-5: #e6e6e6;
     --cor-6: #ef97a4;
+    --NavBar_Placa: 10%
 }
