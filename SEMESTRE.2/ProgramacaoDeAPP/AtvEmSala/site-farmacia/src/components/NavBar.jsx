@@ -1,3 +1,7 @@
+import Icon1_Endereco from './Icon1_Endereco'
+import Icon2_Home from './Icon2_Home'
+import Icon3_Produtos from './Icon3_Produtos'
+import Icon4_Compras from './Icon4_Compras'
 import './NavBar.css'
 
 function NavBar(){
@@ -18,12 +22,14 @@ function NavBar(){
                     <h1>I</h1>
                     <h1>A</h1>
                 </div>
+                
                 <div className='NavBar-menu'>
+
                     <div className='Menu-icons'>
-                        <button className='Icons-bttn'>
-                            <img src='./Imgs/icon_home.svg' className='Icons-icon'></img>
-                        </button>
-                        <h1>home</h1>
+                        <Icon1_Endereco />
+                        <Icon2_Home />
+                        <Icon3_Produtos />     
+                        <Icon4_Compras />                   
                     </div>
 
                 </div>

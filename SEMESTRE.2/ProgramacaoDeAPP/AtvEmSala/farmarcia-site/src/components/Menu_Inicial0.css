@@ -1,0 +1,95 @@
+.Container-Menu_Inicial{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 22.5vh;
+    max-width: 100vw;
+    background-color: var(--cor-7);
+    border-bottom: 5px solid var(--cor-3);
+}
+
+
+
+.Menu_Inicial-nome_icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 97%;
+    width: 87%;
+}
+.Menu_Inicial-nome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 12.5%;
+
+    height: 60%;
+    width: 100%;
+
+    gap:3%;
+    font-size: 10vh;
+    font-weight: bold;
+    color: var(--cor-4);
+}
+.Menu_Inicial-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 12.5%;
+
+    gap:16.9%;
+
+    height: 40%;
+    width: 100%;
+    background-color: var(--cor-7);
+}
+.icon-bttns{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 5%;
+
+    background-color: var(--cor-7);
+    border: none;
+    cursor: pointer;
+}
+.icon-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+}
+.icon-nomes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5vh;
+    font-weight: bold;
+    color: var(--cor-4);
+
+}
+
+
+.Menu_Inicial-img{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+
+    height: 97%;
+    width: 13%;
+    background-color:var(--cor-1);
+}
+.img-placa{
+    display: flex;
+    max-height: 100%;
+    width: 100%; 
+}
