@@ -16,7 +16,7 @@ function Corpo_Parte() {
                             É com enorme satisfação e orgulho que eu, Márcia, sobrinha do Mário, assumo a missão de continuar o legado da nossa família. Meu tio sempre foi exemplo de confiança, cuidado e dedicação ao longo da história deste bairro, e é com esse mesmo espírito que darei continuidade ao seu trabalho.
                         </p>} />
                         <Corpo_Parte1 txt={<p className='txt2'>
-                            A nova Farmácia chega trazendo mais modernidade e agilidade no atendimento, além de novidades e benefícios que em breve estarão à disposição de todos. Desde já, agradeço de coração pela confiança de sempre!
+                            A nova FarMácia chega trazendo mais modernidade e agilidade no atendimento, além de novidades e benefícios que em breve estarão à disposição de todos. Desde já, agradeço de coração pela confiança de sempre!
                         </p>} />
                     </div>
                 </div>
@@ -26,25 +26,60 @@ function Corpo_Parte() {
             </div>
 
             <div className='Container-Corpo_Parte1'>
-                <div className='Corpo_Parte1-icon'>
+
+                <div className='Corpo_Parte1-img'>
+                    <img className='img-camisa' src='./ImgIcon/camisaG.png'></img>
+                </div>
+
+                <div className='Corpo_Parte1-texto'>
+                    <div className='texto-txt3'>
+                        <Corpo_Parte1 txt={<p className='txt3'>Abriremos no dia:
+                        </p>} />
+                        <Corpo_Parte1 txt={<p className='txt3'>DD/MM
+                        </p>} />
+                    </div>
+                    <div className='texto-txt4'>
+                        <Corpo_Parte1 txt={<p className='txt4'>E durante a primrira semana daremos essas camisas</p>} />
+                        <Corpo_Parte1 txt={<p className='txt4'>para os clientes que comprarem no acumulado</p>} />
+                        <Corpo_Parte1 txt={<p className='txt4'>o valor total de R$120,00 em remédios.</p>} />
+                    </div>
+                </div>
+
+                <div className='Corpo_Parte1-img'>
+                    <img className='img-camisa' src='./ImgIcon/camisaP.png'></img>
+                </div>
+
+                
+
+            </div>
+
+
+
+
+
+
+
+
+            <div className='Container-Corpo_Parte10'>
+                <div className='Corpo_Parte10-icon'>
                     <Icons icons={<img className='icon-endereco' src='./ImgIcon/icon_endereco.svg'></img>}/>
 
                 </div>
-                <div className='Corpo_Parte1-img'>
+                <div className='Corpo_Parte10-img'>
                     <img className='img-cartao' src='./ImgIcon/cartao.png'></img>
                 </div>
-                <div className='Corpo_Parte1-texto'>
-                    <div className='texto-txt3'>
-                        <Corpo_Parte1 txt={<p className='txt3'>
+                <div className='Corpo_Parte10-texto'>
+                    <div className='texto-txt10'>
+                        <Corpo_Parte1 txt={<p className='txt10'>
                             Estamos localizado no mesmo endereço de sempre:
                         </p>} />
-                        <Corpo_Parte1 txt={<p className='txt3'>
+                        <Corpo_Parte1 txt={<p className='txt10'>
                             Rua: Street, nº000-00
                         </p>} />
-                        <Corpo_Parte1 txt={<p className='txt3'>
+                        <Corpo_Parte1 txt={<p className='txt10'>
                             Bairro: Neighborhood
                         </p>} />
-                        <Corpo_Parte1 txt={<p className='txt3'>
+                        <Corpo_Parte1 txt={<p className='txt10'>
                             CEP: 00000-000
                         </p>} />
                     </div>
@@ -54,22 +89,7 @@ function Corpo_Parte() {
 
             </div>
 
-            <div className='Container-Corpo_Parte2'>
-
-                <div className='Corpo_Parte2-img'>
-                    <img className='img-camisaG' src='./ImgIcon/camisaG.png'></img>
-                </div>
-                <div className='Corpo_Parte2-texto'>
-                    <div className='texto-txt4'>
-                        <Corpo_Parte1 txt={<p className='txt3'>
-                            
-                        </p>} />
-                    </div>
-
-                </div>
-
-
-            </div>
+            
 
         </div>
 
