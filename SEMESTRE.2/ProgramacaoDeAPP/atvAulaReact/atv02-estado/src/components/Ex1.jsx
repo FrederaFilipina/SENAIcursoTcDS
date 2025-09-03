@@ -16,7 +16,9 @@ function Ex1(){
         <div>
             <p>Ex 5.23 - Venda</p>
             <button onClick={CalularPrc}>Calcular</button>
-            {prcVenda && <p> Preço de venda: R${prcVenda}</p>}
+            {/* {prcVenda && <p>Preço de venda: R${prcVenda}</p>} */}
+
+            {prcVenda ? <p>Preço de venda: R${prcVenda}</p> :<p>Informe o preço de compra</p> }
         </div>
     )
 }
