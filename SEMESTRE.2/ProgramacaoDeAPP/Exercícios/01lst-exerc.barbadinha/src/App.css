@@ -1,0 +1,32 @@
+.CorpoPg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Exs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 0.25%;
+  gap:20px;
+
+  width: 100%;
+
+  
+  background-color: var(--corFundo--);
+  border-bottom: 3px solid black;
+}
+h2{
+  color: var(--corFonte2--);
+  font-size: 2vw;
+}
+p{
+  font-weight: var(--corFonteP--);
+  font-size: 1.3vw;
+}
+.Ex{
+  font-size: 1.5vw;
+}

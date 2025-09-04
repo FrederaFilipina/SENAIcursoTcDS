@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root{
+    min-height: 100vh;
+    max-width: 99.4vw;
+}
+
+:root{
+  --corFundo--: rgb(0, 0, 0, 0.500);
+  --corFonte2--: rgb(255,255,255,1);
+  --corFonteP--: bold;
+}

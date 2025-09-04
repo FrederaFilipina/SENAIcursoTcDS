@@ -1,0 +1,18 @@
+.CorpoPg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Exs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 50%;
+  width: 100%;
+  background-color: var(--corFundo);
+  border-bottom: 3px solid black;
+}
