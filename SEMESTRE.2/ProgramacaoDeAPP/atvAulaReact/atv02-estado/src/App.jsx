@@ -3,6 +3,7 @@ import Aula from './components/Aula'
 import Ex3 from './components/Ex3'
 import Ex1 from './components/Ex1'
 import Ex2 from './components/Ex2'
+import Ex4 from './components/Ex4'
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       </div>
       <div className='Exs'>
         <Ex3 />
+      </div>
+      <div>
+        <Ex4 />
       </div>
     </div>
   )
