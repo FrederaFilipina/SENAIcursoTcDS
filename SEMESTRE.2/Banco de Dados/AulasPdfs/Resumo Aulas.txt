@@ -1,0 +1,108 @@
+BANCO DE DADOS:
+
+Aula 1:
+
+        O que é um Banco de Dados:
+            É um conjunto de informações e dados (nome, documentos, contas bancárias, compras,vendas, bens, clientes, serviços....) que de alguma forma foram coletados e armazenados.
+
+        Importância do Banco de Dados:
+            Facilitar e agilizar a busca pelas informações armazenadas;
+        
+        Como é um Banco de Dados:
+            Local onde as informações são armazenadas de maneira organizada, consistente, protegida e acessível em tempo hábil.
+            Tudo isso formam o conceito de: SGBD - Sistema de Gerenciamento de Banco de Dados.
+                SBGD: é um software que possui recursos capazes de manipular as informações do banco de dados e interagir com o usuário. Exemplos: Oracle, SQL Server, MySQL
+
+        Tipos de Banco de Dados:
+            >>Relacionais:
+                Indicado para sistemas que vão criar, alterar, excluir e consultar informações que estejam no formato regular (em tabelas, como em uma planilha, onde cada linha é um registro (ou item) e cada coluna é uma categoria (ou atributo) de dados).
+
+            >>Não Relacionais:
+                Usados para dados não tabulados(sem colunas e linhas), com características diferentes ou variadas e que tem como base soluções em nuvem
+        
+
+        SQL - Structure Query Language (Linguagem de Consulta Estruturada)
+            O que faz:
+                >>Permite o cesso a dados em SGBD
+                >>Permite definir os dados no banco de dados e manipulá0los
+                >>Permite criar e excluir banco de dados e tabelas
+                >>Permite configurar permissões de acesso em tabelas, procedimentos e visões
+
+            Principais Grupos de Comandos SQL
+                DDL (Data Definition Language) - Definir/Gerenciar a Estrutura
+                    possuem as funções para criar, modificar e excluir objetos como tabelas, índices e views;
+
+                DML (Data Manipulation Language) - Manipular/Gerenciar os Dados
+                    comandos utilizados para gerenciar os dados armazenados no banco, permitindo inserir novos dados, alterar dados existentes ou excluir dados armazenados;
+
+                DCL (Data Control Language) - Controle dos Acessos
+                    comandos utilizados para controlar o acesso aos dados armazenados no banco, por meio de permissões de acesso.
+            
+
+Aula 2:
+        Entidades, Atributos, Relacionamento e Cardinalidade
+
+        Entidades: (Nome da Tabela)
+            >> É algo sobre o qual se deseja armazenar informações.
+        
+        Atributos: (Colunas)
+            >> São características, propriedades ou informações que descrevem uma entidade.
+        
+        Relacionamento: (Chaves Estrangeiras)
+            >> São conexões entre diferentes tabelas que refletem as associações das entidades.
+        
+        Cardinalidades: (1:1 / 1:N / M:N)
+            >> É a forma como as tabelas se relacionam.
+                1:1 - Um para Um:
+                    Cada registro em uma tabela está relacionado a no máximo um registro em outra tabela.
+
+                1:N - Um para Muitos:
+                    Um registro em uma tabela pode se relacionar com vários registros em outra tabela, mas cada registro da segunda tabela está relacionado a apenas um registro da primeira.
+
+                M:N - Muitos para Muitos:
+                    Vários registros em uma tabela podem estar associados a vários registros em outra tabela.
+    
+        
+        Tipos de Dados:
+
+            Numéricos:
+                TINYINT     - nº inteiro muito pequeno
+                SMALLINT    - nº inteiro pequeno
+                MEDIUMINT   - nº inteiro de tamanho médio
+                INT         - nº inteiro de tamanho comum
+                BIGINT      - nº inteiro de tamanho grande
+                DECIMAL     - nº decimal de ponto fixo (10,2) são 10 dígitos e 2 é a posição da virgula
+                FLOAT       - nº de ponto flutuante de precisão simples (32bits)
+                DOUBLE      - nº de ponto flutuante de precisão dupla (64bits)
+
+            Texto:
+                CHAR        - cadeia de caracteres de tamanho fixo e não binária
+                VARCHAR     - cadeia de caracteres de tamanho variável e não binária
+                TINYTEXT    - cadeia de caracteres até 255bytes
+                Texto       - cadeia de caracteres até 65535bytes ou 64Kb
+                ENUM        - cadeia de caracteres com valores definids para seleção
+
+            Datas e Horários:
+                DATE        - refere-se a uma data
+                TIME        - refere-se a um horário (hh:mm:ss)
+                YEAR        - refere-se a um ano nos formatos (yy ou yyyy)
+                TIMESTAMP   - é marco temporal ou um dado momento que um evento ocorreu (hh:mm:ss)
+
+Aula 3:
+        Modelos de Banco de Dados:
+            >> Conceitual:
+                Foca nas regras de negócio e requisitos da empresa, detalhando principalmente as entidades e seus relacionamentos,sem se atentar as regras do Sistema de Gerenciamento de Banco de Dados.
+
+            >> Lógico:
+                É a transformação do modelo conceitual em algo concreto, abrangendo de forma detalhada as entidades, seus atributos, os relacionamentos e o tipo de cardinalidade entre elas.
+            
+            >> Físico:
+                É o resultado da conversão do modelo lógico em um modelo que utiliza o SBGD - Sistema de Gerenciamento de Banco de Dados, ele especifica a estrutura exata das tabelas, colunas, tipos de dados, índices e restrições do Banco de Dados.
+
+
+Comandos SQL para Banco de Dados
+
+    >>CREATE DATABASE nomeBancoDados       --- Criar Banco de Dados
+    >>USE nomeBancoDados                   --- Habilitar para Usados
+
+    
