@@ -1,0 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root{
+  min-height: 100vh;
+  max-width: 99.4vw;
+}
+
+:root{
+--corFundo: rgba(255, 0, 255, 0.125);
+}
