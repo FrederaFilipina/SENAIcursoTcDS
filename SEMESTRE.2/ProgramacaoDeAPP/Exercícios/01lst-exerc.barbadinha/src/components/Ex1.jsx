@@ -1,7 +1,4 @@
-import { useState } from "react"
-
 function Ex(){
-    const[pizzaTamnho, setpizzaTamanho]  = useState()
 
     function pedido(){
         let pizza = prompt(`Qual tamanho você deseja de pizza?
@@ -9,14 +6,14 @@ function Ex(){
         let tamanho
         
         if(pizza === 'P' || pizza === 'p'){
-            tamanho = 'O tamanho Pequeno custa: R$25,00 reais.'
-            setpizzaTamanho(tamanho)
+            alert (tamanho = 'O tamanho Pequeno custa: R$25,00 reais.')
+            return tamanho            
         } else if(pizza === 'M' || pizza === 'm'){
-            tamanho = 'O tamanho Médio custa: R$50,00 reais.'
-            setpizzaTamanho(tamanho)
+            alert (tamanho = 'O tamanho Médio custa: R$50,00 reais.')
+            
         } else if(pizza === 'G' || pizza === 'g'){
-            tamanho = 'O tamanho Grande custa: R$75,00 reais.'
-            setpizzaTamanho(tamanho)
+            alert (tamanho = 'O tamanho Grande custa: R$75,00 reais.')
+            
         } else if(pizza != ""){
             alert("Tamanho incorreto, peça novamente")
             pedido()
@@ -29,15 +26,9 @@ function Ex(){
 
     return (
         <div>
-
             <div>
                 <button onClick={pedido}>Pedir pizza</button>           
             </div>
-
-            <div>
-                {pizzaTamnho}            
-            </div>
-
         </div>
         
     )

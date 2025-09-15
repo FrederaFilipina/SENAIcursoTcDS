@@ -1,0 +1,9 @@
+1. Componentes
+    Explicando:
+        Trata-se de uma função JavaScript que retorna elementos visuais em JSX (parte HTML dentro do JavaScript). E por ser uma função, pode ser reutilizada....
+        
+        São blocos de construções que compõem a interface de usuário (UI) de uma aplicação.
+
+    >> Componentes de Função
+
+    >> Componentes de Classe
