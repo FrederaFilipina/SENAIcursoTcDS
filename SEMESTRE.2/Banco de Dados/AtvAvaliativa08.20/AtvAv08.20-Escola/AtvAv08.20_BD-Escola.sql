@@ -1,18 +1,17 @@
 CREATE DATABASE escola;
-USE escola;
+USE  escola;
 
 CREATE TABLE sala (
 id_sala INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome_sala VARCHAR (100),
+nome_sala VARCHAR(200),
 capacidade_sala INT
 );
 
 CREATE TABLE turma (
 id_turma INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome_turma VARCHAR (100),
-periodo_turma VARCHAR (50),
-sala_id INT
-);
+nome_turma VARCHAR(200),
+periodo_turma VARCHAR(50),
+sala_id INT);
 
 ALTER TABLE turma
 ADD FOREIGN KEY (sala_id)
@@ -20,8 +19,8 @@ REFERENCES sala (id_sala);
 
 CREATE TABLE professor (
 id_professor INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome_professor VARCHAR (100),
-formacao_academica_professor VARCHAR (100),
+nome_professor VARCHAR (200),
+formacaoAcademica_professor VARCHAR (200),
 turma_id INT
 );
 
