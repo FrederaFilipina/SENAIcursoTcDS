@@ -1,0 +1,42 @@
+.cont-Menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100px;
+    background-color: rgb(0,0,255,1);
+}
+.Menu-titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 55%;
+    width: 100%;
+
+    gap: 12px;
+    background-color: rgb(0,255,255,1);
+}
+.titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.5px;
+}
+
+
+.Menu-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 45%;
+    width: 100%;
+
+    background-color: rgb(255,0,255,1);
+}
