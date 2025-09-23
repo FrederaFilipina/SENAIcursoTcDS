@@ -110,3 +110,10 @@ ON veiculo.cliente_id = cliente.id_cliente;
 SELECT veiculo.id_veiculo, veiculo.placa AS placa_registrada, veiculo.cor, cliente.nome AS nome_do_cliente FROM veiculo
 JOIN cliente
 ON veiculo.cliente_id = cliente.id_cliente;
+
+CREATE VIEW vw_veiculo_cliente AS
+SELECT veiculo.id_veiculo, veiculo.placa AS placa_registrada, veiculo.cor, cliente.nome AS nome_do_cliente FROM veiculo
+JOIN cliente
+ON veiculo.cliente_id = cliente.id_cliente;
+
+SELECT * FROM vw_veiculo_cliente;
