@@ -1,17 +1,38 @@
 import './CorpoPg_0.css'
+import CorpoPg_Armor from './CorpoPg_Armor'
+import CorpoPg_Building from './CorpoPg_Building'
+import CorpoPg_Weapons from './CorpoPg_Weapons'
 
-function CorpoPg_0(){
+
+function CorpoPg_0({paginaNome}){
+
+    function MostrarPg(){
+
+        if(paginaNome === 'Armor'){   
+            return(
+                <CorpoPg_Armor />
+            )
+        }
+        else if(paginaNome === 'Building'){
+            return(
+                <CorpoPg_Building />
+            )
+        }
+        else if(paginaNome === 'Weapons'){
+            return(
+                <CorpoPg_Weapons />
+            )
+        }
+        else{
+            return(
+                <h1>Cliquem em algum dos ícones</h1>
+            )
+        }
+    }
+
+
     return(
-        <div className='Cont-CorpoPg'>
-            <div className='Cont-Menu-SetList'>
-                <h1> Lad. Esq</h1>
-                <h1> Lad. Esq</h1>
-            </div>
-            <div className='Cont-Menu-Set'>
-                <h1> Lad. Dir</h1>
-                <h1> Lad. Dir</h1>
-            </div>
-        </div>
+        <>{MostrarPg()}</>
     )
 }
 export default CorpoPg_0

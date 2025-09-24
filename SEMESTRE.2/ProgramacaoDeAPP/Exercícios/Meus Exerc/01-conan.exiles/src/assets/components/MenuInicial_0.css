@@ -6,9 +6,6 @@
 
   height: var(--MenuInicalAlt);
   width: 100%;
-  /* gap:1%; */
-
-  background-color: rgba(255, 0, 255, 0.250);
 }
 
 
@@ -21,10 +18,7 @@
 
     height: 100%;
     width: var(--ContNome);
-
-    font-size: 2vh;
-
-    background-color: rgba(255, 0, 255, 0.500);
+        background-color: rgb(90, 90, 90,0.250);
 }
 
 
@@ -35,20 +29,9 @@
     align-items: center;
 
     height: 100%;
-    width: calc(100vw - var(--ContNome));
-
-    background-color: rgba(255, 0, 255, 0.500);
+    width: calc(100% - var(--ContNome));
 }
-.NavBar-Nome{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-    height: 40%;
-    width: 100%;
-    background-color: rgba(255, 0, 255, 0.750);
-}
 .NavBar-Icons{
     display: flex;
     flex-direction: row;
@@ -57,5 +40,16 @@
 
     height: 60%;
     width: 100%;
-    background-color: rgba(255, 0, 255, 0.250);
+    background-color: rgb(90, 90, 90,0.500);
+}
+
+.NavBar-Nome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 40%;
+    width: 100%;
+    background-color: rgb(90, 90, 90,0.250);
 }

@@ -1,12 +1,7 @@
-import { useState } from 'react'
 import BttnsIcons from './BttnsIcons'
 import './MenuInicial_0.css'
 
-function MenuInicial_0 (){
-    
-    const[pagina, setPgNome] = useState('Bem Vindo!')
-
-
+function MenuInicial_0 ({paginaNome, setPgNome}){
 
     return(
 
@@ -20,13 +15,13 @@ function MenuInicial_0 (){
             <div className='Cont-NavBar'>
 
                 <div className='NavBar-Icons'>
-                    <BttnsIcons icon={'Icons/iconArmor.svg'} bttns={"Armor"} funcao={()=> setPgNome('Armor')}/>
-                    <BttnsIcons icon={'Icons/iconBuild.svg'} bttns={"Building"} funcao={()=> setPgNome('Building')}/>
-                    <BttnsIcons icon={'Icons/iconWeapon.svg'} bttns={"Weapons"} funcao={()=> setPgNome('Weapons')}/>
+                    <BttnsIcons funcao={()=> setPgNome('Armor')} nomepg={"Armor"} icon={'Icons/iconArmor.svg'}/>
+                    <BttnsIcons funcao={()=> setPgNome('Building')} nomepg={"Building"} icon={'Icons/iconBuild.svg'}/>
+                    <BttnsIcons funcao={()=> setPgNome('Weapons')} nomepg={"Weapons"}icon={'Icons/iconWeapon.svg'}/>
                 </div>
 
                 <div className='NavBar-Nome'>
-                    <h1>{pagina}</h1>
+                    <h2>{paginaNome}</h2>
                 </div>
 
             </div>

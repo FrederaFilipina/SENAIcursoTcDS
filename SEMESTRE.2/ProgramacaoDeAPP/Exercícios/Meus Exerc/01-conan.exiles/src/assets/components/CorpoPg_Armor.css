@@ -1,0 +1,59 @@
+.Cont-Armor{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - var(--MenuInicalAlt));
+  width: 100vw;
+}
+/* ----- */
+
+
+
+.Armor-MenuSetList{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: calc(100vw - var(--ContSet));
+}
+
+.Armor-Menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: var(--ContNome);
+
+  border: 2px solid black;
+}
+
+.Armor-SetList{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: calc(100% - var(--ContNome));
+
+  border: 2px solid black;
+}
+/* ----- */
+
+
+.Armor-SetFinal{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: var(--ContSet);
+
+}
