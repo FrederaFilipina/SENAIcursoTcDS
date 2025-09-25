@@ -1,4 +1,5 @@
-import './CorpoPg_Armor.css'
+import './CPg_Armor.css'
+import CPg_Armor_Menu from './CPg_Armor_Menu'
 
 function CorpoPg_Armor(){
     return(
@@ -6,10 +7,8 @@ function CorpoPg_Armor(){
             <div className="Cont-Armor">
 
                 <div className="Armor-MenuSetList">
-                    <div className='Armor-Menu'>
-                        <h1>Menu</h1>
+                    <CPg_Armor_Menu />
 
-                    </div>
                     <div className='Armor-SetList'>
                         <h1>Array dos Sets</h1>
                     </div>

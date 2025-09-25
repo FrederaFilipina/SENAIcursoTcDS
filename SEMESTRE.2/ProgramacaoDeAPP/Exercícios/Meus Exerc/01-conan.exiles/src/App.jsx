@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import CorpoPg_0 from './assets/components/CorpoPg_0'
-import MenuInicial_0 from './assets/components/MenuInicial_0'
+import CorpoPg_0 from './components/CPg_0'
+import MenuInicial_0 from './components/MenuInicial_0'
 
 function App() {
 

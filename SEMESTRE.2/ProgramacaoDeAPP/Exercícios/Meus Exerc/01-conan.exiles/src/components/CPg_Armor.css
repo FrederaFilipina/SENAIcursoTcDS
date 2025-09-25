@@ -21,18 +21,6 @@
   width: calc(100vw - var(--ContSet));
 }
 
-.Armor-Menu{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 100%;
-  width: var(--ContNome);
-
-  border: 2px solid black;
-}
-
 .Armor-SetList{
   display: flex;
   flex-direction: row;

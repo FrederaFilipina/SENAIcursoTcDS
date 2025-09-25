@@ -1,11 +1,11 @@
-import './CorpoPg_0.css'
-import CorpoPg_Armor from './CorpoPg_Armor'
-import CorpoPg_Building from './CorpoPg_Building'
-import CorpoPg_Weapons from './CorpoPg_Weapons'
+import './CPg_0.css'
+import CorpoPg_Armor from './CPg_Armor'
+import CorpoPg_Building from './CPg_Building'
+import CorpoPg_Weapons from './CPg_Weapons'
 
 
 function CorpoPg_0({paginaNome}){
-
+    
     function MostrarPg(){
 
         if(paginaNome === 'Armor'){   

@@ -13,6 +13,7 @@ html, body, #root{
 :root{
   --MenuInicalAlt: 75px;
   --ContNome: 200px;
+  --ContSetList: 275px;
   --ContSet: 275px;
   --corFundo: rgba(255, 0, 255, 1);
 }
