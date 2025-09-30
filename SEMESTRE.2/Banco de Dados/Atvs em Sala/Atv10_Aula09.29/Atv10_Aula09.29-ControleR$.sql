@@ -49,3 +49,25 @@ JOIN cliente
 ON cliente.id_cliente = mensalidade.cliente_id
 GROUP BY cliente.nome;
 -- Agrupando por as mensalidades cliente (f)
+
+-- Saber a soma das mensalidade por cliente (i)
+SELECT cliente.nome, sum(mensalidade.valor) FROM mensalidade
+JOIN cliente
+ON cliente.id_cliente = mensalidade.cliente_id
+GROUP BY cliente.nome;
+-- Saber a soma das mensalidade por cliente (f)
+
+-- Saber a média das mensalidade por clinete (i)
+SELECT cliente.nome, avg(mensalidade.valor) FROM mensalidade
+JOIN cliente
+ON cliente.id_cliente = mensalidade.cliente_id
+GROUP BY cliente.nome;
+-- Saber a média das mensalidade por clinete (f)
+
+-- Saber a soma dos valores em débitos por cliente (i)
+SELECT cliente.nome, sum(mensalidade.valor) FROM mensalidade
+JOIN cliente
+ON cliente.id_cliente = mensalidade.cliente_id
+WHERE status_pagamento = 'Em Débito'
+GROUP BY cliente.nome;
+-- Saber a soma dos valores em débitos por cliente (f)
