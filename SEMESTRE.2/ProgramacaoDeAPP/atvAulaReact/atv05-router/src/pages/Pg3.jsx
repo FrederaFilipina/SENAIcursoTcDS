@@ -1,7 +1,10 @@
+import NavBar from "../components/NavBar"
+
 function Pg3(){
     return(
         <div>
-            Página 3
+            <NavBar />
+            <h1> Página 3 </h1>
         </div>
     )
 }
