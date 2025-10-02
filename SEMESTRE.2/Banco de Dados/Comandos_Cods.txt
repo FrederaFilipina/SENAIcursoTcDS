@@ -1,20 +1,89 @@
-Criando um Banco de Dados:
-    CREATE DATABASE nome_do_banco_de_dados;
+SUMÁRIO
 
-Ativando o Banco de Dados:
-    USE nome_do_banco_de_dados;
+1 - Criar um Banco de Dados
+2 - Selecionanto e Ativando o Banco de Dados
+3 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados
+4 - Criando uma Tabela que vai receber a Chava Extrangeira
+5 - Alterando uma Tabela para incluir um novo Atributo(Coluna)
+6 - Alterando uma Tabela para informar a existência de uma Chave Extrangeira
 
-Criando uma Tabela/Coluna e informando os Tipos de Dados que ela recebe:
-       CREATE TABLE nome_da_tabela (
-        id_nome_da_coluna   INT NOT NULL PRIMARY KEY,
-        nome_da_coluna      VARCHAR(45),
-        nome_da_coluna      TEXT,
-        nome_da_coluna      BIGINT,
-       );
+-------------------------
 
-       > Obs.: INT NOT NULL PRIMARY KEY
-            >> INT              Informa que é um número;
-            >> NOT NULL         Informa que é obrigatório ser preenchido;
-            >> PRIMARY KEY      Informa que a Coluna é uma Chave Primária;
+1 - Criar um Banco de Dados (i);
+CREATE DATABASE nome_do_banco_de_dados;
+1 - Criar um Banco de Dados (f);
 
 
+2 - Selecionanto e Ativando o Banco de Dados (i);
+USE nome_do_banco_de_dados;
+2 - Selecionanto e Ativando o Banco de Dados (f);
+
+
+3 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados (i);
+CREATE TABLE nome_da_tabela (
+id_nome_da_coluna	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome_da_coluna		VARCHAR(200),
+nome_da_coluna		TEXT,
+nome_da_coluna		ENUM ('Sim', 'Não'),
+nome_da_coluna		INT(10),
+nome_da_coluna		BIGINT,
+nome_da_coluna		DECIMAL(10,2),
+nome_da_coluna		DATE,
+nome_da_coluna		TIME,
+nome_da_coluna		YEAR,
+);
+
+Também funciona para informar qual tabela será a Primary Key:
+id_nome_da_coluna	INT NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id_nome_da_coluna),
+nome_da_coluna		VARCHAR(200),
+
+
+>> Obs.: INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+>>	INT			Informa que é um número
+>>	NOT NULL		Informa que o preenchimento é obrigatório
+>>	AUTO_INCREMENT		Informa que o preenchimento será automático
+>>	PRIMARY KEY		Informa que os dados na coluna são Chaves Primária
+3 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados (f);
+
+
+4 - Criando uma Tabela que vai receber a Chava Extrangeira (i);
+a)>>É preciso criar a coluna que vai receber a Chave Extrangeira, ela recebe o mesmo nome
+da Tabela da qual a Chave Extrangeira vai vir, porém com o id no final: nome_da_coluna_id
+e toda Chave Extrangeira recebe o Tipo de Dado: INT
+
+b)>>No comando: FOREIGN KEY que cria a Chave Extrangeira, o nome_da_coluna_id deve estar empre ()
+
+c)>>Para que o Banco de Dados saiba de onde vêm a Chave Extrangeira é preciso fazer uma referencia,
+usando o comando: REFERENCES seguido do: nome_da_tabela de onde a Chave Extrangeira vêm e o nome
+da coluna da Chave Primaria entre (id_nome_da_coluna), pois a Chave Primaria na tabela original
+se transforma em Chave Extrangeira na tabela que é importada
+
+	CREATE TABLE nome_da_tabela (
+	id_nome_da_coluna	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome_da_coluna		VARCHAR(200),
+	nome_da_coluna		TEXT,
+a)>>	nome_da_coluna_id	INT,
+b)>>	FOREIGN KEY (nome_da_coluna_id)
+c)>>	REFERENCES nome_da_tabela (id_nome_da_coluna)
+);	
+4 - Criando uma Tabela que vai receber a Chava Extrangeira (f);
+
+
+5 - Alterando uma Tabela para incluir um novo Atributo(Coluna) (i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+b)>> Quando der o comando para adicionar a coluna é preciso também informar o Tipo do Dado
+
+a)>>	ALTER TABLE nome_da_tabela
+b)>>	ADD COLUMN nome_da_coluna	VARCHAR(200);
+5 - Alterando uma Tabela para incluir um novo Atributo(Coluna) (f)
+
+
+6 - Alterando uma Tabela para informar a existência de uma Chave Extrangeira (i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+
+a)>>	ALTER TABLE nome_da_tabela
+	ADD COLUMN nome_da_coluna_id 	INT
+	FOREIGN KEY (nome_da_coluna_id)
+	REFERENCES nome_da_tabela (id_nome_da_coluna);
+6 - Alterando uma Tabela para informar a existência de uma Chave Extrangeira (f)
