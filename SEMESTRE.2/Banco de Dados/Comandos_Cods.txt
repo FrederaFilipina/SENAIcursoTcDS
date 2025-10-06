@@ -1,30 +1,71 @@
-SUMÁRIO
+SUMÁRIO - Aula 04/06/08/11/VIEW_LETF
 
-1 - Criar um Banco de Dados
-2 - Selecionanto e Ativando o Banco de Dados
-3 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados
-4 - Criando uma Tabela que vai receber a Chava Extrangeira
-5 - Alterando uma Tabela para incluir um novo Atributo(Coluna)
-6 - Alterando uma Tabela para informar a existência de uma Chave Extrangeira
+01 - Criar um Banco de Dados
+02 - Selecionanto e Ativando o Banco de Dados
+03 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados
+04 - Criando uma Tabela que vai receber a Chava Extrangeira
 
--------------------------
+05 - Alterando uma Tabela para INFORMAR a existência de uma Chave Extrangeira
+06 - Alterando uma Tabela para APAGAR a Chave Extrangeira
+07 - Alterando uma Tabela para INCLUIR um novo Atributo(Coluna)
+08 - Alterando uma Tabela para MODIFICAR o Tipo de Dado de um Atributo(Coluna)
+09 - Alterando uma Tabela para RENOMEAR uma Tabela
+10 - Alterando uma Tabela para RENOMEAR um Atributo(Coluna)
 
-1 - Criar um Banco de Dados (i);
+11 - Apagando um Atributo(Coluna)
+12 - Apagando uma Tabela
+
+13 - Populando(inserir) Dados na Tabela
+
+14 - Consultando os dados de TODAS as colunas de uma Tabela
+15 - Consultando os dados de ALGUMAS colunas de uma Tabela
+16 - Consultando os dados de DUAS Tabelas
+17 - Consultando os dados de DUAS Tabelas que tem uma relação diretas entre elas
+18 - Consultando os dados de DUAS Tabelas que tem uma relação diretas entre elas e que trazem também as informações que não tem relação direta 
+
+19 - Criando uma atalho para futuras consultas rápidas
+
+OUTRAS COISAS:
+DESCRIBE - Comando para saber as informações de cada Atributo(Coluna)
+DESCRIBE nome_da_tabela;
+
+
+CONSTRAINT - Regras que garantem a integridade e consistência dos dados
+>>	INT			Define que dado inserido será do tipo Número;
+>>	NOT NULL		Define que o preenchimento será obrigatório;
+>>	AUTO_INCREMENT		Define que o preenchimento será automático;
+>>	PRIMARY KEY		Define que os dados na coluna são Chaves Primária;
+>>	UNIQUE			Define que os dados na coluna são únicos, ou seja, não permite um valor duplicado;
+>>	ENUM			Define que os dados na coluna só poderão ser preenchidos com os valores informados;
+nome_da_coluna	ENUM('Sim', 'Não') - só será aceito o preenchimento de Sim ou Não
+
+>>	DEFAULT			Define que o preenchimento respeita um padrão estabelecido, caso nehuma outro dado seja informado;
+nome_da_coluna	VARCHAR (50)	DEFAULT 'Brasil' - se nada diferente for informado, vai vir como Brasil
+
+>>	CHECK			Define que os dados na coluna só serão preenchidos se a condição definida for verdadeira
+nome_da_coluna	INT		- definindo que a coluna será do tipo número
+CHEK (nome_da_coluna >= 0)	- definindo que os valores a ser preenchido tem de que ser maior ou igual a zero
+
+
+AS - Para renomear o nom da coluna na hora de retornar a consulta na tabela
+nome_da_coluna AS nome_que_vai_aparecer_na_consulta
+-----------------------------------------------------------------------------------------------------------------------------------
+
+01 - Criar um Banco de Dados (i);
 CREATE DATABASE nome_do_banco_de_dados;
-1 - Criar um Banco de Dados (f);
+01 - Criar um Banco de Dados (f);
 
 
-2 - Selecionanto e Ativando o Banco de Dados (i);
+02 - Selecionanto e Ativando o Banco de Dados (i);
 USE nome_do_banco_de_dados;
-2 - Selecionanto e Ativando o Banco de Dados (f);
+02 - Selecionanto e Ativando o Banco de Dados (f);
 
 
-3 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados (i);
+03 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados (i);
 CREATE TABLE nome_da_tabela (
 id_nome_da_coluna	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 nome_da_coluna		VARCHAR(200),
 nome_da_coluna		TEXT,
-nome_da_coluna		ENUM ('Sim', 'Não'),
 nome_da_coluna		INT(10),
 nome_da_coluna		BIGINT,
 nome_da_coluna		DECIMAL(10,2),
@@ -33,31 +74,21 @@ nome_da_coluna		TIME,
 nome_da_coluna		YEAR,
 );
 
-Também funciona para informar qual tabela será a Primary Key:
-id_nome_da_coluna	INT NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (id_nome_da_coluna),
-nome_da_coluna		VARCHAR(200),
+>> Obs.:Também funciona para informar qual coluna será a Primary Key:
+	id_nome_da_coluna	INT NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (id_nome_da_coluna),
+03 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados (f);
 
 
->> Obs.: INT NOT NULL AUTO_INCREMENT PRIMARY KEY
->>	INT			Informa que é um número
->>	NOT NULL		Informa que o preenchimento é obrigatório
->>	AUTO_INCREMENT		Informa que o preenchimento será automático
->>	PRIMARY KEY		Informa que os dados na coluna são Chaves Primária
-3 - Criando uma Tabela com Atributos(Colunas) e informando os Tipos de Dados (f);
-
-
-4 - Criando uma Tabela que vai receber a Chava Extrangeira (i);
-a)>>É preciso criar a coluna que vai receber a Chave Extrangeira, ela recebe o mesmo nome
-da Tabela da qual a Chave Extrangeira vai vir, porém com o id no final: nome_da_coluna_id
-e toda Chave Extrangeira recebe o Tipo de Dado: INT
+04 - Criando uma Tabela que vai receber a Chava Extrangeira (i);
+a)>>É preciso criar a coluna que vai receber a Chave Extrangeira, ela recebe o mesmo nome da Tabela da qual a Chave Extrangeira vai vir,
+porém com o id no final: nome_da_coluna_id e toda Chave Extrangeira recebe o Tipo de Dado: INT
 
 b)>>No comando: FOREIGN KEY que cria a Chave Extrangeira, o nome_da_coluna_id deve estar empre ()
 
-c)>>Para que o Banco de Dados saiba de onde vêm a Chave Extrangeira é preciso fazer uma referencia,
-usando o comando: REFERENCES seguido do: nome_da_tabela de onde a Chave Extrangeira vêm e o nome
-da coluna da Chave Primaria entre (id_nome_da_coluna), pois a Chave Primaria na tabela original
-se transforma em Chave Extrangeira na tabela que é importada
+c)>>Para que o Banco de Dados saiba de onde vêm a Chave Extrangeira é preciso fazer uma referencia, usando o comando: REFERENCES seguido
+do: nome_da_tabela de onde a Chave Extrangeira vêm e o nome da coluna da Chave Primaria entre (id_nome_da_coluna), pois a Chave Primaria
+na tabela original se transforma em Chave Extrangeira na tabela que é importada
 
 	CREATE TABLE nome_da_tabela (
 	id_nome_da_coluna	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -67,23 +98,180 @@ a)>>	nome_da_coluna_id	INT,
 b)>>	FOREIGN KEY (nome_da_coluna_id)
 c)>>	REFERENCES nome_da_tabela (id_nome_da_coluna)
 );	
-4 - Criando uma Tabela que vai receber a Chava Extrangeira (f);
+04 - Criando uma Tabela que vai receber a Chava Extrangeira (f);
 
 
-5 - Alterando uma Tabela para incluir um novo Atributo(Coluna) (i)
-a)>> É preciso informar qual tabela vai ser feito a alteração
-b)>> Quando der o comando para adicionar a coluna é preciso também informar o Tipo do Dado
 
-a)>>	ALTER TABLE nome_da_tabela
-b)>>	ADD COLUMN nome_da_coluna	VARCHAR(200);
-5 - Alterando uma Tabela para incluir um novo Atributo(Coluna) (f)
-
-
-6 - Alterando uma Tabela para informar a existência de uma Chave Extrangeira (i)
+05 - Alterando uma Tabela para INFORMAR a existência de uma Chave Extrangeira (i)
 a)>> É preciso informar qual tabela vai ser feito a alteração
 
 a)>>	ALTER TABLE nome_da_tabela
 	ADD COLUMN nome_da_coluna_id 	INT
 	FOREIGN KEY (nome_da_coluna_id)
 	REFERENCES nome_da_tabela (id_nome_da_coluna);
-6 - Alterando uma Tabela para informar a existência de uma Chave Extrangeira (f)
+05 - Alterando uma Tabela para INFORMAR a existência de uma Chave Extrangeira (f)
+
+
+06 - Alterando uma Tabela para APAGAR a Chave Extrangeira (i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+
+b)>> O comando: DROP é para informar que algo será apagado, em seguida a informação do que será apagado:FOREIGN KEY e ai vêm o nome da
+Chave Extrangeia que é composto pelo nome da Tabela seguido do _ibfk, que informa que é uma Chave Extrangeira, juntamente o _1 que informa
+o número da Chave Extrageira em questão.
+
+>> Obs.: Então na hora de deletar uma Chave Extrangeira, é preciso saber qual o número dela.
+
+a)>>	ALTER TABLE nome_da_tabela
+b)>>	DROP FOREIGN KEY nome_da_tabela_ibfk_1;
+06 - Alterando uma Tabela para APAGAR a Chave Extrangeira (f)
+
+
+07 - Alterando uma Tabela para INCLUIR um novo Atributo(Coluna)(i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+b)>> Quando der o comando para adicionar a coluna é preciso também informar o Tipo do Dado
+
+a)>>	ALTER TABLE nome_da_tabela
+b)>>	ADD COLUMN nome_da_coluna	VARCHAR(200);
+07 - Alterando uma Tabela para INCLUIR um novo Atributo(Coluna) (f)
+
+
+08 - Alterando uma Tabela para MODIFICAR o Tipo de Dado de um Atributo (Coluna) (i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+b)>> Quando der o comando para modificar a coluna é preciso também informar novo o Tipo do Dado
+
+a)>>	ALTER TABLE nome_da_tabela
+b)>>	MODIFY COLUMN nome_da_coluna	VARCHAR(200);
+08 - Alterando uma Tabela para MODIFICAR o Tipo de Dado de um Atributo (Coluna) (f)
+
+
+09 - Alterando uma Tabela para RENOMEAR uma Tabela (i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+b)>> Quando der o comando para renomar a tabela é preciso também informar novo nome da tabela
+
+a)>>	ALTER TABLE nome_da_tabela
+b)>>	RENAME TO novo_nome_da_tabela;
+09 - Alterando uma Tabela para RENOMEAR uma Tabela(f)
+
+
+10 - Alterando uma Tabela para RENOMEAR um Atributo (Coluna) (i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+b)>> Quando der o comando para renomar a coluna é preciso também informar novo nome da coluna
+
+a)>>	ALTER TABLE nome_da_tabela
+b)>>	RENAME COLUMN nome_da_coluna TO novo_nome_da_coluna;
+10 - Alterando uma Tabela para RENOMEAR um Atributo (Coluna) (f)
+
+
+
+11 - Apagando um Atributo(Coluna) (i)
+a)>> É preciso informar qual tabela vai ser feito a alteração
+
+a)>>	ALTER TABLE nome_da_tabela
+	DROP COLUMN nome_da_coluna;
+11 - Apagando um Atributo(Coluna) (f)
+
+
+12 - Apagando uma Tabela (i)
+DROP TABLE nome_da_tabela;
+12 - Apagando uma Tabela (f)
+
+
+
+13 - Populando(inserir) Dados na Tabela (i)
+a)>> É preciso informar qual tabela vai receber os dados
+b)>> Se coloca entre parênteses os nomes dos atributos(colunas) que vão receber as informações, sendo que a sequência informada pode ser
+diferente da ordem que as colunas estão na tabela
+c)>> Os dados informados vão respeitar a sequência informada, sendo que para números, não é obrigatório a utilização das aspas '' na hora
+do preenchimento
+Obs.: Comece populando as tabelas que fornecem informações para outras tabelas!
+
+a)>>	INSERT INTO nome_da_tabela
+b)>>	(nome_da_coluna, nome_da_coluna, nome_da_coluna)
+	VALUES
+c)>>	('blábláblá', 12345, '123')
+13 - Populando(inserir) Dados na Tabela (f)
+
+
+
+14 - Consultando TODOS os dados de uma Tabela (i)
+>> O * indica que é para trazer tudo
+
+SELECT * FROM nome_da_tabela;
+14 - Consultando TODOS os dados de uma Tabela (f)
+
+
+15 - Consultando os dados de ALGUMAS colunas de uma Tabela (i)
+
+SELECT nome_da_coluna, nome_da_coluna FROM nome_da_tabela;
+
+15 - Consultando os dados de ALGUMAS colunas de uma Tabela (f)
+
+16 - Consultando os dados de DUAS Tabelas (i)
+SELECT * FROM nome_da_tabela
+INNER JOIN nome_da_outra_tabela;
+
+ou
+
+SELECT * FROM nome_da_tabela
+JOIN nome_da_outra_tabela;
+16 - Consultando os dados de DUAS Tabelas (f)
+
+
+17 - Consultando os dados de DUAS Tabelas que tem uma relação diretas entre elas (i)
+a)>> primeiro informa o nome da tabela e depois o nome da coluna que é a Chave Extrangeira e depois o nome da outra tabela e o nome da
+coluna que é a Chave Primaria;
+
+	SELECT * FROM nome_da_tabela1
+	JOIN nome_da_outra_tabela2
+a)>>	ON nome_da_tabela1.nome_da_coluna1_id = nome_da_outra_tabela2.id_nome_da_coluna2;
+
+nome_da_tabela1		.	nome_da_coluna1_id (Chave Extrangeira)
+nome_da_outra_tabela2	.	id_nome_da_coluna2 (Chave Primaria)
+17 - Consultando os dados de DUAS Tabelas que tem uma relação diretas entre elas (f)
+
+
+18 - Consultando os dados de DUAS Tabelas que tem uma relação diretas entre elas e que trazem também as informações que não tem relação direta (i)
+LEFT JOIN - Vai trazer as informações que não tem relação que estão a ESQUERDA
+
+	SELECT nome_da_tabela.nome_da_coluna, nome_da_outra_tabela.nome_da_coluna FROM nome_da_tabela
+	LEFT JOIN nome_da_outra_tabela
+	ON nome_da_tabela.nome_da_coluna_id = nome_da_outra_tabela.id_nome_da_coluna
+
+nome_da_tabela		.	nome_da_coluna_id (Chave Extrangeira)
+nome_da_outra_tabela	.	id_nome_da_coluna (Chave Primaria)
+
+
+RIGHT JOIN - Vai trazer as informações que não tem relação que estão a DIREITA
+
+	SELECT nome_da_tabela.nome_da_coluna, nome_da_outra_tabela.nome_da_coluna FROM nome_da_tabela
+	RIGHT JOIN nome_da_outra_tabela
+	ON nome_da_tabela.nome_da_coluna_id = nome_da_outra_tabela.id_nome_da_coluna
+
+nome_da_tabela		.	nome_da_coluna_id (Chave Extrangeira)
+nome_da_outra_tabela	.	id_nome_da_coluna (Chave Primaria)
+
+
+FULL JOIN - Vai trazer as informações que não tem relação que estão a ESQUERDA e a DIREITA
+	SELECT nome_da_tabela.nome_da_coluna, nome_da_outra_tabela.nome_da_coluna FROM nome_da_tabela
+	LEFT JOIN nome_da_outra_tabela
+	ON nome_da_tabela.nome_da_coluna_id = nome_da_outra_tabela.id_nome_da_coluna
+	UNION
+	SELECT nome_da_tabela.nome_da_coluna, nome_da_outra_tabela.nome_da_coluna FROM nome_da_tabela
+	RIGHT JOIN nome_da_outra_tabela
+	ON nome_da_tabela.nome_da_coluna_id = nome_da_outra_tabela.id_nome_da_coluna
+
+18 - Consultando os dados de DUAS Tabelas que tem uma relação diretas entre elas e que trazem também as informações que não tem relação direta (f)
+
+
+
+19 - Criando uma atalho para futuras consultas rápidas (i)
+a)>> Criando a View
+b)>> Defifindo a consulta
+c)>> Usando a consulta criada
+
+a)>>	CREATE VIEW vw_nome_da_cunsulta AS
+b)>>	SELECT * FROM nome_da_tabela;
+
+
+c)>>	SELECT * FROM vw_nome_da_cunsulta AS
+19 - Criando uma atalho para futuras consultas rápidas (f)
