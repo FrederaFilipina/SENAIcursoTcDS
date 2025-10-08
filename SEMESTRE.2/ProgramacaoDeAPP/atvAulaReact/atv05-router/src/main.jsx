@@ -4,10 +4,16 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 
 import rotas from './router/routes'
+import GlobalContextProvider from './contexts/GlobalContext'
 
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={rotas}>
+  <GlobalContextProvider>
+
+    <RouterProvider router={rotas}>
     
-  </RouterProvider>
+    </RouterProvider>
+
+  </GlobalContextProvider>
+
 )
