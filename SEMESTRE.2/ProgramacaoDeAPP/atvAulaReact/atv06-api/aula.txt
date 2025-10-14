@@ -1,0 +1,16 @@
+C.R.U.D.
+
+método http de comunicação
+
+    C - Creat
+        >> Post
+    
+    R - Read
+        >> GET
+    
+    U - Update
+        >> PUT
+        >> PATCH
+    
+    D - Delet
+        >>
