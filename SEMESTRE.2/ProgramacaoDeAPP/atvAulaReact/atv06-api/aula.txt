@@ -1,7 +1,5 @@
 C.R.U.D.
 
-método http de comunicação
-
     C - Creat
         >> Post
     
@@ -12,5 +10,19 @@ método http de comunicação
         >> PUT
         >> PATCH
     
-    D - Delet
-        >>
+    D - Delete
+        >> DELETE
+
+Método http de comunicação
+>> O método de comunicação HTTP é baseado em um modelo de solicitação-resposta entre um cliente
+e um servidor, sendo o HTTP (Hypertext Transfer Protocol) o protocolo que define as regras para
+essa comunicação. O cliente (como um navegador) envia uma requisição e o servidor responde com
+um cabeçalho e, opcionalmente, um corpo da mensagem. Para especificar a ação desejada, utilizam-se
+métodos como GET para buscar dados, POST para enviar dados, PUT para atualizar e DELETE para remover
+um recurso.
+
+links:
+        https://www.npmjs.com/package/express
+        https://expressjs.com/
+        https://expressjs.com/en/guide/database-integration.html#mysql
+        https://www.npmjs.com/package/mysql2
