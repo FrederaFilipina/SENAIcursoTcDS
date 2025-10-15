@@ -1,0 +1,10 @@
+CREATE DATABASE atv06_api;
+USE atv06_api;
+
+CREATE TABLE cliente(
+id_cliente INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR (100) NOT NULL,
+endereco VARCHAR(100),
+telefone VARCHAR(100),
+email VARCHAR(100)
+);
