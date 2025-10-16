@@ -26,3 +26,12 @@ links:
         https://expressjs.com/
         https://expressjs.com/en/guide/database-integration.html#mysql
         https://www.npmjs.com/package/mysql2
+
+
+
+
+host: "127.0.0.1",
+  port: 3306,
+  database: "atv06_api",
+  user: "root",
+  password: "senai",
