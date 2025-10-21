@@ -1,17 +1,17 @@
 C.R.U.D.
 
     C - Creat
-        >> Post
+        >> Post     >>Insert
     
     R - Read
-        >> GET
+        >> GET      >>Select
     
     U - Update
-        >> PUT
+        >> PUT      >>Update
         >> PATCH
     
     D - Delete
-        >> DELETE
+        >> DELETE   >>Delete
 
 Método http de comunicação
 >> O método de comunicação HTTP é baseado em um modelo de solicitação-resposta entre um cliente
