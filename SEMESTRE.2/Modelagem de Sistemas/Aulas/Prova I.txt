@@ -1,0 +1,199 @@
+Ppt 01 - Introdução à Modelagem de Sistemas
+
+	Software:
+	Programa de computador, que quando executado provêm funcionalidades,
+	junto com uma estrutura de dados que permite manipular a informação,
+	e documentação associada, que indica como operar.
+
+	Classificação mais simples dos softwares:
+	>> Softwares de Sistemas	(Windosws / Linux / Android / iOS)
+	>> Softwares de Programação	(Visual Studio Code / Code::Blocks)
+	>> Softwares de Aplicação	(Word / Figma / PowerPoint / FireFox)
+
+	Ciclo de Desenvolvimento de Software (SDLC)
+	01>>	Definição de Escopa
+	02>>	Design
+	03>>	Desenvolvimento
+	04>>	Teste e Integração
+	05>>	Manutenção
+
+	Ciclo de Vida de Software (Vendas vs Tempo)
+	01>>	Desenvolvimento
+	02>>	Lançamento
+	03>>	Crescimento
+	04>>	Estabilidade + Saturção
+	05>>	Declinio
+
+----------------------------------------------------------------------------------
+
+Ppt 02 - Software e Engenharia de Software
+
+Na apresentação sõ tem casos sobre Falhas de Software e outro slide mostrando a
+Complexidade por meio de quantidade de linhas de códigos.
+
+Nada de Conteudo efetivamente!
+
+----------------------------------------------------------------------------------
+
+Ppt 03 - Engenharia de Software e Requisitos
+
+	Engenharia de Software: está relacionada com todos os aspectos da produção
+	de software, desde os estágios iniciais da especificação até a manutenção
+	(Sommerville)
+
+	Propõe ferramentas, técnicas e processos para:
+	01>> Entender qual o problema e as necessidades do sistema;
+	02>> Produzir uma solução adequada para o problema;
+	03>> Considerar restrições de desenvolvimento e recursos.
+
+	Camadas da Engenharia de Software:
+	01>> Foco na Qualidade - A base que sustenta e integra as outras camadas,
+	buscando a satisfação do cliente e os requisitos do projeto;
+	
+	02>> Processos - O fluxo de trabalho que organiza as atividades e tarefas
+	necessárias para o desenvolvimento de software;
+
+	03>> Métodos - As abordagens e técnicas utilizadas dentro dos processos
+	para realizar tarefas específicas, como modelagem ou teste;
+
+	04>> Ferramentas - Os instrumentos de apoio que auxiliam os
+	desenvolvedores a implementar os métodos e processos, como ambientes de
+	desenvolvimento integrado (IDEs) ou ferramentas de gestão de projetos.
+
+--------
+
+	As tarefas que levam a entender o que se espera do software (o que ele
+	será), o que o cliente quer e como os usuários irão interagir com o
+	software, é o que chamamos de REQUISITOS.
+	
+	Requisitos: São as funções e restrições que estabelecem exatamente
+	o que o software deve fazer!
+
+	Requisitos de Usuário x Sistema:
+	Muitos dos STAKEHOLDER do projeto terão diferentes visões na
+	especificação do sistema;
+
+		Requisitos de Usuário:
+			>> Gerentes;
+			>> Usuários finais;
+			>> Engenheitros do cliente;
+			>> Fornecedores
+
+		Requisitos de Sistema:
+			>> Analista de sistema;
+			>> Arquitetos de software;
+			>> Desenvolvedores;
+	
+	Importância dos Requisitos:
+	O contato direto e frequente com o cliente auxilia a identificar o
+	problema em conjunto e achar a solução, uma vez que os requisitos são
+	mudados frequentemente no processo de desenvolvimento.
+
+	É importante entender o que o cliente quer antes de iniciar qualquer
+	trabalho para que o valor final seja entregue, esse é o papel da
+	aquisição dos requisitos.
+
+
+	Identificação de Stakeholders:
+	Stakeholders, refere-se às partes interessadas no produto / projeto que
+	está sendo desenvolvido. São todos aqueles que podem contribuir de alguma
+	maneira para a solução do problema ou que podem ser impactados.
+
+	Stakeholders Internos:
+	>> Desenvolvedores da Empresa
+	>> Gerentes da Empresa
+	>> Sócios da Empresa
+
+	Stakeholders Externos:
+	>> Fornecedores da Empresa
+	>> Sociedade
+	>> Governo
+	>> Credores
+	>> Acionistas
+	>> Clientes
+
+
+--------
+
+	Requisitos Funcionais: Declarações de serviços / Ações que o sistema
+	deve fornecer ou fazer. O que precisa ser feito.
+
+	Como o sistema deve reagir a entradas específicas.
+	Como o sistema deve se comportar em situações específicas.
+	Em alguns casos, os requisitos funcionais também podem declarar
+	explicitamente o que o sistema não deve fazer.
+
+	Requisitos Não Funcionais: São restrições ou adequações aos serviços ou
+	funções oferecidos pelo sistema.
+	Tempo / Confiabilidade / Desempenho / Segurança / Usabilidade
+
+----------------------------------------------------------------------------------
+
+Ppt 04 - Modelos de Desenvolvimento de Software e Metodologias Ágeis
+
+	Processo de Software - Quais os passos para se criar um software?
+	01>> Entender o Problema	
+	02>> Planejar			
+	03>> Executar o Plano		
+	04>> Avaliar os Resultados
+	
+	Ciclo PDCA
+	P - PLAN	Planejar o que será feito
+	D - DO		Executar o que foi Planejado
+	C - CHECK	Verificar o que foi Executado vs Planejado
+	A - ACT		Agir em cima do que foi Verificado a Planejar
+
+	Modelos de Desenvolvimento de Software:
+	01>> Modelo Cascata:
+		Especificação
+			Análise
+				Validação
+					Evolução
+	02>> Modelo Cascata com FeedBack:
+	Tem o adicional que antes de prosseguir para a próxima etapa é feito um
+	feedback para ajustar as coisas e só depois de tudo estar acertado, o
+	próximo estágio da cascata é iniciado.
+
+	03>> Modelo Incremental / Iterativo:
+	Combina a entrega de partes funcionais do software (incremental) com a
+	melhoria contínua do sistema em ciclos repetidos (iterativo). Em cada
+	iteração, novas funcionalidades são adicionadas, e o software é refinado,
+	permitindo feedback constante dos utilizadores e adaptação a mudanças de
+	requisitos, resultando na entrega de um produto robusto e de alta
+	qualidade.
+	Incremente1 >> Comunicação >> Planejamento >> Modelagem >>
+	>> Construção >> Implantação >> Entraga 01
+
+	Incremente2 >> Comunicação >> Planejamento >> Modelagem >>
+	>> Construção >> Implantação >> Entraga 02
+
+	03>> Modelo Evolucionário Espiral:
+	Combina a natureza iterativa da prototipação com a sistematicidade do
+	modelo cascata, focando na gerência de riscos para controlar e reduzir
+	falhas no projeto. Ele funciona através de rodadas (loops) em espiral,
+	onde cada rodada representa um ciclo completo de desenvolvimento,
+	permitindo a evolução do software, a identificação de riscos e a entrega
+	de versões mais completas do produto ao cliente. 
+
+--------
+
+	Metodologias Ágeis
+	
+	01>> Manifesto Ágil: é uma declaração de valores e princípios que
+	norteiam a gestão de projetos, especialmente no desenvolvimento de
+	software, mas que se estende a diversas outras áreas. Ele enfatiza a
+	entrega de valor e a adaptabilidade às mudanças, priorizando indivíduos
+	e interações, software funcional, colaboração com o cliente e resposta a
+	mudanças sobre processos rígidos e documentação excessiva.
+		1. Individuos e interações
+		2. Software em funcionamento
+		3. Colaboração com o cliente
+		4. Responder a mudanças
+	
+	02>> Kanban: Usa um quadro visual com cartões para representar tarefas,
+	ajudando a visualizar o fluxo de trabalho e limitar o trabalho em
+	progresso.
+
+	03>> Scrum:  Usado para gerenciar o desenvolvimento de produtos complexos,
+	especialmente software, dividindo grandes projetos em ciclos curtos e
+	iterativos chamados sprints.
