@@ -1,6 +1,0 @@
-1. cmd
-2. npm create vite@latest
->>> criar uma pasta React
-
-3. npm i
-4. npm i axios
