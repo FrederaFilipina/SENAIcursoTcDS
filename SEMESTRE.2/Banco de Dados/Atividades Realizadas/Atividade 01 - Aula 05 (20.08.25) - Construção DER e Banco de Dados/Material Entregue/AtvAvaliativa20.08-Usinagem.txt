@@ -1,5 +1,5 @@
-CREATE DATABASE atv01Usinagem_abc;
-USE atv01Usinagem_abc;
+CREATE DATABASE usinagem;
+USE usinagem;
 
 CREATE TABLE categoria(
 id_categoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -19,6 +19,7 @@ peso_peca DECIMAL(10,2),
 ano_fabricacao_peca YEAR (4),
 categoria_id INT,
 fornecedor_id INT);
+
 ALTER TABLE peca
 ADD FOREIGN KEY (categoria_id)
 REFERENCES categoria (id_categoria);

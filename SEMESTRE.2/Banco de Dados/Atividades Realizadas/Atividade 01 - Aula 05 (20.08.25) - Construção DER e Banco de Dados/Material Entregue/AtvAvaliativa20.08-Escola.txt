@@ -1,18 +1,19 @@
-CREATE DATABASE atv01Escola;
-USE atv01Escola;
+CREATE DATABASE escola;
+USE escola;
 
-CREATE TABLE sala(
+CREATE TABLE sala (
 id_sala INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome VARCHAR(100),
-capacidade INT
+nome_sala VARCHAR (100),
+capacidade_sala INT
 );
 
-CREATE TABLE turma(
+CREATE TABLE turma (
 id_turma INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 nome_turma VARCHAR (100),
 periodo_turma VARCHAR (50),
 sala_id INT
 );
+
 ALTER TABLE turma
 ADD FOREIGN KEY (sala_id)
 REFERENCES sala (id_sala);
@@ -23,6 +24,7 @@ nome_professor VARCHAR (100),
 formacao_academica_professor VARCHAR (100),
 turma_id INT
 );
+
 ALTER TABLE professor
 ADD FOREIGN KEY (turma_id)
 REFERENCES turma (id_turma);
@@ -32,6 +34,7 @@ id_aula INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 nome_aula VARCHAR (100),
 professor_id INT
 );
+
 ALTER TABLE aula
 ADD FOREIGN KEY (professor_id)
 REFERENCES professor (id_professor);

@@ -1,5 +1,5 @@
-CREATE DATABASE atv01Empresa_xpto;
-USE atv01Empresa_xpto;
+CREATE DATABASE empresa_XPTO;
+USE empresa_XPTO;
 
 CREATE TABLE empresa(
 id_empresa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -34,6 +34,7 @@ sigla_departamento VARCHAR (10),
 centro_custo_departamento INT,
 unidade_id INT
 );
+
 ALTER TABLE departamento
 ADD FOREIGN KEY (unidade_id)
 REFERENCES unidade (id_unidade);
@@ -48,6 +49,7 @@ empresa_id INT,
 consultor_id INT,
 departamento_id INT
 );
+
 ALTER TABLE projeto
 ADD FOREIGN KEY (empresa_id)
 REFERENCES empresa (id_empresa);
