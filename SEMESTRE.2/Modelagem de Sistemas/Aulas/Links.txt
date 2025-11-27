@@ -1,0 +1,10 @@
+Links:
+	Conteúdo:
+		Símbolos - UML:		https://edraw.wondershare.com.br/symbols/uml-diagram-symbols.html
+		Diagramas UML:		https://edraw.wondershare.com.br/article/use-case-diagram-examples.html
+		Exemplos BONITOS:	https://venngage.com/blog/use-case-diagram-example/
+	
+	Sites para fazer:
+					https://venngage.com/blog/use-case-diagram-example/
+					https://app.diagrams.net/
+					https://miro.com/pt/
