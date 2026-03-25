@@ -32,7 +32,7 @@
     3. O arquivo `prisma.config.ts` estejacom a `url` da `datasource` correta
 
 1. Configurar o arquivo `schema.prisma` dentro da pasta `prisma`
-    1. Criar o a tabela de usuário
+    1. Criar a tabela de usuário
 
             model Usuario {
                 id    Int     @id @default(autoincrement())
@@ -52,7 +52,7 @@
 ### ▷ Atualizando o `Prisma` para que sejá criado uma única instância de acesso ao Banco de dados:
 1. Criar o arquivo `prisma.ts` dentro da subpasta `prisma`
 
-2. Criar a string de conexão para passar o link: `postgresql://username:password@localhost:5432/clinic?schema=public`
+2. Criar a string de conexão para passar o link: `postgresql://username:password@localhost:5432/mydb?schema=public`
     -  lembrando de arrumar essas partes:
         1. username ⇨ nome no PostgreSQL
         2. password ⇨ senha no PostgreSQL
@@ -65,14 +65,9 @@
 
 ### ▷ Incluindo novas funcionalidades no sevidor:
 1. Abriro arquivo `index.jsx` dentro da pasta `src`
+    1. Criar um `endpoint` usando o método `POST` para cadastrar usuários
 
-2. Incluir a requição para cadastrar usuários no Banco de Dados
-    1. Criar um `endpoint` usando o método `POST`
-    2. Adicionar uma função para cadastrar usuários
-
-3. Incluir a requição para mostrar todos os úsuários cadastrados no Banco de Dados
-    1. Criar um `endpoint` usando o método `GET`
-    2. Adicionar uma função para buscar os usuários cadastrados
+    2. Criar um `endpoint` usando o método `GET para mostrar todos os úsuários cadastrados 
 
 ### ▷ Interagindo(criando e consultando usuáios) com o Postman:
 1. Abra o `Postman`
