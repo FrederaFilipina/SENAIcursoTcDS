@@ -2,16 +2,35 @@
 
 ## Parte: #02
 
+### ▷Ajustando a hierarquia das pastas:
+1. Aloque a pasta`prisma` para dentro da pasta `src`
+
+2. Ajuste o arquivo `prisma.config.ts`
+
+    1. em `schema`:
+        - de: "prisma/schema.prisma"
+        - para: "src/prisma/schema.prisma"
+
+    2. em `migrations: path:`
+        - de: "prisma/migrations"
+        - para: "src/prisma/migrations"
+
 ### ▷ Atualizando o arquivo `Package.json` para rodar o projeto usando o modo ES Modules (ESM) nativo do Node.js.:
 1. Abra o arquivo
 
-2. Dentro de `Script`, atualize o comando `"start"`
+2. Executar esse comando o terminal da pasta do projeto: `npm install tsx --save-dev`
+
+3. Dentro de `Script`, atualize o comando `"start"`
     - de: "ts-node src/index.ts"
     - para: "tsx --watch src/index.ts"
-3. Executar esse comando o terminal da pasta do projeto: `npm install tsx --save-dev`
 
 
 ### ▷ Criando a tabela no Banco de Dados
+-  Obs.: Certifique-se que o 
+    1. PostgreSQL esteja aberto
+    2. O servidor esteja ativo e online (npm start)
+    3. O arquivo `prisma.config.ts` estejacom a `url` da `datasource` correta
+
 1. Configurar o arquivo `schema.prisma` dentro da pasta `prisma`
     1. Criar o a tabela de usuário
 
@@ -29,14 +48,19 @@
         3. `npx prisma generate` ⇨ Executar toda as vez que qualquer ateração for feita no Banco de Dados
         -  isso faz com que a subpasta `generated` seja criada com os respectivos arquivos
 
-### ▷Ajustando a estrutura das pastas
-1. Jogar a pasta Prisma para dentro de SRC (pois foi configurado que a pasta principal é a src)e a pasta Generate dentro da Pasta Prisma
 
 ### ▷ Atualizando o `Prisma` para que sejá criado uma única instância de acesso ao Banco de dados:
 1. Criar o arquivo `prisma.ts` dentro da subpasta `prisma`
+
 2. Criar a string de conexão para passar o link: `postgresql://username:password@localhost:5432/clinic?schema=public`
-    - lembrando de arrumar essa parte em particular `username:password`
+    -  lembrando de arrumar essas partes:
+        1. username ⇨ nome no PostgreSQL
+        2. password ⇨ senha no PostgreSQL
+        3. localhost ⇨ porta no PostgreSQL
+        4. mydb ⇨ nome do Banco de Dados
+        
 3. Criar a conexao com o `PostGreSQL`
+
 4. Criar o `cliente Prisma`
 
 ### ▷ Incluindo novas funcionalidades no sevidor:
