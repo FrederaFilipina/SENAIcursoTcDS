@@ -51,9 +51,9 @@
 ### ▷ Iniciando o TypeScript:
 1. No terminal aberto, execute o comando: `npx tsc --init`, isso faz com que o arquivo `tsconfig.json` seja criado
 
-2. Configure o arquivo:
+2. Configure como o ``TypeScript`` vai compilar o projeto:
 
-    1. Delete as informações que estão dentro
+    1. Delete as informações que vêm com o arquivo
 
     2. Coloque essas informações:
         
@@ -83,6 +83,8 @@
             "include": ["src/**/*.ts"],
             "exclude": ["node_modules"]
             }
+    
+    -  Obs.: foi definido que a pasta principal do projeto é a `src`, ou seja, as demais pastas a serem criadas devem ser migradas para dentro de `src`
 
 ### ▷ Iniciando o Prisma:
 1. No terminal aberto, execute o comando: `npx prisma init`, isso cria o arquivo `.env` e o arquivo `prisma,configure.ts`na pasta do projeto e a pasta `prisma` junto com arquivo `schema.prisma`
@@ -93,26 +95,14 @@
 
     2. Altere dentro da propriedade `datasource`
         
-            de: `url: process.env["DATABASE_URL"]`
-            para: `url: 'postgresql://username:password@localhost:5432/clinic?schema=public'`
+            de: url: process.env["DATABASE_URL"]
+            para: url: 'postgresql://username:password@localhost:5432/mydb?schema=public'
             
-            - lembrando de arrumar essa parte em particular `username:password`
-
-3. Configurar o arquivo `schema.prisma` dentro da pasta `prisma`
-    1. Criar a tabela de usuário
-
-            model Usuario {
-                id    Int     @id @default(autoincrement())
-                email String  @unique
-                nome  String?
-                
-                @@map("user")
-            }
-    
-    2. No terminal, executar os comando:
-        1. `npx prisma format` ⇨ Para corrigir as indentações, organizar, formatar e padroniza a estrutura
-        2. `npx prisma migrate dev --name [nome_alteracao]` ⇨ Executar toda as vez que qualquer ateração na tabela ⇨ `model` for feita
-        <!-- 3. `npx prisma generate` ⇨ Executar toda as vez que qualquer ateração for feita no Banco de Dados -->
+            -  lembrando de arrumar essas partes:
+                1. username ⇨ nome no PostgreSQL
+                2. password ⇨ senha no PostgreSQL
+                3. localhost ⇨ porta no PostgreSQL
+                4. mydb ⇨ nome do Banco de Dados
 
 ### ▷ Criar e configurar um servidor básico:
 1. Criar a subpasta `src` dentro da pasta principal do projeto

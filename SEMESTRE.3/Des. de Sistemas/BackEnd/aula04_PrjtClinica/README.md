@@ -12,7 +12,7 @@
 
 
 ### ▷ Criando a tabela no Banco de Dados
-<!-- 1. Configurar o arquivo `schema.prisma` dentro da pasta `prisma`
+1. Configurar o arquivo `schema.prisma` dentro da pasta `prisma`
     1. Criar o a tabela de usuário
 
             model Usuario {
@@ -25,12 +25,12 @@
     
     2. No terminal, executar os comando:
         1. `npx prisma format` ⇨ Para corrigir as indentações, organizar, formatar e padroniza a estrutura
-        2. `npx prisma migrate dev --name [nome_alteracao]` ⇨ Executar toda as vez que qualquer ateração na tabela ⇨ `model` for feita -->
+        2. `npx prisma migrate dev --name [nome_alteracao]` ⇨ Executar toda as vez que qualquer ateração na tabela ⇨ `model` for feita
         3. `npx prisma generate` ⇨ Executar toda as vez que qualquer ateração for feita no Banco de Dados
         -  isso faz com que a subpasta `generated` seja criada com os respectivos arquivos
 
 ### ▷Ajustando a estrutura das pastas
-1. Jogar a pasta Prisma para dentro de SRC e a pasta Generate dentro da Pasta Prisma
+1. Jogar a pasta Prisma para dentro de SRC (pois foi configurado que a pasta principal é a src)e a pasta Generate dentro da Pasta Prisma
 
 ### ▷ Atualizando o `Prisma` para que sejá criado uma única instância de acesso ao Banco de dados:
 1. Criar o arquivo `prisma.ts` dentro da subpasta `prisma`

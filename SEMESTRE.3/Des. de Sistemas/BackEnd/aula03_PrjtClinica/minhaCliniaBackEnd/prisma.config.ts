@@ -9,6 +9,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: 'postgresql://username:password@localhost:5432/clinic?schema=public',
+    url: 'postgresql://username:password@localhost:5432/mydb?schema=public',
   },
 });
