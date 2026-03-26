@@ -2,7 +2,7 @@
 
 ## Parte: #03
 
-### ▷Adicionando tabela no Banco de Dados:
+### ▷ Adicionando tabela no Banco de Dados:
 -  Obs.: Certifique-se que o 
     1. PostgreSQL esteja aberto
     2. O servidor esteja ativo e online (npm start)
