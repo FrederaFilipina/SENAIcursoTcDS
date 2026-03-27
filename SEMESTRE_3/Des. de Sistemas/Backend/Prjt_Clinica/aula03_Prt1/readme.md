@@ -1,5 +1,4 @@
-# Projeto Clinica: 
-# ⇨ Iniciando o projeto básico
+# Projeto Clinica: ⇨ Iniciando o projeto básico
 
 ## Arquivo descrevendo e explicando a construção desta etapa do projeto
 
