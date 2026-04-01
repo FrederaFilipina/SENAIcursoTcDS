@@ -1,4 +1,4 @@
-# Projeto Clinica: ⇨ Iniciando o projeto básico
+# Projeto Clinica: ⇨ Construindo a basedo projeto
 
 ## Arquivo descrevendo e explicando a construção desta etapa do projeto
 
@@ -20,7 +20,7 @@
     2. Adicione a instrução: `"type": "module"`, antes de `▷Debug`;
         - 🔎 O que acontece?
             1. Informa ao Node.js que este projeto vai usar ES Modules (ESM) em vez do sistema padrão CommonJS. Isso muda o comportamento de como os arquivos são importados e exportados, deixando mais fácil.
-
+---
 ### ▷ Instalando as dependências principais
 1. No terminal aberto, execute o comando `npm install express dotenv pg @prisma/client @prisma/adapter-pg` para instalar de uma única vez todas essas dependências:
     
@@ -36,7 +36,7 @@
     4. `Prisma Client` ⇨ é uma biblioteca que permite que seu código JavaScript/TypeScript interaja com o banco de dados usando uma API tipada e segura, sem precisar escrever SQL diretamente;
 
     5. `@prisma/adapter-pg` ⇨ é um adaptador de driver que faz a ponte entre o Prisma Client e o PostgreSQL para que o banco de dados seja conectado;
-
+---
 ### ▷ Instalando as dependências em modo desenvolvimento (--save-dev)
 - 🔎 O que acontece?
     1. O `--save-dev` informa que as dependências serão usadas apenas na fase de desenvolvimento, não em produção.
@@ -55,7 +55,7 @@
     5. `@types/express` ⇨ é um pacote de definições de tipagem TypeScript para o Express. Ele permitindo que você use o framework com tipagem completa em TypeScript;
 
     6. `@types/pg` ⇨ é um pacote que fornece tipagem TypeScript para o pg, que é o driver PostgreSQL usado no Node.js;
-
+---
 ### ▷ Iniciando o TypeScritp
 1. Execute o comando: `npx tsc --init` dentro do terminal aberto
     - 🔎 O que acontece?
@@ -93,7 +93,7 @@
             "include": ["src/**/*.ts"],
             "exclude": ["node_modules"]
             }
-
+---
 ### ▷ Iniciando o Prisma
 obs.: Se não tiver, instale o PostgreSQL (https://www.postgresql.org/)
 
@@ -110,7 +110,7 @@ obs.: Se não tiver, instale o PostgreSQL (https://www.postgresql.org/)
         2. password ⇨ a mesma usada no PostgreSQL;
         3. localhost ⇨ a mesma usada no PostgreSQL;
         4. mydb ⇨ nome do Banco de Dados a usado no PostgreSQL;
-
+---
 ### ▷ Iniciando o Servidor
 1. Crie a subpasta: `src` dentro da pasta principal do projeto;
 
