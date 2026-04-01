@@ -18,11 +18,10 @@
     - Criado uma única instância de acesso ao Banco de dados;
     ---
 
-- `Prt3` ⇨ Criando os endpoints no servidor e cadastrando usuário pelo Postman
-    -
-    -
-    -
-    -
+- `Prt3` ⇨ Criando os endpoints no servidor e populando o Banco de Dados pelo Postman
+
+    - Criando os endpoints no servidor
+    - Populando usuários e exames pelo Postman
     ---
 
 - `Prt4` ⇨

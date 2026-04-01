@@ -11,7 +11,7 @@
     2. `schema.prisma` para que seja trocado: `src` do `output` no `generator client` por: `prisma`;
 
 3. Abra o terminal referente a pasta criada e execute o comando: `npm install tsx --save-dev`;
-    1. Edite o arquivo: `package.json` para que a instrução: `start` fique assm: "start": "ts-node --esm src/index.ts";
+    1. Edite o arquivo: `package.json` para que a instrução: `start` fique assm: "start": "tsx watch src/index.ts";
         - 🔎 O que acontece?
             1. Ele executa diretamente um arquivo TypeScript `.ts` usando o ts-node, com suporte a módulos ES (--esm).
 ---
