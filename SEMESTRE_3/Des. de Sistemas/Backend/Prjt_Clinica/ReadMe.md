@@ -9,32 +9,31 @@
     - Iniciando o TypeScritp;
     - Iniciando o Prisma;
     - Iniciando o Servidor;
+    ---
 
-- `Prt2` ⇨ Criando as tabelas e o Banco de Dados de usuário no PostgreSQL 
+- `Prt2` ⇨ Criando tabelas (model) e o Banco de Dados de usuário no PostgreSQL 
 
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
+    - Reorganizar a estrutura base do projeto;
+    - Criando as tabelas e o Banco de Dados de usuário no PostgreSQL;
+    - Criado uma única instância de acesso ao Banco de dados;
+    ---
 
 - `Prt3` ⇨ Criando os endpoints no servidor e cadastrando usuário pelo Postman
+    -
+    -
+    -
+    -
+    ---
 
 - `Prt4` ⇨
+    -
+    -
+    -
+    -
+    ---
 
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
-    -
 - `aula03_Prt5` ⇨
+    -
+    -
+    -
+    -

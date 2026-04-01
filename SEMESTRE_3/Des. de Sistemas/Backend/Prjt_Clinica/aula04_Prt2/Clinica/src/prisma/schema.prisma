@@ -5,9 +5,48 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "../prisma/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Usuario {
+  id     Int     @id @default(autoincrement())
+  email  String  @unique
+  nome   String?
+  senha  String
+  tokens Token[]
+
+  @@map("usuario")
+}
+
+model Exame {
+  id         Int      @id @default(autoincrement())
+  tipo_exame String
+  valor      Decimal
+  descricao  String
+  resultado  String
+  data_exame DateTime
+
+  @@map("exame")
+}
+
+enum TypeToken {
+  ACCESS
+  REFRESH
+}
+
+model Token {
+  id        Int       @id @default(autoincrement())
+  token     String    @db.VarChar(255)
+  type      TypeToken @default(ACCESS)
+  revoked   Boolean   @default(false)
+  expiresAt DateTime
+  usuarioId Int
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+
+  @@map("token")
 }
