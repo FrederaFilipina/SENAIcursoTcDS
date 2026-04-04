@@ -1,5 +1,5 @@
-import { PrismaPg } from "../../node_modules/@prisma/adapter-pg/dist/index"
-import { PrismaClient } from "./generated/prisma/client"
+import { PrismaClient } from "./generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const connectionString = "postgresql://username:password@localhost:5432/mydb?schema=public"
 

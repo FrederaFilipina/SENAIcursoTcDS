@@ -13,40 +13,20 @@ datasource db {
 }
 
 model Usuario {
-  id     Int     @id @default(autoincrement())
-  email  String  @unique
-  nome   String?
-  senha  String
-  tokens Token[]
+  id    Int    @id @default(autoincrement())
+  nome  String
+  email String @unique
 
   @@map("usuario")
 }
 
 model Exame {
   id         Int      @id @default(autoincrement())
-  tipo_exame String
-  valor      Decimal
-  descricao  String
-  resultado  String
+  nome_exame String
   data_exame DateTime
+  descricao  String
+  valor      Decimal
+  resultado  String
 
   @@map("exame")
-}
-
-enum TypeToken {
-  ACCESS
-  REFRESH
-}
-
-model Token {
-  id        Int       @id @default(autoincrement())
-  token     String    @db.VarChar(255)
-  type      TypeToken @default(ACCESS)
-  revoked   Boolean   @default(false)
-  expiresAt DateTime
-  usuarioId Int
-
-  usuario Usuario @relation(fields: [usuarioId], references: [id])
-
-  @@map("token")
 }

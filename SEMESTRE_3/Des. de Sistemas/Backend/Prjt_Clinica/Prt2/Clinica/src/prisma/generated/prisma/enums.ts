@@ -9,9 +9,7 @@
 * 🟢 You can import this file directly.
 */
 
-export const TypeToken = {
-  ACCESS: 'ACCESS',
-  REFRESH: 'REFRESH'
-} as const
 
-export type TypeToken = (typeof TypeToken)[keyof typeof TypeToken]
+
+// This file is empty because there are no enums in the schema.
+export {}
