@@ -68,18 +68,19 @@
     2. `Cole` esse código:
 
             {
-            "compilerOptions": {
+                "compilerOptions": {
                 "rootDir": "./src",
                 "outDir": "./dist",
-                "module": "es6",
-                "target": "es6",
+                "module": "esnext",
+                "moduleResolution": "bundler",
+                "strict": true,
                 "types": [],
                 "sourceMap": true,
                 "declaration": true,
                 "declarationMap": true,
                 "noUncheckedIndexedAccess": true,
+                "allowImportingTsExtensions": false,
                 "exactOptionalPropertyTypes": true,
-                "strict": true,
                 "jsx": "react-jsx",
                 "verbatimModuleSyntax": true,
                 "isolatedModules": true,
@@ -89,9 +90,9 @@
                 "esModuleInterop": true,
                 "skipDefaultLibCheck": true,
                 "forceConsistentCasingInFileNames": true,
-            },
-            "include": ["src/**/*.ts"],
-            "exclude": ["node_modules"]
+                },
+                "include": [ "src/**/*.ts" ],
+                "exclude": [ "node_modules" ]
             }
 ---
 ### ▷ Iniciando o Prisma

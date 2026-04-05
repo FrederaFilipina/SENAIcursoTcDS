@@ -19,8 +19,12 @@
 - Populando usuários e exames pelo Postman;
 ---
 
-### `Prt3` ⇨ 
--
--
--
--
+### `Prt3` ⇨ Adicionando o Hash de cripitografia e Token de acesso
+- Intalando a depedência `bcrypt`
+- Criando o arquivo Hash
+- Atualizando a tabela(model) de Usuário e criando a tabela Token
+- Crie o Token de acesso
+- Atualizando o endpoit de criação de usuário
+---
+
+### `Prt4` ⇨ 
