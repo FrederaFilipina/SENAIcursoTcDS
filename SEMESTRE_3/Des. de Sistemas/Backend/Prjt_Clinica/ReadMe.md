@@ -27,4 +27,10 @@
 - Atualizando o endpoit de criação de usuário
 ---
 
-### `Prt4` ⇨ 
+### `Prt4` ⇨ Adicionando o Middleware
+- Crie as chaves de acesso e refresh
+- Associando as chaves ao token
+- Crie o Middleware
+---
+
+### `Prt5`

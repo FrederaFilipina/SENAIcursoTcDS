@@ -51,7 +51,7 @@
         - 🔎 O que acontece?
             1. Instala um pacote de definições de tipagem TypeScript para o JWT.
 
-2. Crie o arquivo: `token.ts` na pasta: `src`
+2. Crie o arquivo: `token.ts` na pasta do projeto
     1. Importe o JWT;
     2. Crie a variável a chave de acesso;
     3. Crie a variável do token com um tempo de expiração;
