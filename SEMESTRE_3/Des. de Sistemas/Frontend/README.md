@@ -8,7 +8,7 @@
 2. Fechando e reabrindo o projeto em modo desenvolvimento;
 3. Reabrindo o projeto em modo desenvolvimento após baixar o mesmo do `Github`;
 ---
-### `Aula01` ⇨ Criando, estilizando e utilizando o `Componente - Header`
+### `Prt1` ⇨ Componentes
 1. Preparar os arquivos para iniciar o projeto;
 2. Definir a hierarquia para armazenar os componentes;
 3. Criar e estilizar o componente;
