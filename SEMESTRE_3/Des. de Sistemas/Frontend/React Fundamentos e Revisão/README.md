@@ -14,6 +14,4 @@
 3. Criar e estilizar o componente;
 4. Utilizando o componente;
 ---
-### `Aula02` ⇨ Props
-### `Aula03` ⇨ UseEffect
-### `Aula04` ⇨ Rotas
+### `Aula02` ⇨
