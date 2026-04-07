@@ -67,11 +67,56 @@
     {
       "id": 1,
       "nome": "Machado de Assis",
-      "foto": "https://via.placeholder.com/300x300",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Machado_de_Assis_by_Marc_Ferrez.jpg",
       "descricao": "Escritor brasileiro, considerado um dos maiores nomes da literatura nacional.",
       "biografia": "Machado de Assis foi romancista, cronista, dramaturgo e poeta...",
       "especialidade": "Literatura Brasileira",
       "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": 2,
+      "nome": "Clarice Lispector",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/7/7c/%281920-1977%29_Clarice_Lispector_6zxkp_please_credit%28palette.fm%29_%28cropped%29.png",
+      "descricao": "Escritora e jornalista brasileira, conhecida por sua escrita introspectiva.",
+      "biografia": "Clarice Lispector foi uma das mais importantes escritoras do século XX no Brasil, autora de obras marcantes como 'A Hora da Estrela'...",
+      "especialidade": "Literatura Brasileira",
+      "cidade": "Recife"
+    },
+    {
+      "id": 3,
+      "nome": "Carlos Drummond de Andrade",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/1/17/Foto_Carlos_Drummond_de_Andrade_%28restaurada%29.png",
+      "descricao": "Poeta, contista e cronista brasileiro, um dos principais nomes do modernismo.",
+      "biografia": "Carlos Drummond de Andrade foi um dos maiores poetas brasileiros, com obras que marcaram a literatura nacional como 'Sentimento do Mundo'...",
+      "especialidade": "Poesia",
+      "cidade": "Itabira"
+    },
+    {
+      "id": 4,
+      "nome": "Jorge Amado",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/8/89/Jorge_Amado%2C_Headshot_2%2C_1988_%28cropped%29.png",
+      "descricao": "Escritor brasileiro conhecido por retratar a cultura e o povo baiano.",
+      "biografia": "Jorge Amado foi um dos autores brasileiros mais traduzidos, com obras como 'Gabriela, Cravo e Canela'...",
+      "especialidade": "Romance",
+      "cidade": "Ilhéus"
+    },
+    {
+      "id": 5,
+      "nome": "Graciliano Ramos",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Graciliano_Ramos%2C_1940.jpg",
+      "descricao": "Escritor e jornalista brasileiro, destacado pelo estilo seco e realista.",
+      "biografia": "Graciliano Ramos foi um dos grandes nomes do regionalismo brasileiro, autor de 'Vidas Secas'...",
+      "especialidade": "Romance Regionalista",
+      "cidade": "Quebrangulo"
+    },
+    {
+      "id": 6,
+      "nome": "Monteiro Lobato",
+      "foto": "https://bonifacio.net.br/wp-content/uploads/200724-monteiro_lobato.jpg",
+      "descricao": "Escritor e editor brasileiro, famoso pela literatura infantil.",
+      "biografia": "Monteiro Lobato foi pioneiro na literatura infantil brasileira, criador do Sítio do Picapau Amarelo...",
+      "especialidade": "Literatura Infantil",
+      "cidade": "Taubaté"
     }
   ]
 }
