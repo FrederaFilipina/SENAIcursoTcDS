@@ -1,0 +1,10 @@
+.body{
+    padding: 20PX;
+    background-color: #ffffff;
+}
+
+.cardContainer{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}

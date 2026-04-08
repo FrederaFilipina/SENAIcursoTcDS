@@ -9,11 +9,6 @@
 3. Reabrindo o projeto em modo desenvolvimento após baixar o mesmo do `Github`;
 ---
 ### `Prt1` ⇨ Componentes
-1. Preparar os arquivos para iniciar o projeto;
-2. Definir a hierarquia para armazenar os componentes;
-3. Criar e estilizar o componente;
-4. Utilizando o componente;
----
 ### `Aula02` ⇨ Props
 ### `Aula03` ⇨ UseEffect
 ### `Aula04` ⇨ Rotas
