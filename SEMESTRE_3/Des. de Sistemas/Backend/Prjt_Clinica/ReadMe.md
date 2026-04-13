@@ -2,6 +2,13 @@
 
 ## Organização e descrição das pastas:
 
+- `Prt1` ⇨ Construindo a basedo projeto;
+- `Prt2` ⇨ Criando o Banco de Dados, as tabelas e endpoints;
+- `Prt3` ⇨ Adicionando o Hash de cripitografia e Token de acesso
+- `Prt4` ⇨ Adicionando o Middleware
+- `Prt5` ⇨ Criando o mecanismo de autenticação
+- `Prt6` ⇨ Criando as rotas para os endpoits
+
 ### `Prt1` ⇨ Construindo a basedo projeto
 - Iniciando o projeto em Node.js;
 - Instalando as dependências principais;
@@ -33,4 +40,7 @@
 - Crie o Middleware
 ---
 
-### `Prt5`
+### `Prt5` ⇨ Criando o mecanismo de autenticação
+
+---
+### `Prt6` ⇨ Criando as rotas para os endpoits
