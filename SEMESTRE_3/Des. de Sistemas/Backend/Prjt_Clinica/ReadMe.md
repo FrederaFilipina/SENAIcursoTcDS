@@ -40,7 +40,10 @@
 - Crie o Middleware
 ---
 
-### `Prt5` ⇨ Criando o mecanismo de autenticação
-
+### `Prt5` ⇨ Criando o mecanismo de acesso e autenticação
+- Alterando o prazo de validade do TokenRefresh
+- Adicionando as Chaves de Acesso na variavel de exportação
+- Criando o endpoit de login
 ---
+
 ### `Prt6` ⇨ Criando as rotas para os endpoits

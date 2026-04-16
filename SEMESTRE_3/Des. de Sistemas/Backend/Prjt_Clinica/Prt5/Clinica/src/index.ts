@@ -16,7 +16,6 @@ app.get('/', (_,res) =>{
 
 
 //Autenticação
-
 app.post("/cadastro", async (req, res) => {
   const ddsUsuario = req.body as Usuario
   const hash = await creatHash(ddsUsuario.senha)
@@ -52,21 +51,21 @@ app.post("/login", async (req, res) =>{
 
     const accessExpires = new Date()
     const accessExpiresUpdate = accessExpires.setHours(accessExpires.getHours()+1)
-
     await prisma.token.create({
       data:{
         token: tokenAcesso, expiresAt: new Date (accessExpiresUpdate), type:'ACCESS', usuarioId: usuarioExistente.id
       }
     })
+    //↪ Login de acesso
 
     const refreshExpires = new Date()
     const refreshExpiresUpdate = refreshExpires.setHours(refreshExpires.getHours()+1)
-
     await prisma.token.create({
       data:{
         token: tokenAcesso, expiresAt: new Date (refreshExpiresUpdate), type:'REFRESH', usuarioId: usuarioExistente.id
       }
     })
+    //↪ Manutenção do acesso
 
     return res.status(200).json({
       message: "Usuário autenticado com sucesso!",
@@ -85,11 +84,7 @@ app.use(auth)
 
 
 
-
 //Endpoint Usuário
-
-
-
 app.put('/usuarios/:id', async (req, res)=>{
   const idUsuario = Number(req.params.id)
   const ddsParaAtualizar = req.body as Omit<Usuario, 'id'>
@@ -136,7 +131,6 @@ app.delete('/usuarios/:id', async (req, res) =>{
 
 
 //Endpoint Exames
-
 app.post("/cdstrExame", async (req, res) => {
   const ddsExame = req.body as Exame
   const exameCdstrd = await prisma.exame.create({
