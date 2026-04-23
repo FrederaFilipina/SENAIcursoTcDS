@@ -47,3 +47,13 @@
 ---
 
 ### `Prt6` ⇨ Criando as rotas para os endpoits
+- Criando a subpasta da rotas
+- Alocando as rotas nos respectivos arquivos
+---
+
+### `Prt7` ⇨ Aplicando a arquitetura de camadas para separar cada etapa da rota
+- Criando as subpastas da arquitetura dentro da pasta `src`
+- Criando o arquivo do repositório
+- Criando o arquivo do serviço
+- Criando o arquivo do controlador
+---
