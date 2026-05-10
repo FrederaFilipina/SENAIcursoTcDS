@@ -12,7 +12,19 @@ router.post('/', async (req, res) => {
 
         return res.status(201).json(novoMorador)
     } catch (err) {
-        return res.status(500).json({ error: err.message })
+
+        if (
+            err.message.includes('bloco') ||
+            err.message.includes('apartamento')
+        ) {
+            return res.status(400).json({
+                error: err.message
+            })
+        }
+
+        return res.status(500).json({
+            error: err.message
+        })
     }
 })// ↪ Criar morador
 
@@ -31,8 +43,8 @@ router.get('/:id', async (req, res) => {
 
         const morador = await buscarMoradorPorId(id)
 
-        if (!morador) {
-            return res.status(404).json({ error: 'Morador não encontrado' })
+        if (!morador.morador) {
+            return res.status(404).json(morador)
         }
 
         return res.json(morador)
