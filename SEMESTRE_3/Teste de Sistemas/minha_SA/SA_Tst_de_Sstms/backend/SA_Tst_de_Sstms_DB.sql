@@ -3,15 +3,15 @@ CREATE TABLE moradores (
 
     nome VARCHAR(255) NOT NULL,
 
-    bloco CHAR(1) NOT NULL
-    CHECK (bloco IN ('A', 'B')),
+    bloco CHAR(1) NOT NULL,
 
-    num_ap CHAR(3) NOT NULL
-    CHECK (num_ap ~ '^[1-5]0[1-8]$'),
+    num_ap CHAR(3) NOT NULL,
 
     usuario VARCHAR(100) NOT NULL UNIQUE,
 
-    senha VARCHAR(255) NOT NULL
+    senha VARCHAR(255) NOT NULL,
+
+    CONSTRAINT uq_apartamento UNIQUE (bloco, num_ap)
 );
 
 
@@ -27,35 +27,24 @@ CREATE TABLE quadro_recados (
         REFERENCES moradores(id)
         ON DELETE CASCADE,
 
-
-
-    tipo_recado VARCHAR(50) NOT NULL
-    CHECK (
-        tipo_recado IN (
-            'Avisos Administrativos',
-            'Alerta de Serviços',
-            'Entregas de Pedidos',
-            'Comunicados Gerais'
-        )
-    ),
-
-
+    tipo_recado VARCHAR(50) NOT NULL,
 
     recado TEXT NOT NULL,
 
-
-
     status VARCHAR(10) NOT NULL
-    DEFAULT 'ativo'
-    CHECK (
-        status IN (
-            'ativo',
-            'encerrado'
-        )
-    ),
+        DEFAULT 'ativo',
 
-
-
-    criado TIMESTAMP NOT NULL
-    DEFAULT CURRENT_TIMESTAMP
+    criado TIMESTAMPTZ NOT NULL
+        DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
+CREATE INDEX idx_quadro_status
+ON quadro_recados(status);
+
+CREATE INDEX idx_quadro_criado
+ON quadro_recados(criado DESC);
+
+CREATE INDEX idx_quadro_responsavel
+ON quadro_recados(responsavel);
