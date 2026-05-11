@@ -1,31 +1,23 @@
-import { Link } from "react-router-dom"
-import { FormMorador } from "../components/FormMorador"
+import Navbar from '../components/Navbar'
 
-export function Home() {
+function Home() {
 
     return (
-        <main className="min-h-screen bg-gray-100 flex flex-col items-center justify-center gap-6 p-4">
 
-            <div className="flex gap-4">
+        <div>
 
-                <Link
-                    to="/"
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg"
-                >
-                    Moradores
-                </Link>
+            <Navbar />
 
-                <Link
-                    to="/recado"
-                    className="bg-green-600 text-white px-4 py-2 rounded-lg"
-                >
-                    Recados
-                </Link>
+            <div className="p-10">
+
+                <h1 className="text-3xl font-bold">
+                    Home
+                </h1>
 
             </div>
 
-            <FormMorador />
-
-        </main>
+        </div>
     )
 }
+
+export default Home

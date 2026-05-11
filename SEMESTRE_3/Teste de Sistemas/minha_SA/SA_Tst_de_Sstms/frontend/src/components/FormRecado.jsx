@@ -1,116 +1,153 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-export function FormRecado() {
+import { getUsuarioLogado } from '../services/localStorage'
 
-    const [responsavel, setResponsavel] = useState("")
-    const [tipoRecado, setTipoRecado] = useState("aviso")
-    const [recado, setRecado] = useState("")
-    const [status, setStatus] = useState("ativo")
-    const [mensagem, setMensagem] = useState("")
+function FormRecado({ onCriar }) {
 
-    async function handleSubmit(e) {
+    const usuario = getUsuarioLogado()
+
+    const [form, setForm] = useState({
+        tipo_recado: '',
+        recado: '',
+        status: 'ativo'
+    })
+
+    function handleSubmit(e) {
+
         e.preventDefault()
 
-        try {
-
-            const response = await fetch("http://localhost:3000/recados", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    responsavel,
-                    tipo_recado: tipoRecado,
-                    recado,
-                    status
-                })
-            })
-
-            const data = await response.json()
-
-            if (!response.ok) {
-                throw new Error(data.error)
-            }
-
-            setMensagem(data.mensagem)
-
-            setResponsavel("")
-            setTipoRecado("aviso")
-            setRecado("")
-            setStatus("ativo")
-
-        } catch (error) {
-            setMensagem(error.message)
+        if (
+            !form.tipo_recado ||
+            !form.recado
+        ) {
+            return alert('Preencha todos os campos')
         }
+
+        const novoRecado = {
+            id: Date.now(),
+
+            responsavel: usuario.id,
+
+            nome_responsavel: usuario.nome,
+
+            tipo_recado: form.tipo_recado,
+
+            recado: form.recado,
+
+            status: form.status
+        }
+
+        onCriar(novoRecado)
+
+        setForm({
+            tipo_recado: '',
+            recado: '',
+            status: 'ativo'
+        })
     }
 
     return (
-        <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg">
 
-            <h2 className="text-2xl font-bold text-center mb-6">
-                Cadastro de Recados
+        <form
+            onSubmit={handleSubmit}
+            className="bg-white p-6 rounded-xl shadow-md mb-10 grid gap-4"
+        >
+
+            <h2 className="text-2xl font-bold">
+                Criar Recado
             </h2>
 
-            <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-4"
+            {/* RESPONSÁVEL */}
+
+            <input
+                type="text"
+                value={usuario.nome}
+                disabled
+                className="border p-3 rounded bg-gray-100"
+            />
+
+            {/* TIPO */}
+
+            <select
+                value={form.tipo_recado}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        tipo_recado: e.target.value
+                    })
+                }
+                className="border p-3 rounded"
             >
 
-                <input
-                    type="text"
-                    placeholder="Responsável"
-                    value={responsavel}
-                    onChange={(e) => setResponsavel(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                    required
-                />
+                <option value="">
+                    Selecione o tipo do recado
+                </option>
 
-                <select
-                    value={tipoRecado}
-                    onChange={(e) => setTipoRecado(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                >
-                    <option value="aviso">Aviso</option>
-                    <option value="manutencao">Manutenção</option>
-                    <option value="reuniao">Reunião</option>
-                    <option value="informativo">Informativo</option>
-                </select>
+                <option value="Aviso">
+                    Aviso
+                </option>
 
-                <textarea
-                    placeholder="Digite o recado"
-                    value={recado}
-                    onChange={(e) => setRecado(e.target.value)}
-                    rows={5}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500 resize-none"
-                    required
-                />
+                <option value="Manutenção">
+                    Manutenção
+                </option>
 
-                <select
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                >
-                    <option value="ativo">Ativo</option>
-                    <option value="inativo">Inativo</option>
-                </select>
+                <option value="Urgente">
+                    Urgente
+                </option>
 
-                <button
-                    type="submit"
-                    className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition"
-                >
-                    Publicar Recado
-                </button>
+                <option value="Condomínio">
+                    Condomínio
+                </option>
 
-            </form>
+            </select>
 
-            {
-                mensagem && (
-                    <div className="mt-4 text-center text-sm font-medium">
-                        {mensagem}
-                    </div>
-                )
-            }
+            {/* RECADO */}
 
-        </div>
+            <textarea
+                placeholder="Digite o recado..."
+                value={form.recado}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        recado: e.target.value
+                    })
+                }
+                className="border p-4 rounded min-h-[120px]"
+            />
+
+            {/* STATUS */}
+
+            <select
+                value={form.status}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        status: e.target.value
+                    })
+                }
+                className="border p-3 rounded"
+            >
+
+                <option value="ativo">
+                    Ativo
+                </option>
+
+                <option value="inativo">
+                    Inativo
+                </option>
+
+            </select>
+
+            {/* BOTÃO */}
+
+            <button
+                className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded transition"
+            >
+                Publicar Recado
+            </button>
+
+        </form>
     )
 }
+
+export default FormRecado

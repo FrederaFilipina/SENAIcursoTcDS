@@ -1,106 +1,145 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-export function FormMorador() {
+function FormMorador({ onCadastrar }) {
 
-    const [nome, setNome] = useState("")
-    const [bloco, setBloco] = useState("A")
-    const [numAp, setNumAp] = useState("")
-    const [mensagem, setMensagem] = useState("")
+    const [form, setForm] = useState({
+        nome: '',
+        bloco: '',
+        num_ap: '',
+        usuario: '',
+        senha: ''
+    })
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
+
         e.preventDefault()
 
-        try {
-
-            const response = await fetch("http://localhost:3000/moradores", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nome,
-                    bloco,
-                    num_ap: numAp
-                })
-            })
-
-            const data = await response.json()
-
-            if (!response.ok) {
-                throw new Error(data.error)
-            }
-
-            setMensagem(data.mensagem)
-
-            setNome("")
-            setBloco("A")
-            setNumAp("")
-
-        } catch (error) {
-            setMensagem(error.message)
+        if (
+            !form.nome ||
+            !form.bloco ||
+            !form.num_ap ||
+            !form.usuario ||
+            !form.senha
+        ) {
+            return alert('Preencha todos os campos')
         }
+
+        if (
+            form.bloco !== 'A' &&
+            form.bloco !== 'B'
+        ) {
+            return alert('Bloco inválido')
+        }
+
+        const regexApartamento = /^[1-5]0[1-8]$/
+
+        if (!regexApartamento.test(form.num_ap)) {
+            return alert('Apartamento inválido')
+        }
+
+        onCadastrar({
+            id: Date.now(),
+            ...form
+        })
+
+        setForm({
+            nome: '',
+            bloco: '',
+            num_ap: '',
+            usuario: '',
+            senha: ''
+        })
     }
 
     return (
-        <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
 
-            <h2 className="text-2xl font-bold text-center mb-6">
-                Cadastro de Morador
-            </h2>
+        <form
+            onSubmit={handleSubmit}
+            className="grid gap-4 mb-10"
+        >
 
-            <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-4"
+            <input
+                placeholder="Nome"
+                className="border p-3 rounded"
+                value={form.nome}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        nome: e.target.value
+                    })
+                }
+            />
+
+            <select
+                className="border p-3 rounded"
+                value={form.bloco}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        bloco: e.target.value
+                    })
+                }
             >
 
-                <input
-                    type="text"
-                    placeholder="Nome do morador"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                    required
-                />
+                <option value="">
+                    Selecione o bloco
+                </option>
 
-                <select
-                    value={bloco}
-                    onChange={(e) => setBloco(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                >
-                    <option value="A">Bloco A</option>
-                    <option value="B">Bloco B</option>
-                </select>
+                <option value="A">
+                    A
+                </option>
 
-                <input
-                    type="text"
-                    placeholder="Número do apartamento"
-                    value={numAp}
-                    onChange={(e) => setNumAp(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                    required
-                />
+                <option value="B">
+                    B
+                </option>
 
-                <p className="text-sm text-gray-500">
-                    Formato válido: 101 até 508
-                </p>
+            </select>
 
-                <button
-                    type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
-                >
-                    Cadastrar
-                </button>
+            <input
+                placeholder="Apartamento"
+                className="border p-3 rounded"
+                value={form.num_ap}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        num_ap: e.target.value
+                    })
+                }
+            />
 
-            </form>
+            <input
+                placeholder="Usuário"
+                className="border p-3 rounded"
+                value={form.usuario}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        usuario: e.target.value
+                    })
+                }
+            />
 
-            {
-                mensagem && (
-                    <div className="mt-4 text-center text-sm font-medium">
-                        {mensagem}
-                    </div>
-                )
-            }
+            <input
+                type="password"
+                placeholder="Senha"
+                className="border p-3 rounded"
+                value={form.senha}
+                onChange={(e) =>
+                    setForm({
+                        ...form,
+                        senha: e.target.value
+                    })
+                }
+            />
 
-        </div>
+            <button
+                className="bg-green-600 text-white p-3 rounded"
+            >
+                Cadastrar
+            </button>
+
+        </form>
     )
 }
+
+export default FormMorador
