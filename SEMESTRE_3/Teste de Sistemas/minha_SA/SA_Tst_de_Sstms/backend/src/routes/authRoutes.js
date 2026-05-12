@@ -1,5 +1,4 @@
 import { Router } from 'express'
-
 import { login } from '../services/authService.js'
 
 const router = Router()
@@ -10,7 +9,6 @@ router.post('/login', async (req, res) => {
     try {
 
         const { usuario, senha } = req.body
-
         const resultado = await login({
             usuario,
             senha
