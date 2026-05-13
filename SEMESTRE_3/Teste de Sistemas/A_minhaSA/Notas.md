@@ -7,3 +7,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/6b1b8be96e79fac6bb1744ba62baef86b7f6f1ca
 
 3. Testes de Sistemas - SA_Backend: Criação das pastas no modelo de arquitetura em camadas: Services, Controllers e Repository. Além do Banco de Dados no Prisma.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/5d61e277b49848cb3c866840575e9a7eae84db02
+
+4. Testes de Sistemas - SA_Backend: Criação dos arquivos moradores, recados e auth no modelo de arquitetura em camadas.
