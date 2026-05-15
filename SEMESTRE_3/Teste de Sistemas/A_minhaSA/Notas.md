@@ -16,3 +16,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/68c2f52006b199402b01191d2a3f5e11def5ea69
 
 6. Testes de Sistemas - SA_Backend: Criação dos arquivos de tests para testar o arquivo de moradores
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/ec10f0df3245674dea1b02f8d200ea9c9faf5c49
+
+7. Testes de Sistemas - SA_Backend: Criação dos arquivos de tests para testar o arquivo de recados 
