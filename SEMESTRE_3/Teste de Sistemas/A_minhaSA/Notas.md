@@ -18,4 +18,7 @@
 6. Testes de Sistemas - SA_Backend: Criação dos arquivos de tests para testar o arquivo de moradores
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/ec10f0df3245674dea1b02f8d200ea9c9faf5c49
 
-7. Testes de Sistemas - SA_Backend: Criação dos arquivos de tests para testar o arquivo de recados 
+7. Testes de Sistemas - SA_Backend: Criação dos arquivos de tests para testar o arquivo de recados
+    ↪https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/a7a41a624d8dcc900d14f939ee634a01dc243960
+
+8. Testes de Sistemas - SA_Backend: Criação dos arquivos de tests para testar os arquivos de auth, moradores e recados quanto a camada de Repository. Nos commites anteriores os arquivos de testes focaram apenas nas camadas de Controller e Services para cada arquivo criado.
