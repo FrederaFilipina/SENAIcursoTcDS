@@ -3,161 +3,127 @@ import minhaSA from '../../service/minhaSA'
 
 function CadastroForm() {
 
-    const [nome, setNome] = useState('')
-    const [bloco, setBloco] = useState('')
-    const [num_ap, setNumAp] = useState('')
-    const [usuario, setUsuario] = useState('')
-    const [senha, setSenha] = useState('')
+  const [nome, setNome] = useState('')
+  const [bloco, setBloco] = useState('')
+  const [num_ap, setNumAp] = useState('')
+  const [usuario, setUsuario] = useState('')
+  const [senha, setSenha] = useState('')
 
-    async function handleCadastro(e) {
+  async function handleCadastro(e) {
+    e.preventDefault()
 
-        e.preventDefault()
-
-        const novoUsuario = {
-            nome,
-            bloco,
-            num_ap,
-            usuario,
-            senha
-        }
-
-        const usuariosSalvos = JSON.parse(localStorage.getItem('usuarios')) || []
-        const usuarioExiste = usuariosSalvos.find(u => u.usuario === usuario)
-
-        if (usuarioExiste) {
-            alert('Usuário já existe')
-            return
-        }
-        usuariosSalvos.push(novoUsuario)
-
-        localStorage.setItem('usuarios', JSON.stringify(usuariosSalvos))
-
-        alert('Usuário cadastrado com sucesso')
+    const novoUsuario = {
+      nome,
+      bloco,
+      num_ap,
+      usuario,
+      senha
     }
 
-    return (
+    const usuariosSalvos = JSON.parse(localStorage.getItem('usuarios')) || []
+    const usuarioExiste = usuariosSalvos.find(u => u.usuario === usuario)
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    if (usuarioExiste) {
+      alert('Usuário já existe')
+      return
+    }
 
-            <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
-                Cadastro
-            </h2>
+    usuariosSalvos.push(novoUsuario)
+    localStorage.setItem('usuarios', JSON.stringify(usuariosSalvos))
 
-            <form
-                onSubmit={handleCadastro}
-                className="flex flex-col gap-4"
-            >
+    alert('Usuário cadastrado com sucesso')
+  }
 
-                <div className="flex items-center gap-4">
+  return (
+    <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
 
-                    <label className="font-semibold text-gray-700 w-24">
-                        Nome:
-                    </label>
+      <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">
+        Cadastre-se
+      </h2>
 
-                    <input
-                        type="text"
-                        placeholder="Digite seu nome"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        className="flex-1 border border-gray-300 rounded-lg p-3 outline-none focus:border-green-500"
-                    />
+      <p className="text-center text-gray-500 text-sm mb-6">
+        Morador novo, crie sua conta para acessar o mural de recados
+      </p>
 
-                </div>
+      <form onSubmit={handleCadastro} className="flex flex-col gap-5">
 
-                <div className="flex items-center gap-4">
-
-                    <label className="font-semibold text-gray-700 w-24">
-                        Bloco:
-                    </label>
-
-                    <select
-                        value={bloco}
-                        onChange={(e) => setBloco(e.target.value)}
-                        className="flex-1 border border-gray-300 rounded-lg p-3 outline-none focus:border-green-500 bg-white"
-                    >
-
-                        <option value="">
-                            Selecione o bloco
-                        </option>
-
-                        <option value="A">
-                            Bloco A
-                        </option>
-
-                        <option value="B">
-                            Bloco B
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div className="flex items-center gap-4">
-
-                    <label className="font-semibold text-gray-700 w-24">
-                        Núm. Apartamento:
-                    </label>
-
-                    <input
-                        type="number"
-                        placeholder="Digite o número"
-                        value={num_ap}
-                        onChange={(e) => setNumAp(e.target.value)}
-                        className="
-                flex-1 border border-gray-300 rounded-lg p-3 outline-none
-                focus:border-green-500
-                appearance-none
-                [&::-webkit-outer-spin-button]:appearance-none
-                [&::-webkit-inner-spin-button]:appearance-none
-            "
-                    />
-
-                </div>
-
-                <div className="flex items-center gap-4">
-
-                    <label className="font-semibold text-gray-700 w-24">
-                        Usuário:
-                    </label>
-
-                    <input
-                        type="text"
-                        placeholder="Digite seu usuário"
-                        value={usuario}
-                        onChange={(e) => setUsuario(e.target.value)}
-                        className="flex-1 border border-gray-300 rounded-lg p-3 outline-none focus:border-green-500"
-                    />
-
-                </div>
-
-                <div className="flex items-center gap-4">
-
-                    <label className="font-semibold text-gray-700 w-24">
-                        Senha:
-                    </label>
-
-                    <input
-                        type="password"
-                        placeholder="Digite sua senha"
-                        value={senha}
-                        onChange={(e) => setSenha(e.target.value)}
-                        className="flex-1 border border-gray-300 rounded-lg p-3 outline-none focus:border-green-500"
-                    />
-
-                </div>
-
-                <button
-                    type="submit"
-                    className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition mt-2"
-                >
-                    Cadastrar
-                </button>
-
-            </form>
-
-
+        
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Morador:</label>
+          <input
+            type="text"
+            placeholder="Digite seu nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+                       focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+          />
         </div>
-    )
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Bloco:</label>
+          <select
+            value={bloco}
+            onChange={(e) => setBloco(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white 
+                       outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+          >
+            <option value="">Selecione o bloco</option>
+            <option value="A">Bloco A</option>
+            <option value="B">Bloco B</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Apartamento:</label>
+          <input
+            type="number"
+            placeholder="Número"
+            value={num_ap}
+            onChange={(e) => setNumAp(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+                       focus:border-green-500 focus:ring-2 focus:ring-green-100 transition
+                       [&::-webkit-outer-spin-button]:appearance-none
+                       [&::-webkit-inner-spin-button]:appearance-none"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Usuário:</label>
+          <input
+            type="text"
+            placeholder="Digite seu usuário"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+                       focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Senha:</label>
+          <input
+            type="password"
+            placeholder="Crie uma senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+                       focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+          />
+        </div>
+
+        {/* Botão */}
+        <button
+          type="submit"
+          className="w-full bg-green-600 hover:bg-green-700 active:scale-[0.99]
+                     text-white font-semibold py-3 rounded-lg transition duration-200"
+        >
+          Cadastrar
+        </button>
+
+      </form>
+    </div>
+  )
 }
 
 export default CadastroForm

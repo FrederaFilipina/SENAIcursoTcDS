@@ -1,69 +1,69 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import minhaSA from '../../service/minhaSA'
 
 function LoginForm() {
+  const navigate = useNavigate()
 
-    const [usuario, setUsuario] = useState('')
-    const [senha, setSenha] = useState('')
+  const [usuario, setUsuario] = useState('')
+  const [senha, setSenha] = useState('')
 
-    async function handleLogin(e) {
+  async function handleLogin(e) {
+    e.preventDefault()
 
-        e.preventDefault()
+    localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado))
+    navigate("/dashboard")
+  }
 
-        const usuariosSalvos = JSON.parse(localStorage.getItem('usuarios')) || []
-        const usuarioEncontrado = usuariosSalvos.find(
-            u => u.usuario === usuario && u.senha === senha
-        )
+  return (
+    <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
 
-        if (!usuarioEncontrado) {
-            alert('Usuário ou senha inválidos')
-            return
-        }
+      <h2 className="text-3xl font-bold text-center text-gray-900 mb-2">
+        Login
+      </h2>
 
-        localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado))
-        alert('Login realizado com sucesso')
-    }
+      <p className="text-center text-gray-500 mb-6 text-sm">
+        Entre com sua conta para acessar o mural
+      </p>
 
-    return (
+      <form onSubmit={handleLogin} className="flex flex-col gap-5">
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg w-80">
-
-            <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
-                Login
-            </h2>
-
-            <form
-                onSubmit={handleLogin}
-                className="flex flex-col gap-4"
-            >
-
-                <input
-                    type="text"
-                    placeholder="Usuário"
-                    value={usuario}
-                    onChange={(e) => setUsuario(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                />
-
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
-                    className="border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
-                />
-
-                <button
-                    type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
-                >
-                    Entrar
-                </button>
-
-            </form>
-
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Usuário:</label>
+          <input
+            type="text"
+            placeholder="Digite seu usuário"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+                       focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+          />
         </div>
-    )
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Senha:</label>
+          <input
+            type="password"
+            placeholder="Digite sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+                       focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.99] 
+                     text-white font-semibold py-3 rounded-lg transition duration-200"
+        >
+          Entrar
+        </button>
+
+      </form>
+
+    </div>
+  )
 }
 
 export default LoginForm

@@ -28,3 +28,7 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/6c72fb8c96d4b7524215ed0f76199ff56c131b07
 
 10. Testes de Sistemas - SA_Frontend: Criado as subpastas para criar a tela de login com os formulários de Cadastro e Login, ambas utilizando o localstorage para fazer o gerenciamento.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/d49efc6ef2d7ef2c49b025d4e08aaed28260b7c2
+
+11. Testes de Sistemas - SA_Frontend: Instalado a biblioteca react-router-dom, apenas criado a página de dashboard e ajustado a página home além do css do formulário de cadastro e a parte de formulário.
+    ↪
