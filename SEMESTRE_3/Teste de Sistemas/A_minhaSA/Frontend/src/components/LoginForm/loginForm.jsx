@@ -3,16 +3,46 @@ import { useNavigate } from 'react-router-dom'
 import minhaSA from '../../service/minhaSA'
 
 function LoginForm() {
+
   const navigate = useNavigate()
 
   const [usuario, setUsuario] = useState('')
   const [senha, setSenha] = useState('')
 
   async function handleLogin(e) {
+
     e.preventDefault()
 
-    localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado))
-    navigate("/dashboard")
+    try {
+
+      const response = await minhaSA.get('/usuarios')
+
+      const usuarios = response.data
+
+      const usuarioEncontrado = usuarios.find(
+        (u) =>
+          u.usuario === usuario &&
+          u.senha === senha
+      )
+
+      if (!usuarioEncontrado) {
+        alert('Usuário ou senha inválidos')
+        return
+      }
+
+      localStorage.setItem(
+        "usuarioLogado",
+        JSON.stringify(usuarioEncontrado)
+      )
+
+      navigate('/dashboard')
+
+    } catch (error) {
+
+      console.error(error)
+
+      alert('Erro ao realizar login')
+    }
   }
 
   return (
@@ -29,7 +59,11 @@ function LoginForm() {
       <form onSubmit={handleLogin} className="flex flex-col gap-5">
 
         <div className="flex flex-col gap-1">
-          <label className="text-sm text-gray-600">Usuário:</label>
+
+          <label className="text-sm text-gray-600">
+            Usuário:
+          </label>
+
           <input
             type="text"
             placeholder="Digite seu usuário"
@@ -41,7 +75,11 @@ function LoginForm() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label className="text-sm text-gray-600">Senha:</label>
+
+          <label className="text-sm text-gray-600">
+            Senha:
+          </label>
+
           <input
             type="password"
             placeholder="Digite sua senha"

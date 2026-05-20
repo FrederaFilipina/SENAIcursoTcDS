@@ -1,0 +1,135 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Sr. Teste",
+      "bloco": "B",
+      "num_ap": "666",
+      "usuario": "tst",
+      "senha": "tst"
+    },
+    {
+      "id": "2",
+      "nome": "Testinho Jr.",
+      "bloco": "A",
+      "num_ap": "333",
+      "usuario": "tstjr",
+      "senha": "123"
+    },
+    {
+      "id": "3",
+      "nome": "Maria Oliveira",
+      "bloco": "A",
+      "num_ap": "101",
+      "usuario": "mariao",
+      "senha": "123"
+    },
+    {
+      "id": "4",
+      "nome": "Carlos Henrique",
+      "bloco": "B",
+      "num_ap": "204",
+      "usuario": "carlosh",
+      "senha": "123"
+    },
+    {
+      "id": "5",
+      "nome": "Fernanda Lima",
+      "bloco": "A",
+      "num_ap": "305",
+      "usuario": "fernandal",
+      "senha": "123"
+    },
+    {
+      "id": "6",
+      "nome": "João Pedro",
+      "bloco": "B",
+      "num_ap": "408",
+      "usuario": "joaop",
+      "senha": "123"
+    },
+    {
+      "id": "7",
+      "nome": "Ana Souza",
+      "bloco": "A",
+      "num_ap": "512",
+      "usuario": "anas",
+      "senha": "123"
+    },
+    {
+      "nome": "EU",
+      "bloco": "B",
+      "num_ap": "1769",
+      "usuario": "Eu",
+      "senha": "1",
+      "id": "FuQam-8s300"
+    }
+  ],
+  "recados": [
+    {
+      "id": "2",
+      "responsavel": 1,
+      "tipo_recado": "Aviso",
+      "recado": "Favor manter silêncio após as 23h no bloco B.",
+      "status": "ativo",
+      "criado": "2026-05-20T08:10:00"
+    },
+    {
+      "id": "3",
+      "responsavel": 2,
+      "tipo_recado": "Comunicado",
+      "recado": "Reunião de condomínio marcada para sexta-feira às 19h.",
+      "status": "ativo",
+      "criado": "2026-05-20T08:30:00"
+    },
+    {
+      "id": "4",
+      "responsavel": 3,
+      "tipo_recado": "Encomenda",
+      "recado": "Você possui uma encomenda na portaria.",
+      "status": "ativo",
+      "criado": "2026-05-20T09:00:00"
+    },
+    {
+      "id": "5",
+      "responsavel": 4,
+      "tipo_recado": "Aviso",
+      "recado": "O salão de festas está reservado neste sábado.",
+      "status": "ativo",
+      "criado": "2026-05-20T09:30:00"
+    },
+    {
+      "id": "6",
+      "responsavel": 5,
+      "tipo_recado": "Comunicado",
+      "recado": "A dedetização do prédio será realizada amanhã.",
+      "status": "ativo",
+      "criado": "2026-05-20T10:00:00"
+    },
+    {
+      "id": "7",
+      "responsavel": 6,
+      "tipo_recado": "Aviso",
+      "recado": "Evite estacionar em vagas de visitantes.",
+      "status": "ativo",
+      "criado": "2026-05-20T10:30:00"
+    },
+    {
+      "id": "8",
+      "responsavel": 7,
+      "tipo_recado": "Encomenda",
+      "recado": "Correspondência disponível na administração.",
+      "status": "ativo",
+      "criado": "2026-05-20T11:00:00"
+    },
+    {
+      "responsavel": "FuQam-8s300",
+      "tipo_recado": "Encomenda",
+      "recado": "Chegou a encomenda de siclano!",
+      "status": "ativo",
+      "criado": "2026-05-20T19:01:17.649Z",
+      "id": "uV7LZTr0fEA"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

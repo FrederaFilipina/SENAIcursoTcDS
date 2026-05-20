@@ -10,28 +10,48 @@ function CadastroForm() {
   const [senha, setSenha] = useState('')
 
   async function handleCadastro(e) {
+
     e.preventDefault()
 
-    const novoUsuario = {
-      nome,
-      bloco,
-      num_ap,
-      usuario,
-      senha
+    try {
+
+      const response = await minhaSA.get('/usuarios')
+
+      const usuariosSalvos = response.data
+
+      const usuarioExiste = usuariosSalvos.find(
+        u => u.usuario === usuario
+      )
+
+      if (usuarioExiste) {
+        alert('Usuário já existe')
+        return
+      }
+
+      const novoUsuario = {
+        nome,
+        bloco,
+        num_ap,
+        usuario,
+        senha
+      }
+
+      await minhaSA.post('/usuarios', novoUsuario)
+
+      alert('Usuário cadastrado com sucesso')
+
+      setNome('')
+      setBloco('')
+      setNumAp('')
+      setUsuario('')
+      setSenha('')
+
+    } catch (error) {
+
+      console.error(error)
+
+      alert('Erro ao cadastrar usuário')
     }
-
-    const usuariosSalvos = JSON.parse(localStorage.getItem('usuarios')) || []
-    const usuarioExiste = usuariosSalvos.find(u => u.usuario === usuario)
-
-    if (usuarioExiste) {
-      alert('Usuário já existe')
-      return
-    }
-
-    usuariosSalvos.push(novoUsuario)
-    localStorage.setItem('usuarios', JSON.stringify(usuariosSalvos))
-
-    alert('Usuário cadastrado com sucesso')
   }
 
   return (
@@ -47,9 +67,9 @@ function CadastroForm() {
 
       <form onSubmit={handleCadastro} className="flex flex-col gap-5">
 
-        
         <div className="flex flex-col gap-1">
           <label className="text-sm text-gray-600">Morador:</label>
+
           <input
             type="text"
             placeholder="Digite seu nome"
@@ -62,6 +82,7 @@ function CadastroForm() {
 
         <div className="flex flex-col gap-1">
           <label className="text-sm text-gray-600">Bloco:</label>
+
           <select
             value={bloco}
             onChange={(e) => setBloco(e.target.value)}
@@ -76,6 +97,7 @@ function CadastroForm() {
 
         <div className="flex flex-col gap-1">
           <label className="text-sm text-gray-600">Apartamento:</label>
+
           <input
             type="number"
             placeholder="Número"
@@ -90,6 +112,7 @@ function CadastroForm() {
 
         <div className="flex flex-col gap-1">
           <label className="text-sm text-gray-600">Usuário:</label>
+
           <input
             type="text"
             placeholder="Digite seu usuário"
@@ -102,6 +125,7 @@ function CadastroForm() {
 
         <div className="flex flex-col gap-1">
           <label className="text-sm text-gray-600">Senha:</label>
+
           <input
             type="password"
             placeholder="Crie uma senha"
@@ -112,7 +136,6 @@ function CadastroForm() {
           />
         </div>
 
-        {/* Botão */}
         <button
           type="submit"
           className="w-full bg-green-600 hover:bg-green-700 active:scale-[0.99]
@@ -122,6 +145,7 @@ function CadastroForm() {
         </button>
 
       </form>
+
     </div>
   )
 }

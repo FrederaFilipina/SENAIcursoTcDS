@@ -1,69 +1,43 @@
-import CadastroForm from "../../components/CadastroForm/cadastroForm"
-import LoginForm from "../../components/LoginForm/loginForm"
+import { useState } from "react"
+
+import Dashboard from "../../components/Dashboard/Dashboard"
+
+import BttnUsuario from "../../components/BttnUsuario/bttnUsuario"
+import BttnMeusRecados from "../../components/BttnMeusRecados/bttnMeusRecados"
+import BttnMural from "../../components/BttnMural/BttnMural"
 
 function Home() {
 
-  const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
+  // 🔵 agora o mural abre primeiro
+  const [paginaAtual, setPaginaAtual] =
+    useState("mural")
 
-  if (usuarioLogado) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 flex items-center justify-center px-4">
+  function renderizarPagina() {
 
-        <div className="bg-white shadow-xl rounded-2xl border border-gray-100 p-10 text-center max-w-md w-full">
+    switch (paginaAtual) {
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Bem-vindo
-          </h1>
+      case "usuario":
+        return <BttnUsuario />
 
-          <p className="text-gray-600 mb-6">
-            {usuarioLogado.nome}
-          </p>
+      case "meusRecados":
+        return <BttnMeusRecados />
 
-          <div className="text-sm text-gray-500 space-y-1">
-            <p>
-              Usuário: <span className="font-medium text-gray-700">{usuarioLogado.usuario}</span>
-            </p>
-          </div>
+      case "mural":
+        return <BttnMural />
 
-          <button
-            onClick={() => {
-              localStorage.removeItem("usuarioLogado")
-              window.location.reload()
-            }}
-            className="mt-6 w-full bg-red-500 hover:bg-red-600 active:scale-[0.99]
-                       text-white font-semibold py-3 rounded-lg transition"
-          >
-            Sair
-          </button>
-
-        </div>
-
-      </div>
-    )
+      default:
+        return <BttnMural />
+    }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 flex items-center justify-center px-4">
 
-      {/* CONTAINER PRINCIPAL */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-6xl">
+    <Dashboard setPaginaAtual={setPaginaAtual}>
 
-        {/* CADASTRO */}
-        <div className="w-full md:w-1/2 flex justify-center">
-          <CadastroForm />
-        </div>
+      {renderizarPagina()}
 
-        {/* DIVISOR (apenas desktop) */}
-        <div className="hidden md:block w-px h-96 bg-gray-300"></div>
+    </Dashboard>
 
-        {/* LOGIN */}
-        <div className="w-full md:w-1/2 flex justify-center">
-          <LoginForm />
-        </div>
-
-      </div>
-
-    </div>
   )
 }
 
