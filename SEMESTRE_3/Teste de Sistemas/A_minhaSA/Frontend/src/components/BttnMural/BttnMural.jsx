@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import minhaSA from "../../service/minhaSA"
 
+import CardRecado from "../../components/CardRecado/CardRecado"
+
 function BttnMural() {
 
   const [recados, setRecados] = useState([])
@@ -13,16 +15,30 @@ function BttnMural() {
       try {
 
         // 🔵 busca usuários
-        const usuariosRes = await minhaSA.get("/usuarios")
+        const usuariosRes =
+          await minhaSA.get("/usuarios")
 
         // 🔵 busca recados
-        const recadosRes = await minhaSA.get("/recados")
+        const recadosRes =
+          await minhaSA.get("/recados")
+
+        // 🔵 ordena do mais novo para o mais antigo
+        const recadosOrdenados =
+          recadosRes.data.sort(
+            (a, b) =>
+              new Date(b.criado) -
+              new Date(a.criado)
+          )
 
         setUsuarios(usuariosRes.data)
-        setRecados(recadosRes.data)
+        setRecados(recadosOrdenados)
 
       } catch (error) {
-        console.error("❌ ERRO AO CARREGAR MURAL:", error)
+
+        console.error(
+          "❌ ERRO AO CARREGAR MURAL:",
+          error
+        )
       }
     }
 
@@ -40,45 +56,32 @@ function BttnMural() {
     return usuario?.nome || "Desconhecido"
   }
 
-
   return (
 
-    <div className="space-y-4">
+    <div
+      className="grid grid-cols-1
+                 md:grid-cols-2 gap-6"
+    >
 
       {recados.length === 0 ? (
+
         <p className="text-gray-500">
           Nenhum recado no mural
         </p>
+
       ) : (
 
         recados.map((recado) => (
 
-          <div
+          <CardRecado
             key={recado.id}
-            className="p-5 bg-white border rounded-xl shadow space-y-2"
-          >
-
-            {/* AUTOR */}
-            <p className="text-sm font-semibold text-gray-700">
-              {getNomeUsuario(recado.responsavel)}
-            </p>
-
-            {/* TIPO */}
-            <p className="text-xs text-gray-500 uppercase">
-              {recado.tipo_recado}
-            </p>
-
-            {/* TEXTO */}
-            <p className="text-gray-800 font-medium">
-              {recado.recado}
-            </p>
-
-            {/* DATA */}
-            <p className="text-xs text-gray-400">
-              {new Date(recado.criado).toLocaleString("pt-BR")}
-            </p>
-
-          </div>
+            recado={recado}
+            nomeUsuario={
+              getNomeUsuario(
+                recado.responsavel
+              )
+            }
+          />
 
         ))
 

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import minhaSA from "../../service/minhaSA"
 
+import CardRecado from "../../components/CardRecado/CardRecado"
+
 function BttnMeusRecados() {
 
   const usuarioLogado = JSON.parse(
@@ -25,11 +27,18 @@ function BttnMeusRecados() {
 
         const response = await minhaSA.get("/recados")
 
-        const filtrados = response.data.filter(
-          (r) =>
-            String(r.responsavel) ===
-            String(usuarioLogado.id)
-        )
+        const filtrados = response.data
+          .filter(
+            (r) =>
+              String(r.responsavel) ===
+              String(usuarioLogado.id)
+          )
+          // 🔵 ordena do mais novo para o mais antigo
+          .sort(
+            (a, b) =>
+              new Date(b.criado) -
+              new Date(a.criado)
+          )
 
         setRecados(filtrados)
 
@@ -225,70 +234,50 @@ function BttnMeusRecados() {
 
             <div
               key={recado.id}
-              className="p-5 bg-white border
-                         rounded-xl shadow
-                         flex flex-col gap-3"
+              className="relative"
             >
 
-              {/* TIPO */}
-              <p
-                className="text-xs font-semibold
-                           text-gray-500 uppercase"
-              >
-                {recado.tipo_recado}
-              </p>
-
-              {/* TEXTO */}
-              {editando === recado.id ? (
-
-                <input
-                  value={textoEditado}
-                  onChange={(e) =>
-                    setTextoEditado(
-                      e.target.value
-                    )
-                  }
-                  className="border p-2 rounded w-full"
-                />
-
-              ) : (
-
-                <p className="text-gray-800 font-medium">
-                  {recado.recado}
-                </p>
-
-              )}
-
-              {/* DATA */}
-              <p className="text-xs text-gray-400">
-
-                Criado em:{" "}
-
-                {new Date(
-                  recado.criado
-                ).toLocaleString("pt-BR")}
-
-              </p>
+              <CardRecado
+                recado={recado}
+                nomeUsuario={usuarioLogado.nome}
+              />
 
               {/* AÇÕES */}
-              <div className="flex gap-3">
+              <div
+                className="flex gap-3 mt-3"
+              >
 
                 {/* EDITAR */}
                 {editando === recado.id ? (
 
-                  <button
-                    onClick={() =>
-                      handleSalvarEdicao(
-                        recado.id
-                      )
-                    }
-                    className="px-4 py-1
-                               bg-green-500
-                               text-white rounded-lg
-                               hover:bg-green-600"
-                  >
-                    Salvar
-                  </button>
+                  <div className="flex flex-1 gap-3">
+
+                    <input
+                      value={textoEditado}
+                      onChange={(e) =>
+                        setTextoEditado(
+                          e.target.value
+                        )
+                      }
+                      className="border p-2 rounded
+                                 w-full"
+                    />
+
+                    <button
+                      onClick={() =>
+                        handleSalvarEdicao(
+                          recado.id
+                        )
+                      }
+                      className="px-4 py-2
+                                 bg-green-500
+                                 text-white rounded-lg
+                                 hover:bg-green-600"
+                    >
+                      Salvar
+                    </button>
+
+                  </div>
 
                 ) : (
 
@@ -296,7 +285,7 @@ function BttnMeusRecados() {
                     onClick={() =>
                       handleEditar(recado)
                     }
-                    className="px-4 py-1
+                    className="px-4 py-2
                                bg-blue-500
                                text-white rounded-lg
                                hover:bg-blue-600"
@@ -311,7 +300,7 @@ function BttnMeusRecados() {
                   onClick={() =>
                     handleDelete(recado.id)
                   }
-                  className="px-4 py-1
+                  className="px-4 py-2
                              bg-red-500 text-white
                              rounded-lg
                              hover:bg-red-600"

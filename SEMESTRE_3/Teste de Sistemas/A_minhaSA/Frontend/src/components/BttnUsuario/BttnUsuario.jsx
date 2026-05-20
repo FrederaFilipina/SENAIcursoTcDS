@@ -1,10 +1,15 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import minhaSA from "../../service/minhaSA"
 
 function BttnUsuario() {
 
+  const navigate = useNavigate()
+
   const usuarioLogado =
     JSON.parse(localStorage.getItem("usuarioLogado"))
+
+  const [modoEdicao, setModoEdicao] = useState(false)
 
   const [nome, setNome] = useState(usuarioLogado?.nome || "")
   const [bloco, setBloco] = useState(usuarioLogado?.bloco || "")
@@ -39,11 +44,43 @@ function BttnUsuario() {
 
       alert("Dados atualizados com sucesso")
 
+      setModoEdicao(false)
+
     } catch (error) {
 
       console.error(error)
 
       alert("Erro ao atualizar usuário")
+    }
+  }
+
+  async function handleExcluirUsuario() {
+
+    const confirmar = confirm(
+      "Tem certeza que deseja excluir sua conta?"
+    )
+
+    if (!confirmar) {
+      return
+    }
+
+    try {
+
+      await minhaSA.delete(
+        `/usuarios/${usuarioLogado.id}`
+      )
+
+      localStorage.removeItem("usuarioLogado")
+
+      alert("Usuário excluído com sucesso")
+
+      navigate("/")
+
+    } catch (error) {
+
+      console.error(error)
+
+      alert("Erro ao excluir usuário")
     }
   }
 
@@ -61,113 +98,199 @@ function BttnUsuario() {
         </h1>
 
         <p className="text-gray-500 mb-8">
-          Consulte e edite suas informações
+          Consulte e gerencie suas informações
         </p>
 
-        <form
-          onSubmit={handleSalvar}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
+        {!modoEdicao ? (
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
 
-            <label className="text-sm text-gray-600">
-              Nome
-            </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <input
-              type="text"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              className="border border-gray-300 rounded-xl px-4 py-3
-                         outline-none focus:ring-2 focus:ring-gray-300"
-            />
+              <div>
+                <p className="text-sm text-gray-500">
+                  Nome
+                </p>
 
-          </div>
+                <p className="text-lg font-medium text-gray-800">
+                  {usuarioLogado?.nome}
+                </p>
+              </div>
 
-          <div className="flex flex-col gap-2">
+              <div>
+                <p className="text-sm text-gray-500">
+                  Bloco
+                </p>
 
-            <label className="text-sm text-gray-600">
-              Bloco
-            </label>
+                <p className="text-lg font-medium text-gray-800">
+                  {usuarioLogado?.bloco}
+                </p>
+              </div>
 
-            <select
-              value={bloco}
-              onChange={(e) => setBloco(e.target.value)}
-              className="border border-gray-300 rounded-xl px-4 py-3
-                         outline-none focus:ring-2 focus:ring-gray-300"
-            >
+              <div>
+                <p className="text-sm text-gray-500">
+                  Apartamento
+                </p>
 
-              <option value="">Selecione</option>
-              <option value="A">Bloco A</option>
-              <option value="B">Bloco B</option>
+                <p className="text-lg font-medium text-gray-800">
+                  {usuarioLogado?.num_ap}
+                </p>
+              </div>
 
-            </select>
+              <div>
+                <p className="text-sm text-gray-500">
+                  Usuário
+                </p>
 
-          </div>
+                <p className="text-lg font-medium text-gray-800">
+                  {usuarioLogado?.usuario}
+                </p>
+              </div>
 
-          <div className="flex flex-col gap-2">
+            </div>
 
-            <label className="text-sm text-gray-600">
-              Apartamento
-            </label>
+            <div className="flex flex-col md:flex-row gap-4 mt-6">
 
-            <input
-              type="number"
-              value={num_ap}
-              onChange={(e) => setNumAp(e.target.value)}
-              className="border border-gray-300 rounded-xl px-4 py-3
-                         outline-none focus:ring-2 focus:ring-gray-300"
-            />
+              <button
+                onClick={() => setModoEdicao(true)}
+                className="flex-1 bg-gray-900 hover:bg-gray-800
+                           text-white font-semibold py-4 rounded-xl
+                           transition"
+              >
+                Alterar Informações
+              </button>
 
-          </div>
+              <button
+                onClick={handleExcluirUsuario}
+                className="flex-1 bg-red-600 hover:bg-red-700
+                           text-white font-semibold py-4 rounded-xl
+                           transition"
+              >
+                Excluir Usuário
+              </button>
 
-          <div className="flex flex-col gap-2">
-
-            <label className="text-sm text-gray-600">
-              Usuário
-            </label>
-
-            <input
-              type="text"
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
-              className="border border-gray-300 rounded-xl px-4 py-3
-                         outline-none focus:ring-2 focus:ring-gray-300"
-            />
+            </div>
 
           </div>
 
-          <div className="flex flex-col gap-2 md:col-span-2">
+        ) : (
 
-            <label className="text-sm text-gray-600">
-              Senha
-            </label>
+          <form
+            onSubmit={handleSalvar}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
 
-            <input
-              type="password"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              className="border border-gray-300 rounded-xl px-4 py-3
-                         outline-none focus:ring-2 focus:ring-gray-300"
-            />
+            <div className="flex flex-col gap-2">
 
-          </div>
+              <label className="text-sm text-gray-600">
+                Nome
+              </label>
 
-          <div className="md:col-span-2">
+              <input
+                type="text"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                className="border border-gray-300 rounded-xl px-4 py-3
+                           outline-none focus:ring-2 focus:ring-gray-300"
+              />
 
-            <button
-              type="submit"
-              className="w-full bg-gray-900 hover:bg-gray-800
-                         text-white font-semibold py-4 rounded-xl
-                         transition"
-            >
-              Salvar Alterações
-            </button>
+            </div>
 
-          </div>
+            <div className="flex flex-col gap-2">
 
-        </form>
+              <label className="text-sm text-gray-600">
+                Bloco
+              </label>
+
+              <select
+                value={bloco}
+                onChange={(e) => setBloco(e.target.value)}
+                className="border border-gray-300 rounded-xl px-4 py-3
+                           outline-none focus:ring-2 focus:ring-gray-300"
+              >
+
+                <option value="">Selecione</option>
+                <option value="A">Bloco A</option>
+                <option value="B">Bloco B</option>
+
+              </select>
+
+            </div>
+
+            <div className="flex flex-col gap-2">
+
+              <label className="text-sm text-gray-600">
+                Apartamento
+              </label>
+
+              <input
+                type="number"
+                value={num_ap}
+                onChange={(e) => setNumAp(e.target.value)}
+                className="border border-gray-300 rounded-xl px-4 py-3
+                           outline-none focus:ring-2 focus:ring-gray-300"
+              />
+
+            </div>
+
+            <div className="flex flex-col gap-2">
+
+              <label className="text-sm text-gray-600">
+                Usuário
+              </label>
+
+              <input
+                type="text"
+                value={usuario}
+                onChange={(e) => setUsuario(e.target.value)}
+                className="border border-gray-300 rounded-xl px-4 py-3
+                           outline-none focus:ring-2 focus:ring-gray-300"
+              />
+
+            </div>
+
+            <div className="flex flex-col gap-2 md:col-span-2">
+
+              <label className="text-sm text-gray-600">
+                Senha
+              </label>
+
+              <input
+                type="password"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                className="border border-gray-300 rounded-xl px-4 py-3
+                           outline-none focus:ring-2 focus:ring-gray-300"
+              />
+
+            </div>
+
+            <div className="md:col-span-2 flex flex-col md:flex-row gap-4">
+
+              <button
+                type="submit"
+                className="flex-1 bg-gray-900 hover:bg-gray-800
+                           text-white font-semibold py-4 rounded-xl
+                           transition"
+              >
+                Salvar Alterações
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setModoEdicao(false)}
+                className="flex-1 bg-gray-200 hover:bg-gray-300
+                           text-gray-800 font-semibold py-4 rounded-xl
+                           transition"
+              >
+                Cancelar
+              </button>
+
+            </div>
+
+          </form>
+
+        )}
 
       </div>
 
