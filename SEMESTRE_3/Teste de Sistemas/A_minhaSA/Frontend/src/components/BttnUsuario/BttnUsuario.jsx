@@ -89,17 +89,13 @@ function BttnUsuario() {
     <div className="w-full">
 
       <div
-        className="bg-white rounded-2xl shadow-lg border border-gray-200
-                   p-8"
+        className="bg-cyan-800 rounded-2xl shadow-lg
+                   border border-cyan-300 p-8"
       >
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          Meu Usuário
-        </h1>
-
-        <p className="text-gray-500 mb-8">
-          Consulte e gerencie suas informações
-        </p>
+        <h2 className="text-3xl font-bold text-white mb-8">
+          Consulte e gerencie suas informações:
+        </h2>
 
         {!modoEdicao ? (
 
@@ -107,42 +103,50 @@ function BttnUsuario() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-              <div>
-                <p className="text-sm text-gray-500">
-                  Nome
+              <div
+                className="bg-white border-2 border-cyan-950 rounded-xl p-4"
+              >
+                <p className="text-sm">
+                  Nome:
                 </p>
 
-                <p className="text-lg font-medium text-gray-800">
+                <p className="text-lg font-medium text-cyan-950">
                   {usuarioLogado?.nome}
                 </p>
               </div>
 
-              <div>
-                <p className="text-sm text-gray-500">
-                  Bloco
+              <div
+                className="bg-white border-2 border-cyan-950 rounded-xl p-4"
+              >
+                <p className="text-sm">
+                  Bloco:
                 </p>
 
-                <p className="text-lg font-medium text-gray-800">
+                <p className="text-lg font-medium text-cyan-950">
                   {usuarioLogado?.bloco}
                 </p>
               </div>
 
-              <div>
-                <p className="text-sm text-gray-500">
+              <div
+                className="bg-white border-2 border-cyan-950 rounded-xl p-4"
+              >
+                <p className="text-sm">
                   Apartamento
                 </p>
 
-                <p className="text-lg font-medium text-gray-800">
+                <p className="text-lg font-medium text-cyan-950">
                   {usuarioLogado?.num_ap}
                 </p>
               </div>
 
-              <div>
-                <p className="text-sm text-gray-500">
+              <div
+                className="bg-white border-2 border-cyan-950 rounded-xl p-4"
+              >
+                <p className="text-sm">
                   Usuário
                 </p>
 
-                <p className="text-lg font-medium text-gray-800">
+                <p className="text-lg font-medium text-cyan-950">
                   {usuarioLogado?.usuario}
                 </p>
               </div>
@@ -153,18 +157,20 @@ function BttnUsuario() {
 
               <button
                 onClick={() => setModoEdicao(true)}
-                className="flex-1 bg-gray-900 hover:bg-gray-800
-                           text-white font-semibold py-4 rounded-xl
-                           transition"
+                className="flex-1 bg-cyan-950
+                           hover:bg-cyan-600
+                           text-white font-semibold
+                           py-4 rounded-xl transition"
               >
                 Alterar Informações
               </button>
 
               <button
                 onClick={handleExcluirUsuario}
-                className="flex-1 bg-red-600 hover:bg-red-700
-                           text-white font-semibold py-4 rounded-xl
-                           transition"
+                className="flex-1 bg-red-800
+                           hover:bg-red-600
+                           text-white font-semibold
+                           py-4 rounded-xl transition"
               >
                 Excluir Usuário
               </button>
@@ -182,31 +188,33 @@ function BttnUsuario() {
 
             <div className="flex flex-col gap-2">
 
-              <label className="text-sm text-gray-600">
-                Nome
+              <label className="text-sm text-white">
+                Nome:
               </label>
 
               <input
                 type="text"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                className="border border-gray-300 rounded-xl px-4 py-3
-                           outline-none focus:ring-2 focus:ring-gray-300"
+                className="bg-white border-2 border-cyan-950 rounded-xl
+                           px-4 py-3 outline-none
+                           focus:ring-2 focus:ring-cyan-400"
               />
 
             </div>
 
             <div className="flex flex-col gap-2">
 
-              <label className="text-sm text-gray-600">
-                Bloco
+              <label className="text-sm text-white">
+                Bloco:
               </label>
 
               <select
                 value={bloco}
                 onChange={(e) => setBloco(e.target.value)}
-                className="border border-gray-300 rounded-xl px-4 py-3
-                           outline-none focus:ring-2 focus:ring-gray-300"
+                className="bg-white border-2 border-cyan-950 rounded-xl
+                           px-4 py-3 outline-none
+                           focus:ring-2 focus:ring-cyan-400"
               >
 
                 <option value="">Selecione</option>
@@ -219,48 +227,51 @@ function BttnUsuario() {
 
             <div className="flex flex-col gap-2">
 
-              <label className="text-sm text-gray-600">
-                Apartamento
+              <label className="text-sm text-white">
+                Apartamento:
               </label>
 
               <input
                 type="number"
                 value={num_ap}
                 onChange={(e) => setNumAp(e.target.value)}
-                className="border border-gray-300 rounded-xl px-4 py-3
-                           outline-none focus:ring-2 focus:ring-gray-300"
+                className="bg-white border-2 border-cyan-950 rounded-xl
+                           px-4 py-3 outline-none
+                           focus:ring-2 focus:ring-cyan-400"
               />
 
             </div>
 
             <div className="flex flex-col gap-2">
 
-              <label className="text-sm text-gray-600">
-                Usuário
+              <label className="text-sm text-white">
+                Usuário:
               </label>
 
               <input
                 type="text"
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
-                className="border border-gray-300 rounded-xl px-4 py-3
-                           outline-none focus:ring-2 focus:ring-gray-300"
+                className="bg-white border-2 border-cyan-950 rounded-xl
+                           px-4 py-3 outline-none
+                           focus:ring-2 focus:ring-cyan-400"
               />
 
             </div>
 
             <div className="flex flex-col gap-2 md:col-span-2">
 
-              <label className="text-sm text-gray-600">
-                Senha
+              <label className="text-sm text-white">
+                Senha:
               </label>
 
               <input
                 type="password"
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
-                className="border border-gray-300 rounded-xl px-4 py-3
-                           outline-none focus:ring-2 focus:ring-gray-300"
+                className="bg-white border-2 border-cyan-950 rounded-xl
+                           px-4 py-3 outline-none
+                           focus:ring-2 focus:ring-cyan-400"
               />
 
             </div>
@@ -269,19 +280,21 @@ function BttnUsuario() {
 
               <button
                 type="submit"
-                className="flex-1 bg-gray-900 hover:bg-gray-800
-                           text-white font-semibold py-4 rounded-xl
-                           transition"
+                className="flex-1 bg-cyan-950
+                           hover:bg-green-600
+                           text-white font-semibold
+                           py-4 rounded-xl transition"
               >
-                Salvar Alterações
+                Salvar Alterações!
               </button>
 
               <button
                 type="button"
                 onClick={() => setModoEdicao(false)}
-                className="flex-1 bg-gray-200 hover:bg-gray-300
-                           text-gray-800 font-semibold py-4 rounded-xl
-                           transition"
+                className="flex-1 bg-cyan-950
+                           hover:bg-gray-500
+                           text-white font-semibold
+                           py-4 rounded-xl transition"
               >
                 Cancelar
               </button>

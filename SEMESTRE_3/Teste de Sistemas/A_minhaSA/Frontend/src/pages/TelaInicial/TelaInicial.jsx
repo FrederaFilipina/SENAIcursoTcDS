@@ -1,5 +1,5 @@
-import CadastroForm from "../../components/CadastroForm/cadastroForm"
-import LoginForm from "../../components/LoginForm/loginForm"
+import CadastroForm from "../../components/CadastroForm/CadastroForm"
+import LoginForm from "../../components/LoginForm/LoginForm"
 
 function TelaInicial() {
 

@@ -1,34 +1,27 @@
-import Navbar from "../Navbar/navbar"
+import Navbar from "../Navbar/Navbar"
 
-function Dashboard({ children, setPaginaAtual }) {
+function Dashboard({
+  children,
+  setPaginaAtual,
+  paginaAtual
+}) {
 
   return (
 
-    <div className="w-screen h-screen flex bg-gray-100 overflow-hidden">
+    <div className="flex h-screen">
 
-      {/* NAVBAR */}
-      <aside
-        className="w-[20%] h-full bg-gray-900 flex-shrink-0"
-      >
+      <div className="w-[300px]">
 
-        <Navbar setPaginaAtual={setPaginaAtual} />
+        <Navbar
+          setPaginaAtual={setPaginaAtual}
+          paginaAtual={paginaAtual}
+        />
 
-      </aside>
+      </div>
 
-      {/* CONTEÚDO */}
-      <main
-        className="w-[80%] h-full overflow-auto p-10"
-      >
+      <main className="flex-1 p-8 bg-cyan-950 overflow-auto">
 
-        <section
-          className="w-full min-h-full bg-gray-300
-                     rounded-2xl shadow-xl
-                     border border-gray-200 p-10"
-        >
-
-          {children}
-
-        </section>
+        {children}
 
       </main>
 

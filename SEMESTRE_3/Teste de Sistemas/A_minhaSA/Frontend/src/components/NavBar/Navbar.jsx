@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom"
 
-function Navbar({ setPaginaAtual }) {
+function Navbar({
+  setPaginaAtual,
+  paginaAtual
+}) {
 
   const navigate = useNavigate()
 
@@ -11,28 +14,28 @@ function Navbar({ setPaginaAtual }) {
     navigate("/")
   }
 
+  function estiloBotao(nomePagina) {
+
+    if (paginaAtual === nomePagina) {
+
+      return "w-full bg-cyan-600 rounded-xl px-5 py-4 text-left transition duration-200"
+    }
+
+    return "w-full bg-cyan-950 hover:bg-cyan-600 rounded-xl px-5 py-4 text-left transition duration-200"
+  }
+
   return (
 
-    <aside
-      className="w-full h-full bg-gray-900 text-white
-                 flex flex-col justify-between p-6 shadow-2xl"
-    >
+    <aside className="w-full h-full bg-cyan-800 text-white flex flex-col justify-between p-6 shadow-2xl">
 
-      {/* TOPO */}
       <div>
-
-        <h1 className="text-2xl font-bold mb-10">
-          Minha SA
-        </h1>
 
         <nav className="flex flex-col gap-4">
 
           {/* USUÁRIO */}
           <button
             onClick={() => setPaginaAtual("usuario")}
-            className="w-full bg-gray-800 hover:bg-gray-700
-                       rounded-xl px-5 py-4 text-left
-                       transition duration-200"
+            className={estiloBotao("usuario")}
           >
             Usuário
           </button>
@@ -40,9 +43,7 @@ function Navbar({ setPaginaAtual }) {
           {/* MEUS RECADOS */}
           <button
             onClick={() => setPaginaAtual("meusRecados")}
-            className="w-full bg-gray-800 hover:bg-gray-700
-                       rounded-xl px-5 py-4 text-left
-                       transition duration-200"
+            className={estiloBotao("meusRecados")}
           >
             Meus Recados
           </button>
@@ -50,25 +51,20 @@ function Navbar({ setPaginaAtual }) {
           {/* MURAL */}
           <button
             onClick={() => setPaginaAtual("mural")}
-            className="w-full bg-gray-800 hover:bg-gray-700
-                       rounded-xl px-5 py-4 text-left
-                       transition duration-200"
+            className={estiloBotao("mural")}
           >
-            Mural do Condomínio
+            Mural
           </button>
 
         </nav>
 
       </div>
 
-      {/* RODAPÉ */}
       <div>
 
         <button
           onClick={handleLogout}
-          className="w-full bg-red-500 hover:bg-red-600
-                     rounded-xl px-5 py-4
-                     font-semibold transition duration-200"
+          className="w-full bg-cyan-900 hover:bg-red-600 rounded-xl px-5 py-4 font-semibold transition duration-200"
         >
           Sair
         </button>

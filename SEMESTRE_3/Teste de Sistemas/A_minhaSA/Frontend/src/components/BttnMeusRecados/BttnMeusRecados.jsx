@@ -33,7 +33,6 @@ function BttnMeusRecados() {
               String(r.responsavel) ===
               String(usuarioLogado.id)
           )
-          // 🔵 ordena do mais novo para o mais antigo
           .sort(
             (a, b) =>
               new Date(b.criado) -
@@ -164,11 +163,12 @@ function BttnMeusRecados() {
 
       {/* 🟢 NOVO RECADO */}
       <div
-        className="bg-white border rounded-2xl
-                   shadow p-5 flex flex-col gap-4"
+        className="bg-cyan-800 rounded-2xl shadow-lg
+                   border border-cyan-300
+                   p-6 flex flex-col gap-4"
       >
 
-        <h2 className="text-2xl font-bold text-gray-800">
+        <h2 className="text-3xl font-bold text-white">
           Criar Novo Recado
         </h2>
 
@@ -178,7 +178,12 @@ function BttnMeusRecados() {
           onChange={(e) =>
             setNovoTipo(e.target.value)
           }
-          className="border rounded-lg p-3"
+          className="bg-white border-2
+                     border-cyan-950
+                     rounded-xl p-3
+                     outline-none
+                     focus:ring-2
+                     focus:ring-cyan-400"
         >
 
           <option value="Aviso">
@@ -202,16 +207,24 @@ function BttnMeusRecados() {
             setNovoRecado(e.target.value)
           }
           placeholder="Digite seu recado..."
-          className="border rounded-lg p-4
-                     min-h-[120px] resize-none"
+          className="bg-white border-2
+                     border-cyan-950
+                     rounded-xl p-4
+                     min-h-[120px]
+                     resize-none
+                     outline-none
+                     focus:ring-2
+                     focus:ring-cyan-400"
         />
 
         {/* BOTÃO */}
         <button
           onClick={handleCriarRecado}
-          className="bg-green-500 hover:bg-green-600
+          className="bg-cyan-950
+                     hover:bg-green-600
                      text-white font-semibold
-                     py-3 rounded-xl transition"
+                     py-4 rounded-xl
+                     transition"
         >
           Criar Recado
         </button>
@@ -220,13 +233,21 @@ function BttnMeusRecados() {
 
 
       {/* 🔵 LISTA DE RECADOS */}
-      <div className="space-y-4">
+      <div className="space-y-6">
 
         {recados.length === 0 ? (
 
-          <p className="text-gray-500">
-            Nenhum recado encontrado
-          </p>
+          <div
+            className="bg-cyan-800 rounded-2xl
+                       border border-cyan-300
+                       p-6 shadow-lg"
+          >
+
+            <p className="text-white text-lg">
+              Nenhum recado encontrado
+            </p>
+
+          </div>
 
         ) : (
 
@@ -234,7 +255,9 @@ function BttnMeusRecados() {
 
             <div
               key={recado.id}
-              className="relative"
+              className="bg-cyan-800 rounded-2xl
+                         border border-cyan-300
+                         shadow-lg p-5"
             >
 
               <CardRecado
@@ -244,13 +267,34 @@ function BttnMeusRecados() {
 
               {/* AÇÕES */}
               <div
-                className="flex gap-3 mt-3"
+                className="flex flex-col md:flex-row
+                           gap-3 mt-5"
               >
+
+                {/* EXCLUIR */}
+                <button
+                  onClick={() =>
+                    handleDelete(recado.id)
+                  }
+                  className="px-6 py-3
+                             bg-red-800
+                             text-white
+                             rounded-xl
+                             font-semibold
+                             hover:bg-red-600
+                             transition"
+                >
+                  Excluir
+                </button>
 
                 {/* EDITAR */}
                 {editando === recado.id ? (
 
-                  <div className="flex flex-1 gap-3">
+                  <div
+                    className="flex flex-1
+                               flex-col md:flex-row
+                               gap-3"
+                  >
 
                     <input
                       value={textoEditado}
@@ -259,8 +303,14 @@ function BttnMeusRecados() {
                           e.target.value
                         )
                       }
-                      className="border p-2 rounded
-                                 w-full"
+                      className="bg-white border-2
+                                 border-cyan-950
+                                 rounded-xl
+                                 px-4 py-3
+                                 w-full
+                                 outline-none
+                                 focus:ring-2
+                                 focus:ring-cyan-400"
                     />
 
                     <button
@@ -269,12 +319,31 @@ function BttnMeusRecados() {
                           recado.id
                         )
                       }
-                      className="px-4 py-2
-                                 bg-green-500
-                                 text-white rounded-lg
-                                 hover:bg-green-600"
+                      className="px-6 py-3
+                                 bg-cyan-950
+                                 text-white
+                                 rounded-xl
+                                 font-semibold
+                                 hover:bg-green-600
+                                 transition"
                     >
                       Salvar
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setEditando(null)
+                        setTextoEditado("")
+                      }}
+                      className="px-6 py-3
+                                 bg-cyan-950
+                                 text-white
+                                 rounded-xl
+                                 font-semibold
+                                 hover:bg-gray-500
+                                 transition"
+                    >
+                      Cancelar
                     </button>
 
                   </div>
@@ -285,28 +354,18 @@ function BttnMeusRecados() {
                     onClick={() =>
                       handleEditar(recado)
                     }
-                    className="px-4 py-2
-                               bg-blue-500
-                               text-white rounded-lg
-                               hover:bg-blue-600"
+                    className="px-6 py-3
+                               bg-cyan-950
+                               text-white
+                               rounded-xl
+                               font-semibold
+                               hover:bg-cyan-600
+                               transition"
                   >
                     Editar
                   </button>
 
                 )}
-
-                {/* EXCLUIR */}
-                <button
-                  onClick={() =>
-                    handleDelete(recado.id)
-                  }
-                  className="px-4 py-2
-                             bg-red-500 text-white
-                             rounded-lg
-                             hover:bg-red-600"
-                >
-                  Excluir
-                </button>
 
               </div>
 

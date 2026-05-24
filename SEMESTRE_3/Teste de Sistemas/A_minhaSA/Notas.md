@@ -36,4 +36,7 @@
 12. Testes de Sistemas - SA_Frontend: Criado as subpastas e arquivos da tela após o login e mantido o localstorage apenas para verificar se o usuario está ativo na sessão, agora a criação do usuário e a de recados, são salvas em db.json
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/4f04ddfb4931440ea36f6b66f9ed1f88806ecdb6
 
-13. Testes de Sistemas - SA_Frontend: Adicionado os botões de editar e excluir na parte do uruário, criado o card de Recados para ser utilizado nos recados do mural e do meus recados e ajustato o mural para que apareça os recados em ordem de criação.
+13. Testes de Sistemas - SA_Frontend: Adicionado os botões de editar e excluir na parte do usuário, criado o card de Recados para ser utilizado nos recados do mural e do meus recados e ajustato o mural para que apareça os recados em ordem de criação.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/dddec93630568642a6c4974d923ed58944d92d10
+
+14. Testes de Sistemas - SA_Frontend: Ajustados alguns pontos para o funcionamento completo do crud e ajustado bastanbte parte do tailwind.

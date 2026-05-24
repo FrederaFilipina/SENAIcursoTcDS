@@ -2,8 +2,8 @@ import { useState } from "react"
 
 import Dashboard from "../../components/Dashboard/Dashboard"
 
-import BttnUsuario from "../../components/BttnUsuario/bttnUsuario"
-import BttnMeusRecados from "../../components/BttnMeusRecados/bttnMeusRecados"
+import BttnUsuario from "../../components/BttnUsuario/BttnUsuario"
+import BttnMeusRecados from "../../components/BttnMeusRecados/BttnMeusRecados"
 import BttnMural from "../../components/BttnMural/BttnMural"
 
 function Home() {
@@ -32,7 +32,10 @@ function Home() {
 
   return (
 
-    <Dashboard setPaginaAtual={setPaginaAtual}>
+    <Dashboard
+      paginaAtual={paginaAtual}
+      setPaginaAtual={setPaginaAtual}
+    >
 
       {renderizarPagina()}
 
