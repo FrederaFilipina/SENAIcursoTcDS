@@ -40,3 +40,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/dddec93630568642a6c4974d923ed58944d92d10
 
 14. Testes de Sistemas - SA_Frontend: Ajustados alguns pontos para o funcionamento completo do crud e ajustado bastanbte parte do tailwind.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/a7edbcf13fd11573c6b65adc5ae46ef999f3bb21
+
+15. Testes de Sistemas - SA_Frontend: Criado o teste para cadastrar, fazer o login e outro para poder editar as informações do usuario cadastrado.
