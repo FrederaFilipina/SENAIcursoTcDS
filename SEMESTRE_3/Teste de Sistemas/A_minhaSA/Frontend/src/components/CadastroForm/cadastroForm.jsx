@@ -15,6 +15,24 @@ function CadastroForm() {
 
     try {
 
+      // Validação do bloco
+      if (!['A', 'B'].includes(bloco)) {
+        alert('O bloco deve ser A ou B')
+        return
+      }
+
+      // Validação do apartamento
+      const apartamentoValido =
+        /^[1-4]0[1-8]$/.test(num_ap) ||
+        /^50[1-2]$/.test(num_ap)
+
+      if (!apartamentoValido) {
+        alert(
+          'Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502.'
+        )
+        return
+      }
+
       const response = await minhaSA.get('/usuarios')
 
       const usuariosSalvos = response.data
@@ -75,8 +93,9 @@ function CadastroForm() {
             placeholder="Digite seu nome"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none
                        focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+            required
           />
         </div>
 
@@ -86,8 +105,9 @@ function CadastroForm() {
           <select
             value={bloco}
             onChange={(e) => setBloco(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white 
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 bg-white
                        outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+            required
           >
             <option value="">Selecione o bloco</option>
             <option value="A">Bloco A</option>
@@ -99,15 +119,22 @@ function CadastroForm() {
           <label className="text-sm text-gray-600">Apartamento:</label>
 
           <input
-            type="number"
-            placeholder="Número"
+            type="text"
+            maxLength={3}
+            placeholder="Ex: 101"
             value={num_ap}
-            onChange={(e) => setNumAp(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
-                       focus:border-green-500 focus:ring-2 focus:ring-green-100 transition
-                       [&::-webkit-outer-spin-button]:appearance-none
-                       [&::-webkit-inner-spin-button]:appearance-none"
+            onChange={(e) => {
+              const valor = e.target.value.replace(/\D/g, '')
+              setNumAp(valor)
+            }}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none
+                       focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+            required
           />
+
+          <span className="text-xs text-gray-500">
+            Apartamentos válidos: 101-108, 201-208, 301-308, 401-408, 501 e 502
+          </span>
         </div>
 
         <div className="flex flex-col gap-1">
@@ -118,8 +145,9 @@ function CadastroForm() {
             placeholder="Digite seu usuário"
             value={usuario}
             onChange={(e) => setUsuario(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none
                        focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+            required
           />
         </div>
 
@@ -131,8 +159,9 @@ function CadastroForm() {
             placeholder="Crie uma senha"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none 
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none
                        focus:border-green-500 focus:ring-2 focus:ring-green-100 transition"
+            required
           />
         </div>
 

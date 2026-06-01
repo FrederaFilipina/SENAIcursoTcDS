@@ -6,7 +6,7 @@ test('deve cadastrar um novo usuário e realizar login', async ({ page }) => {
     nome: 'Sr. Testinho Filho',
     bloco: 'A',
     apartamento: '101',
-    usuario: 'TstFilho',
+    usuario: `TstFilho`,
     senha: '123'
   }
 
@@ -31,7 +31,7 @@ test('deve cadastrar um novo usuário e realizar login', async ({ page }) => {
     .selectOption(novoUsuario.bloco)
 
   await cadastroForm
-    .locator('input[placeholder="Número"]')
+    .locator('input[placeholder="Ex: 101"]')
     .fill(novoUsuario.apartamento)
 
   await cadastroForm
@@ -47,7 +47,6 @@ test('deve cadastrar um novo usuário e realizar login', async ({ page }) => {
   // =========================
 
   page.once('dialog', async dialog => {
-
     expect(dialog.message())
       .toContain('Usuário cadastrado com sucesso')
 

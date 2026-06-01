@@ -43,3 +43,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/a7edbcf13fd11573c6b65adc5ae46ef999f3bb21
 
 15. Testes de Sistemas - SA_Frontend: Criado o teste para cadastrar, fazer o login e outro para poder editar as informações do usuario cadastrado.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/7a8273053ec6fb92bc98b77bf84c580d74fa3b52
+
+16. Testes de Sistemas - SA_Frontend: Incluido regras de negócio no formulário de cadastro e ajustado o teste do mesmo
