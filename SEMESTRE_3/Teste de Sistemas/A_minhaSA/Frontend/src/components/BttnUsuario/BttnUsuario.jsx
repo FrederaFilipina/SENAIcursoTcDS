@@ -23,13 +23,60 @@ function BttnUsuario() {
 
     try {
 
+      // Campos obrigatórios
+      if (
+        !nome.trim() ||
+        !bloco.trim() ||
+        !num_ap.trim() ||
+        !usuario.trim() ||
+        !senha.trim()
+      ) {
+        alert("Preencha todos os campos")
+        return
+      }
+
+      // Validação do bloco
+      if (!["A", "B"].includes(bloco)) {
+        alert("O bloco deve ser A ou B")
+        return
+      }
+
+      // Validação do apartamento
+      const apartamentoValido =
+        /^[1-4]0[1-8]$/.test(num_ap) ||
+        /^50[1-2]$/.test(num_ap)
+
+      if (!apartamentoValido) {
+        alert(
+          "Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502."
+        )
+        return
+      }
+
+      // Busca usuários cadastrados
+      const response = await minhaSA.get("/usuarios")
+
+      const usuariosSalvos = response.data
+
+      // Verifica se o usuário já existe
+      const usuarioExiste = usuariosSalvos.find(
+        (u) =>
+          u.usuario === usuario &&
+          u.id !== usuarioLogado.id
+      )
+
+      if (usuarioExiste) {
+        alert("Usuário já existe")
+        return
+      }
+
       const usuarioAtualizado = {
         ...usuarioLogado,
-        nome,
+        nome: nome.trim(),
         bloco,
         num_ap,
-        usuario,
-        senha
+        usuario: usuario.trim(),
+        senha: senha.trim()
       }
 
       await minhaSA.put(
@@ -131,7 +178,7 @@ function BttnUsuario() {
                 className="bg-white border-2 border-cyan-950 rounded-xl p-4"
               >
                 <p className="text-sm">
-                  Apartamento
+                  Apartamento:
                 </p>
 
                 <p className="text-lg font-medium text-cyan-950">
@@ -143,7 +190,7 @@ function BttnUsuario() {
                 className="bg-white border-2 border-cyan-950 rounded-xl p-4"
               >
                 <p className="text-sm">
-                  Usuário
+                  Usuário:
                 </p>
 
                 <p className="text-lg font-medium text-cyan-950">
@@ -196,6 +243,7 @@ function BttnUsuario() {
                 type="text"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
+                required
                 className="bg-white border-2 border-cyan-950 rounded-xl
                            px-4 py-3 outline-none
                            focus:ring-2 focus:ring-cyan-400"
@@ -212,14 +260,23 @@ function BttnUsuario() {
               <select
                 value={bloco}
                 onChange={(e) => setBloco(e.target.value)}
+                required
                 className="bg-white border-2 border-cyan-950 rounded-xl
                            px-4 py-3 outline-none
                            focus:ring-2 focus:ring-cyan-400"
               >
 
-                <option value="">Selecione</option>
-                <option value="A">Bloco A</option>
-                <option value="B">Bloco B</option>
+                <option value="">
+                  Selecione
+                </option>
+
+                <option value="A">
+                  Bloco A
+                </option>
+
+                <option value="B">
+                  Bloco B
+                </option>
 
               </select>
 
@@ -232,9 +289,15 @@ function BttnUsuario() {
               </label>
 
               <input
-                type="number"
+                type="text"
+                maxLength={3}
                 value={num_ap}
-                onChange={(e) => setNumAp(e.target.value)}
+                onChange={(e) => {
+                  const valor =
+                    e.target.value.replace(/\D/g, "")
+                  setNumAp(valor)
+                }}
+                required
                 className="bg-white border-2 border-cyan-950 rounded-xl
                            px-4 py-3 outline-none
                            focus:ring-2 focus:ring-cyan-400"
@@ -252,6 +315,7 @@ function BttnUsuario() {
                 type="text"
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
+                required
                 className="bg-white border-2 border-cyan-950 rounded-xl
                            px-4 py-3 outline-none
                            focus:ring-2 focus:ring-cyan-400"
@@ -269,6 +333,7 @@ function BttnUsuario() {
                 type="password"
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
+                required
                 className="bg-white border-2 border-cyan-950 rounded-xl
                            px-4 py-3 outline-none
                            focus:ring-2 focus:ring-cyan-400"
@@ -285,7 +350,7 @@ function BttnUsuario() {
                            text-white font-semibold
                            py-4 rounded-xl transition"
               >
-                Salvar Alterações!
+                Salvar Alterações
               </button>
 
               <button

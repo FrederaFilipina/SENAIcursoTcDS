@@ -46,3 +46,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/7a8273053ec6fb92bc98b77bf84c580d74fa3b52
 
 16. Testes de Sistemas - SA_Frontend: Incluido regras de negócio no formulário de cadastro e ajustado o teste do mesmo
+    ↪
+
+17. Testes de Sistemas - SA_Frontend: Ajustados as regras de negócio de forma geral, criado novos arquivos de testes e instalado a bibliteca Toast para mostrar as notificações.

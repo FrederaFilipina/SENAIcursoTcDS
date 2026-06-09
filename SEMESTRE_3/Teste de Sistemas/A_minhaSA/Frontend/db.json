@@ -75,14 +75,6 @@
   ],
   "recados": [
     {
-      "id": "2",
-      "responsavel": 1,
-      "tipo_recado": "Aviso",
-      "recado": "Favor manter silêncio após as 23h no bloco B.",
-      "status": "ativo",
-      "criado": "2026-05-20T08:10:00"
-    },
-    {
       "id": "3",
       "responsavel": 2,
       "tipo_recado": "Comunicado",
@@ -137,6 +129,14 @@
       "status": "ativo",
       "criado": "2026-05-20T19:01:17.649Z",
       "id": "uV7LZTr0fEA"
+    },
+    {
+      "responsavel": "1",
+      "tipo_recado": "Aviso",
+      "recado": "Teste",
+      "status": "ativo",
+      "criado": "2026-06-08T22:08:11.239Z",
+      "id": "4Dt8Xs9DMoY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

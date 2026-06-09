@@ -58,14 +58,17 @@ function BttnMeusRecados() {
   // 🟢 CRIAR NOVO RECADO
   async function handleCriarRecado() {
 
-    if (!novoRecado.trim()) return
+    if (!novoRecado.trim()) {
+      alert("O recado não pode estar vazio")
+      return
+    }
 
     try {
 
       const novo = {
         responsavel: usuarioLogado.id,
         tipo_recado: novoTipo,
-        recado: novoRecado,
+        recado: novoRecado.trim(),
         status: "ativo",
         criado: new Date().toISOString()
       }
@@ -125,27 +128,33 @@ function BttnMeusRecados() {
   // 💾 SALVAR EDIÇÃO
   async function handleSalvarEdicao(id) {
 
+    if (!textoEditado.trim()) {
+      alert("O recado não pode ficar vazio")
+      return
+    }
+
     try {
 
       await minhaSA.put(`/recados/${id}`, {
 
         ...recados.find((r) => r.id === id),
 
-        recado: textoEditado
+        recado: textoEditado.trim()
       })
 
       setRecados((prev) =>
         prev.map((r) =>
           r.id === id
             ? {
-                ...r,
-                recado: textoEditado
-              }
+              ...r,
+              recado: textoEditado.trim()
+            }
             : r
         )
       )
 
       setEditando(null)
+      setTextoEditado("")
 
     } catch (error) {
 

@@ -80,7 +80,7 @@ function CadastroForm() {
       </h2>
 
       <p className="text-center text-gray-500 text-sm mb-6">
-        Morador novo, crie sua conta para acessar o mural de recados
+        Morador novo? Crie sua conta para acessar o mural de recados.
       </p>
 
       <form onSubmit={handleCadastro} className="flex flex-col gap-5">
