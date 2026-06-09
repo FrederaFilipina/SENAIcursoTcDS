@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 import minhaSA from '../../service/minhaSA'
 
 function CadastroForm() {
@@ -17,7 +18,7 @@ function CadastroForm() {
 
       // Validação do bloco
       if (!['A', 'B'].includes(bloco)) {
-        alert('O bloco deve ser A ou B')
+        toast.error('O bloco deve ser A ou B')
         return
       }
 
@@ -27,7 +28,7 @@ function CadastroForm() {
         /^50[1-2]$/.test(num_ap)
 
       if (!apartamentoValido) {
-        alert(
+        toast.error(
           'Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502.'
         )
         return
@@ -42,7 +43,7 @@ function CadastroForm() {
       )
 
       if (usuarioExiste) {
-        alert('Usuário já existe')
+        toast.error('Usuário já existe')
         return
       }
 
@@ -56,7 +57,7 @@ function CadastroForm() {
 
       await minhaSA.post('/usuarios', novoUsuario)
 
-      alert('Usuário cadastrado com sucesso')
+      toast.success('Usuário cadastrado com sucesso')
 
       setNome('')
       setBloco('')
@@ -68,7 +69,7 @@ function CadastroForm() {
 
       console.error(error)
 
-      alert('Erro ao cadastrar usuário')
+      toast.error('Erro ao cadastrar usuário')
     }
   }
 

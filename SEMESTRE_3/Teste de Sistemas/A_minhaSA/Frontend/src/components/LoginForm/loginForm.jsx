@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import minhaSA from '../../service/minhaSA'
 
 function LoginForm() {
@@ -26,7 +27,7 @@ function LoginForm() {
       )
 
       if (!usuarioEncontrado) {
-        alert('Usuário ou senha inválidos')
+        toast.error('Usuário ou senha inválidos')
         return
       }
 
@@ -41,7 +42,7 @@ function LoginForm() {
 
       console.error(error)
 
-      alert('Erro ao realizar login')
+      toast.error('Erro ao realizar login')
     }
   }
 

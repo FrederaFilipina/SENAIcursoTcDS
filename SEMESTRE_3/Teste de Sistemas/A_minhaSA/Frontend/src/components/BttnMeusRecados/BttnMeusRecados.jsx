@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
 import minhaSA from "../../service/minhaSA"
 
 import CardRecado from "../../components/CardRecado/CardRecado"
@@ -59,7 +60,7 @@ function BttnMeusRecados() {
   async function handleCriarRecado() {
 
     if (!novoRecado.trim()) {
-      alert("O recado não pode estar vazio")
+      toast.error("O recado não pode estar vazio")
       return
     }
 
@@ -129,7 +130,7 @@ function BttnMeusRecados() {
   async function handleSalvarEdicao(id) {
 
     if (!textoEditado.trim()) {
-      alert("O recado não pode ficar vazio")
+      toast.error("O recado não pode ficar vazio")
       return
     }
 

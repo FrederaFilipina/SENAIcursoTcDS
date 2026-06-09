@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import minhaSA from "../../service/minhaSA"
 
 function BttnUsuario() {
@@ -31,13 +32,13 @@ function BttnUsuario() {
         !usuario.trim() ||
         !senha.trim()
       ) {
-        alert("Preencha todos os campos")
+        toast.error("Preencha todos os campos")
         return
       }
 
       // Validação do bloco
       if (!["A", "B"].includes(bloco)) {
-        alert("O bloco deve ser A ou B")
+        toast.error("O bloco deve ser A ou B")
         return
       }
 
@@ -47,7 +48,7 @@ function BttnUsuario() {
         /^50[1-2]$/.test(num_ap)
 
       if (!apartamentoValido) {
-        alert(
+        toast.error(
           "Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502."
         )
         return
@@ -66,7 +67,7 @@ function BttnUsuario() {
       )
 
       if (usuarioExiste) {
-        alert("Usuário já existe")
+        toast.error("Usuário já existe")
         return
       }
 
@@ -89,7 +90,7 @@ function BttnUsuario() {
         JSON.stringify(usuarioAtualizado)
       )
 
-      alert("Dados atualizados com sucesso")
+      toast.success("Dados atualizados com sucesso")
 
       setModoEdicao(false)
 
@@ -97,7 +98,7 @@ function BttnUsuario() {
 
       console.error(error)
 
-      alert("Erro ao atualizar usuário")
+      toast.error("Erro ao atualizar usuário")
     }
   }
 
@@ -119,7 +120,7 @@ function BttnUsuario() {
 
       localStorage.removeItem("usuarioLogado")
 
-      alert("Usuário excluído com sucesso")
+      toast.success("Usuário excluído com sucesso")
 
       navigate("/")
 
@@ -127,7 +128,7 @@ function BttnUsuario() {
 
       console.error(error)
 
-      alert("Erro ao excluir usuário")
+      toast.error("Erro ao excluir usuário")
     }
   }
 
