@@ -52,3 +52,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/21122e30ccb6ababf561ae81c98209843592bec8
 
 18. Testes de Sistemas - SA_Frontend: Ajustados os arquivos de cadastroForm, loginForm e BttnUsuario para a inclusão do Toast. Recriado os testes(de login) para incluir as regras de negócio e separado os testes em testes positivos e testes negativos para validar as mensagens de erros, e criado o teste positivo de alteração de dados do usuario.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/a6b8b53558108ed7c97a6e061681ef91b3b706aa
+
+19. Testes de Sistemas - SA_Frontend: Ajustados os componentes de BttnMeusRecados, BttnMural e CardRecado, para que os botões de editar e exluir ficassem no CardRecado e segmentado para aparecer apenas nos recados do Meus Recados. Criado os testes positivos de criação, edição e exclusão dos recados.

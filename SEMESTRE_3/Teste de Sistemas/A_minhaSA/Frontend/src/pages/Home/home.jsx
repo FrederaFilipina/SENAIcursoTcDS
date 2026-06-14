@@ -1,21 +1,39 @@
-import { useState } from "react"
-
+import { useEffect, useState } from "react"
 import Dashboard from "../../components/Dashboard/Dashboard"
-
 import BttnUsuario from "../../components/BttnUsuario/BttnUsuario"
 import BttnMeusRecados from "../../components/BttnMeusRecados/BttnMeusRecados"
 import BttnMural from "../../components/BttnMural/BttnMural"
 
 function Home() {
+  const [paginaAtual, setPaginaAtual] = useState(null)
 
-  // 🔵 agora o mural abre primeiro
-  const [paginaAtual, setPaginaAtual] =
-    useState("mural")
+  function alterarPagina(novaPagina) {
+    setPaginaAtual(novaPagina)
+
+    localStorage.setItem(
+      "paginaAtual",
+      novaPagina
+    )
+  }
+
+  useEffect(() => {
+    const usuarioLogado =
+      localStorage.getItem("usuarioLogado")
+
+    const paginaSalva =
+      localStorage.getItem("paginaAtual")
+
+    if (usuarioLogado) {
+      if (paginaSalva) {
+        setPaginaAtual(paginaSalva)
+      } else {
+        alterarPagina("mural")
+      }
+    }
+  }, [])
 
   function renderizarPagina() {
-
     switch (paginaAtual) {
-
       case "usuario":
         return <BttnUsuario />
 
@@ -31,16 +49,12 @@ function Home() {
   }
 
   return (
-
     <Dashboard
       paginaAtual={paginaAtual}
-      setPaginaAtual={setPaginaAtual}
+      setPaginaAtual={alterarPagina}
     >
-
       {renderizarPagina()}
-
     </Dashboard>
-
   )
 }
 

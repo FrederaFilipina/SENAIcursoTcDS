@@ -81,6 +81,7 @@ function BttnMural() {
                 recado.responsavel
               )
             }
+            mostrarAcoes={false}
           />
 
         ))

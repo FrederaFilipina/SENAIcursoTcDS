@@ -4,7 +4,7 @@
       "id": "1",
       "nome": "Sr. Teste",
       "bloco": "B",
-      "num_ap": "666",
+      "num_ap": "502",
       "usuario": "tst",
       "senha": "tst"
     },
@@ -55,46 +55,6 @@
       "num_ap": "512",
       "usuario": "anas",
       "senha": "123"
-    },
-    {
-      "nome": "EU",
-      "bloco": "B",
-      "num_ap": "1769",
-      "usuario": "Eu",
-      "senha": "1",
-      "id": "FuQam-8s300"
-    },
-    {
-      "nome": "Sr. Testinho Filho",
-      "bloco": "B",
-      "num_ap": "202",
-      "usuario": "TstFilho",
-      "senha": "321",
-      "id": "UZXr1r52DuE"
-    },
-    {
-      "nome": "oi",
-      "bloco": "A",
-      "num_ap": "101",
-      "usuario": "oi",
-      "senha": "oi",
-      "id": "lcHwjqm43c0"
-    },
-    {
-      "nome": "Testinho Neto Primeiro",
-      "bloco": "B",
-      "num_ap": "202",
-      "usuario": "tst2",
-      "senha": "tst2",
-      "id": "IxQbn1vxqJo"
-    },
-    {
-      "nome": "Storage Test",
-      "bloco": "A",
-      "num_ap": "101",
-      "usuario": "storage_1781036173934",
-      "senha": "storage123",
-      "id": "phNehEDhW4U"
     }
   ],
   "recados": [
@@ -147,20 +107,36 @@
       "criado": "2026-05-20T11:00:00"
     },
     {
-      "responsavel": "FuQam-8s300",
-      "tipo_recado": "Encomenda",
-      "recado": "Chegou a encomenda de siclano!",
+      "responsavel": "1",
+      "tipo_recado": "Aviso",
+      "recado": "Recado Teste! 1 2 3, testando! Testando, 1 2 3!!!",
       "status": "ativo",
-      "criado": "2026-05-20T19:01:17.649Z",
-      "id": "uV7LZTr0fEA"
+      "criado": "2026-06-14T15:41:10.579Z",
+      "id": "iLny_4trgvU"
+    },
+    {
+      "responsavel": "1",
+      "tipo_recado": "Comunicado",
+      "recado": "Comunicado Teste! 1 2 3, testando! Testando, 1 2 3!!!",
+      "status": "ativo",
+      "criado": "2026-06-14T15:41:16.070Z",
+      "id": "k7aDdSAndxw"
     },
     {
       "responsavel": "1",
       "tipo_recado": "Aviso",
-      "recado": "Teste",
+      "recado": "Teste editado com sucesso",
       "status": "ativo",
-      "criado": "2026-06-08T22:08:11.239Z",
-      "id": "4Dt8Xs9DMoY"
+      "criado": "2026-06-14T15:41:21.303Z",
+      "id": "_pdrFD691Qg"
+    },
+    {
+      "responsavel": "1",
+      "tipo_recado": "Aviso",
+      "recado": "Cancelar 1781451687116",
+      "status": "ativo",
+      "criado": "2026-06-14T15:41:27.194Z",
+      "id": "vnujyWSo2es"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

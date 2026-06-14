@@ -11,14 +11,16 @@ function BttnMeusRecados() {
   )
 
   const [recados, setRecados] = useState([])
-
-  // 🔵 estados de edição
   const [editando, setEditando] = useState(null)
   const [textoEditado, setTextoEditado] = useState("")
 
-  // 🟢 estados de criação
   const [novoRecado, setNovoRecado] = useState("")
   const [novoTipo, setNovoTipo] = useState("Aviso")
+
+  console.log('ESTADO ATUAL', {
+  editando,
+  tipoEditando: typeof editando
+})
 
   useEffect(() => {
 
@@ -48,6 +50,10 @@ function BttnMeusRecados() {
           "❌ ERRO AO BUSCAR RECADOS:",
           error
         )
+
+        toast.error(
+          "Erro ao carregar recados"
+        )
       }
     }
 
@@ -55,12 +61,14 @@ function BttnMeusRecados() {
 
   }, [usuarioLogado.id])
 
-
-  // 🟢 CRIAR NOVO RECADO
   async function handleCriarRecado() {
 
     if (!novoRecado.trim()) {
-      toast.error("O recado não pode estar vazio")
+
+      toast.error(
+        "O recado não pode estar vazio"
+      )
+
       return
     }
 
@@ -75,15 +83,24 @@ function BttnMeusRecados() {
       }
 
       const response =
-        await minhaSA.post("/recados", novo)
+        await minhaSA.post(
+          "/recados",
+          novo
+        )
 
-      setRecados((prev) => [
-        response.data,
-        ...prev
-      ])
+      setRecados(
+        (prev) => [
+          response.data,
+          ...prev
+        ]
+      )
 
       setNovoRecado("")
       setNovoTipo("Aviso")
+
+      toast.success(
+        "Recado criado com sucesso"
+      )
 
     } catch (error) {
 
@@ -91,21 +108,31 @@ function BttnMeusRecados() {
         "❌ ERRO AO CRIAR RECADO:",
         error
       )
+
+      toast.error(
+        "Erro ao criar recado"
+      )
     }
   }
 
-
-  // 🔴 DELETE
   async function handleDelete(id) {
 
     try {
 
-      await minhaSA.delete(`/recados/${id}`)
+      await minhaSA.delete(
+        `/recados/${id}`
+      )
 
-      setRecados((prev) =>
-        prev.filter(
-          (recado) => recado.id !== id
-        )
+      setRecados(
+        (prev) =>
+          prev.filter(
+            (recado) =>
+              recado.id !== id
+          )
+      )
+
+      toast.success(
+        "Recado excluído com sucesso"
       )
 
     } catch (error) {
@@ -114,48 +141,77 @@ function BttnMeusRecados() {
         "❌ ERRO AO DELETAR:",
         error
       )
+
+      toast.error(
+        "Erro ao excluir recado"
+      )
     }
   }
 
-
-  // ✏️ INICIAR EDIÇÃO
   function handleEditar(recado) {
 
+    console.log('CLICOU EDITAR', {
+    id: recado.id,
+    tipo: typeof recado.id
+  })
+
     setEditando(recado.id)
-    setTextoEditado(recado.recado)
+
+    setTextoEditado(
+      recado.recado
+    )
   }
 
+  function handleCancelarEdicao() {
 
-  // 💾 SALVAR EDIÇÃO
+    setEditando(null)
+    setTextoEditado("")
+  }
+
   async function handleSalvarEdicao(id) {
 
     if (!textoEditado.trim()) {
-      toast.error("O recado não pode ficar vazio")
+
+      toast.error(
+        "O recado não pode ficar vazio"
+      )
+
       return
     }
 
     try {
 
-      await minhaSA.put(`/recados/${id}`, {
+      await minhaSA.put(
+        `/recados/${id}`,
+        {
+          ...recados.find(
+            (r) => r.id === id
+          ),
+          recado:
+            textoEditado.trim()
+        }
+      )
 
-        ...recados.find((r) => r.id === id),
-
-        recado: textoEditado.trim()
-      })
-
-      setRecados((prev) =>
-        prev.map((r) =>
-          r.id === id
-            ? {
-              ...r,
-              recado: textoEditado.trim()
-            }
-            : r
-        )
+      setRecados(
+        (prev) =>
+          prev.map(
+            (r) =>
+              r.id === id
+                ? {
+                  ...r,
+                  recado:
+                    textoEditado.trim()
+                }
+                : r
+          )
       )
 
       setEditando(null)
       setTextoEditado("")
+
+      toast.success(
+        "Recado atualizado com sucesso"
+      )
 
     } catch (error) {
 
@@ -163,15 +219,23 @@ function BttnMeusRecados() {
         "❌ ERRO AO EDITAR:",
         error
       )
+
+      toast.error(
+        "Erro ao atualizar recado"
+      )
     }
   }
 
+  console.log(
+    "BttnMeusRecados -> editando:",
+    editando,
+    typeof editando
+  )
 
   return (
 
     <div className="space-y-6">
 
-      {/* 🟢 NOVO RECADO */}
       <div
         className="bg-cyan-800 rounded-2xl shadow-lg
                    border border-cyan-300
@@ -182,11 +246,13 @@ function BttnMeusRecados() {
           Criar Novo Recado
         </h2>
 
-        {/* TIPO */}
         <select
+          data-testid="tipo-recado"
           value={novoTipo}
           onChange={(e) =>
-            setNovoTipo(e.target.value)
+            setNovoTipo(
+              e.target.value
+            )
           }
           className="bg-white border-2
                      border-cyan-950
@@ -210,11 +276,13 @@ function BttnMeusRecados() {
 
         </select>
 
-        {/* TEXTO */}
         <textarea
+          data-testid="novo-recado"
           value={novoRecado}
           onChange={(e) =>
-            setNovoRecado(e.target.value)
+            setNovoRecado(
+              e.target.value
+            )
           }
           placeholder="Digite seu recado..."
           className="bg-white border-2
@@ -227,13 +295,17 @@ function BttnMeusRecados() {
                      focus:ring-cyan-400"
         />
 
-        {/* BOTÃO */}
         <button
-          onClick={handleCriarRecado}
+          data-testid="btn-criar-recado"
+          onClick={
+            handleCriarRecado
+          }
           className="bg-cyan-950
                      hover:bg-green-600
-                     text-white font-semibold
-                     py-4 rounded-xl
+                     text-white
+                     font-semibold
+                     py-4
+                     rounded-xl
                      transition"
         >
           Criar Recado
@@ -241,15 +313,15 @@ function BttnMeusRecados() {
 
       </div>
 
-
-      {/* 🔵 LISTA DE RECADOS */}
       <div className="space-y-6">
 
         {recados.length === 0 ? (
 
           <div
-            className="bg-cyan-800 rounded-2xl
-                       border border-cyan-300
+            className="bg-cyan-800
+                       rounded-2xl
+                       border
+                       border-cyan-300
                        p-6 shadow-lg"
           >
 
@@ -265,119 +337,27 @@ function BttnMeusRecados() {
 
             <div
               key={recado.id}
-              className="bg-cyan-800 rounded-2xl
-                         border border-cyan-300
-                         shadow-lg p-5"
+              data-testid={`recado-${recado.id}`}
+              className="bg-cyan-800
+                         rounded-2xl
+                         border
+                         border-cyan-300
+                         shadow-lg
+                         p-5"
             >
 
               <CardRecado
                 recado={recado}
                 nomeUsuario={usuarioLogado.nome}
+                editando={editando}
+                textoEditado={textoEditado}
+                setTextoEditado={setTextoEditado}
+                onEditar={handleEditar}
+                onSalvar={handleSalvarEdicao}
+                onExcluir={handleDelete}
+                onCancelar={handleCancelarEdicao}
+                mostrarAcoes={true}
               />
-
-              {/* AÇÕES */}
-              <div
-                className="flex flex-col md:flex-row
-                           gap-3 mt-5"
-              >
-
-                {/* EXCLUIR */}
-                <button
-                  onClick={() =>
-                    handleDelete(recado.id)
-                  }
-                  className="px-6 py-3
-                             bg-red-800
-                             text-white
-                             rounded-xl
-                             font-semibold
-                             hover:bg-red-600
-                             transition"
-                >
-                  Excluir
-                </button>
-
-                {/* EDITAR */}
-                {editando === recado.id ? (
-
-                  <div
-                    className="flex flex-1
-                               flex-col md:flex-row
-                               gap-3"
-                  >
-
-                    <input
-                      value={textoEditado}
-                      onChange={(e) =>
-                        setTextoEditado(
-                          e.target.value
-                        )
-                      }
-                      className="bg-white border-2
-                                 border-cyan-950
-                                 rounded-xl
-                                 px-4 py-3
-                                 w-full
-                                 outline-none
-                                 focus:ring-2
-                                 focus:ring-cyan-400"
-                    />
-
-                    <button
-                      onClick={() =>
-                        handleSalvarEdicao(
-                          recado.id
-                        )
-                      }
-                      className="px-6 py-3
-                                 bg-cyan-950
-                                 text-white
-                                 rounded-xl
-                                 font-semibold
-                                 hover:bg-green-600
-                                 transition"
-                    >
-                      Salvar
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setEditando(null)
-                        setTextoEditado("")
-                      }}
-                      className="px-6 py-3
-                                 bg-cyan-950
-                                 text-white
-                                 rounded-xl
-                                 font-semibold
-                                 hover:bg-gray-500
-                                 transition"
-                    >
-                      Cancelar
-                    </button>
-
-                  </div>
-
-                ) : (
-
-                  <button
-                    onClick={() =>
-                      handleEditar(recado)
-                    }
-                    className="px-6 py-3
-                               bg-cyan-950
-                               text-white
-                               rounded-xl
-                               font-semibold
-                               hover:bg-cyan-600
-                               transition"
-                  >
-                    Editar
-                  </button>
-
-                )}
-
-              </div>
 
             </div>
 
