@@ -124,32 +124,50 @@ test('Deve cancelar edição do recado', async ({ page }) => {
     const testId = await card.getAttribute('data-testid')
     const id = testId.replace('recado-', '')
 
-    // clicar em editar
+    // Entrar em modo edição
     await card
         .locator('[data-testid^="btn-editar-"]')
         .click()
 
-    const input = page.getByTestId(`input-edicao-${id}`)
+    const input = page.locator(
+        `[data-testid="input-edicao-${id}"]`
+    )
 
-    await expect(input).toBeVisible()
+    await input.waitFor({ state: 'visible' })
     await expect(input).toBeEnabled()
 
+    // Altera o texto
     await input.fill('Texto alterado')
 
-    const btnCancelar = page.getByTestId(`btn-cancelar-${id}`)
+    const btnCancelar = page.getByTestId(
+        `btn-cancelar-${id}`
+    )
 
     await expect(btnCancelar).toBeVisible()
+
+    // Cancela a edição
     await btnCancelar.click()
 
-    // validações finais
+    // Valida toast de cancelamento
     await expect(
-        page.getByTestId(`input-edicao-${id}`)
+        page.locator('.Toastify__toast').last()
+    ).toContainText(
+        'Edição cancelada. O recado não foi alterado.'
+    )
+
+    // Input de edição deve desaparecer
+    await expect(
+        page.locator(
+            `[data-testid="input-edicao-${id}"]`
+        )
     ).toHaveCount(0)
 
+    // Texto original continua visível
     await expect(
-        page.getByText(textoRecado)
-    ).toBeVisible()
+        page.getByTestId(`recado-${id}`)
+    ).toContainText(textoRecado)
 
+    // Texto alterado não foi salvo
     await expect(
         page.getByText('Texto alterado')
     ).toHaveCount(0)

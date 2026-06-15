@@ -55,3 +55,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/a6b8b53558108ed7c97a6e061681ef91b3b706aa
 
 19. Testes de Sistemas - SA_Frontend: Ajustados os componentes de BttnMeusRecados, BttnMural e CardRecado, para que os botões de editar e exluir ficassem no CardRecado e segmentado para aparecer apenas nos recados do Meus Recados. Criado os testes positivos de criação, edição e exclusão dos recados.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/36a9ad70fa7ca0741664f8a2bf0e7fd3bcaa7c49
+
+20. Testes de Sistemas - SA_Frontend: Ajustado o toast de cancelar edição do recado, no componente BttnMeusRecados, consequentemente, ajustado o teste positivo e criado o teste negativo para o mesmo componente. 

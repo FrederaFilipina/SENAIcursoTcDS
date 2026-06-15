@@ -166,6 +166,7 @@ function BttnMeusRecados() {
 
     setEditando(null)
     setTextoEditado("")
+    toast.info("Edição cancelada. O recado não foi alterado.")
   }
 
   async function handleSalvarEdicao(id) {
