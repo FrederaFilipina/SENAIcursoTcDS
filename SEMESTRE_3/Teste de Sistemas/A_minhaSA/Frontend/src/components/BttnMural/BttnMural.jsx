@@ -16,7 +16,7 @@ function BttnMural() {
 
         // 🔵 busca usuários
         const usuariosRes =
-          await minhaSA.get("/usuarios")
+          await minhaSA.get("/moradores")
 
         // 🔵 busca recados
         const recadosRes =

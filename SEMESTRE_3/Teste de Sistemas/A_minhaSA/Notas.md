@@ -61,3 +61,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/59be96b60100e6510954bfcac5c135a9f3362dbf
 
 21. Teste de Sistemas - SA_Back/Front: Criado o arquivo .env e ajustado o arquivo db.js, ajustado também o server, controllers e routes para que a integração com om Front funcione, além de ajustar a referência de nomes internas do código, isso no Back. No Front foi criado o arquivo .env também, ajustado o arquivo minhaSa para fazer a integração além de ajustes nos componente BttnMeusRecados, cadastrosForm e loginform para também fazer a integração com o banco de dados.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/91421ffa4eeb288640c2ee5e55d0ee24aff8f4f8
+
+22. Teste de Sistemas - SA_Back/Front: Ajustado o Sql para seja possivel cadastrar mais de um usuário por apartamento e ajustados os componentes do usuario e mural para que fosse possível editar as informações e para aparecer os recados.

@@ -55,7 +55,7 @@ function BttnUsuario() {
       }
 
       // Busca usuários cadastrados
-      const response = await minhaSA.get("/usuarios")
+      const response = await minhaSA.get("/moradores")
 
       const usuariosSalvos = response.data
 
@@ -81,7 +81,7 @@ function BttnUsuario() {
       }
 
       await minhaSA.put(
-        `/usuarios/${usuarioLogado.id}`,
+        `/moradores/${usuarioLogado.id}`,
         usuarioAtualizado
       )
 
@@ -115,7 +115,7 @@ function BttnUsuario() {
     try {
 
       await minhaSA.delete(
-        `/usuarios/${usuarioLogado.id}`
+        `/moradores/${usuarioLogado.id}`
       )
 
       localStorage.removeItem("usuarioLogado")

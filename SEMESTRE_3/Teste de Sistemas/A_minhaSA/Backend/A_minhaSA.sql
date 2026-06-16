@@ -1,3 +1,17 @@
+/*Para zerar o Banco de Dados:*/
+TRUNCATE TABLE recados, moradores
+RESTART IDENTITY CASCADE;
+
+/*Para buscar os dados de*/
+    /*Moradores:*/
+    SELECT *
+    FROM moradores;
+    
+    /*Recados:*/
+    SELECT *
+    FROM recados;
+
+/*Para criar as tabelas e colunas*/
 CREATE TABLE moradores (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 
@@ -9,15 +23,10 @@ CREATE TABLE moradores (
 
     usuario VARCHAR(100) NOT NULL UNIQUE,
 
-    senha VARCHAR(255) NOT NULL,
-
-    CONSTRAINT uq_apartamento UNIQUE (bloco, num_ap)
+    senha VARCHAR(255) NOT NULL
 );
 
-
-
 CREATE TABLE recados (
-
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 
     responsavel INT NOT NULL,
@@ -37,8 +46,6 @@ CREATE TABLE recados (
     criado TIMESTAMPTZ NOT NULL
         DEFAULT CURRENT_TIMESTAMP
 );
-
-
 
 CREATE INDEX idx_recado_status
 ON recados(status);
