@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createMorador, getMoradores, getMoradorById, updateMorador, removeMorador } from '../controllers/moradoresController.js'
+import { createMorador, getMoradores, getMoradorById, updateMorador, removeMorador } from '../controllers/moradoresControllers.js'
 
 const router = Router()
 

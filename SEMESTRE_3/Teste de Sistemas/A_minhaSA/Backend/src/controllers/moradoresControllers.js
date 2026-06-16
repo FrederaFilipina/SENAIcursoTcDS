@@ -28,6 +28,8 @@ export async function createMorador(req, res) {
 
     } catch (error) {
 
+         console.error('ERRO GET MORADORES:', error)
+
         return res.status(400).json({
             message: error.message
         })
@@ -45,9 +47,11 @@ export async function getMoradores(req, res) {
 
     } catch (error) {
 
+        console.error(error)
+
         return res.status(500).json({
-            message: 'Erro ao listar moradores'
-        })
+        message: error.message
+    })
     }
 }//↪ Ler todo os usuários criados
 

@@ -16,24 +16,33 @@ function LoginForm() {
 
     try {
 
-      const response = await minhaSA.post('/login', {
-        usuario,
-        senha
-      })
+      const response = await minhaSA.get('/usuarios')
+
+      const usuarios = response.data
+
+      const usuarioEncontrado = usuarios.find(
+        (u) =>
+          u.usuario === usuario &&
+          u.senha === senha
+      )
+
+      if (!usuarioEncontrado) {
+        toast.error('Usuário ou senha inválidos')
+        return
+      }
 
       localStorage.setItem(
-        'usuarioLogado',
-        JSON.stringify(response.data.morador)
+        "usuarioLogado",
+        JSON.stringify(usuarioEncontrado)
       )
 
       navigate('/dashboard')
 
     } catch (error) {
 
-      toast.error(
-        error.response?.data?.message ||
-        'Usuário ou senha inválidos'
-      )
+      console.error(error)
+
+      toast.error('Erro ao realizar login')
     }
   }
 

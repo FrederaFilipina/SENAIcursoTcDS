@@ -12,52 +12,66 @@ function CadastroForm() {
 
   async function handleCadastro(e) {
 
-  e.preventDefault()
+    e.preventDefault()
 
-  try {
+    try {
 
-    if (!['A', 'B'].includes(bloco)) {
-      toast.error('O bloco deve ser A ou B')
-      return
-    }
+      // Validação do bloco
+      if (!['A', 'B'].includes(bloco)) {
+        toast.error('O bloco deve ser A ou B')
+        return
+      }
 
-    const apartamentoValido =
-      /^[1-4]0[1-8]$/.test(num_ap) ||
-      /^50[1-2]$/.test(num_ap)
+      // Validação do apartamento
+      const apartamentoValido =
+        /^[1-4]0[1-8]$/.test(num_ap) ||
+        /^50[1-2]$/.test(num_ap)
 
-    if (!apartamentoValido) {
-      toast.error(
-        'Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502.'
+      if (!apartamentoValido) {
+        toast.error(
+          'Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502.'
+        )
+        return
+      }
+
+      const response = await minhaSA.get('/usuarios')
+
+      const usuariosSalvos = response.data
+
+      const usuarioExiste = usuariosSalvos.find(
+        u => u.usuario === usuario
       )
-      return
+
+      if (usuarioExiste) {
+        toast.error('Usuário já existe')
+        return
+      }
+
+      const novoUsuario = {
+        nome,
+        bloco,
+        num_ap,
+        usuario,
+        senha
+      }
+
+      await minhaSA.post('/usuarios', novoUsuario)
+
+      toast.success('Usuário cadastrado com sucesso')
+
+      setNome('')
+      setBloco('')
+      setNumAp('')
+      setUsuario('')
+      setSenha('')
+
+    } catch (error) {
+
+      console.error(error)
+
+      toast.error('Erro ao cadastrar usuário')
     }
-
-    const novoUsuario = {
-      nome,
-      bloco,
-      num_ap,
-      usuario,
-      senha
-    }
-
-    await minhaSA.post('/moradores', novoUsuario)
-
-    toast.success('Usuário cadastrado com sucesso')
-
-    setNome('')
-    setBloco('')
-    setNumAp('')
-    setUsuario('')
-    setSenha('')
-
-  } catch (error) {
-
-    toast.error(
-      error.response?.data?.message ||
-      'Erro ao cadastrar usuário'
-    )
   }
-}
 
   return (
     <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 p-8">

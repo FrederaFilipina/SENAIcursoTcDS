@@ -1,6 +1,9 @@
+import { Router } from 'express'
 import { loginService } from '../services/authServices.js'
 
-export async function login(req, res) {
+const router = Router()
+
+router.post('/login', async (req, res) => {
 
     try {
 
@@ -25,4 +28,6 @@ export async function login(req, res) {
             message: error.message
         })
     }
-}
+})
+
+export default router

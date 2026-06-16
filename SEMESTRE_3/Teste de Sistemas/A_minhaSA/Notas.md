@@ -57,4 +57,7 @@
 19. Testes de Sistemas - SA_Frontend: Ajustados os componentes de BttnMeusRecados, BttnMural e CardRecado, para que os botões de editar e exluir ficassem no CardRecado e segmentado para aparecer apenas nos recados do Meus Recados. Criado os testes positivos de criação, edição e exclusão dos recados.
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/36a9ad70fa7ca0741664f8a2bf0e7fd3bcaa7c49
 
-20. Testes de Sistemas - SA_Frontend: Ajustado o toast de cancelar edição do recado, no componente BttnMeusRecados, consequentemente, ajustado o teste positivo e criado o teste negativo para o mesmo componente. 
+20. Testes de Sistemas - SA_Frontend: Ajustado o toast de cancelar edição do recado, no componente BttnMeusRecados, consequentemente, ajustado o teste positivo e criado o teste negativo para o mesmo componente.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/59be96b60100e6510954bfcac5c135a9f3362dbf
+
+21. Teste de Sistemas - SA_Back/Front: Criado o arquivo .env e ajustado o arquivo db.js, ajustado também o server, controllers e routes para que a integração com om Front funcione, além de ajustar a referência de nomes internas do código, isso no Back. No Front foi criado o arquivo .env também, ajustado o arquivo minhaSa para fazer a integração além de ajustes nos componente BttnMeusRecados, cadastrosForm e loginform para também fazer a integração com o banco de dados.

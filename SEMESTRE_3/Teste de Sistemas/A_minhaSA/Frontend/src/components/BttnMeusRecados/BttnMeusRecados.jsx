@@ -90,7 +90,7 @@ function BttnMeusRecados() {
 
       setRecados(
         (prev) => [
-          response.data,
+          response.data.recado,
           ...prev
         ]
       )

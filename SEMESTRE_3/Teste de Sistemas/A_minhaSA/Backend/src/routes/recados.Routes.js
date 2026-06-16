@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createRecado, getRecados, getRecadoById, updateRecado, removeRecado } from '../controllers/recadosController.js'
+import { createRecado, getRecados, getRecadoById, updateRecado, removeRecado } from '../controllers/recadosControllers.js'
 
 const router = Router()
 
