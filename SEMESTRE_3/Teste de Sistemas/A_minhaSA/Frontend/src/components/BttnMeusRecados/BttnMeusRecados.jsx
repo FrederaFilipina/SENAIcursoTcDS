@@ -51,7 +51,7 @@ function BttnMeusRecados() {
     try {
 
       const novo = {
-        responsavel: usuarioLogado.id,
+        responsavel: Number(usuarioLogado.id),
         tipo_recado: novoTipo,
         recado: novoRecado.trim(),
         status: "ativo",

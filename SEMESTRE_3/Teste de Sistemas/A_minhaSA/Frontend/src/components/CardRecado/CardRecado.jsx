@@ -45,7 +45,7 @@ function CardRecado({ recado, nomeUsuario, bloco, num_ap, editando, textoEditado
         {editando === recado.id ? (
 
           <textarea value={textoEditado} onChange={(e) => setTextoEditado(e.target.value)}
-            className="w-full min-h-[120px] p-4 border-2 border-amber-500 rounded-xl focus:border-cyan-500 focus:bg-yellow-500/50 transition-all"
+            className="w-full min-h-[120px] p-4 border-2 border-amber-500 rounded-xl focus:border-cyan-500 focus:bg-yellow-500/50 transition-all text-white"
           />
 
         ) : (

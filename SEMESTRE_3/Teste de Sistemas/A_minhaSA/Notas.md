@@ -67,3 +67,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/6bc5a616058bb9f56e2ccf460128be631ead8ba6
 
 23. Teste de Sistemas - SA_Back/Front: Refeito todo o layout do frontend para deixar melhor apresentavel e por conta disso, foi alterado a questão de senha nos arquivos Repositories e Services no Backend.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/e54d78ed7bb27017c1dab4a7e68bc99627eb200b
+
+24. Teste de Sistemas - SA_Frontend: Ajustes para que os recados fiquem amostra para todos no Mural e alterado a cor do texto quando vai editar o recado.
