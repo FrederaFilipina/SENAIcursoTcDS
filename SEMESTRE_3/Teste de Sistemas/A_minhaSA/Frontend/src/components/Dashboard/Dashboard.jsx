@@ -1,32 +1,32 @@
-import Navbar from "../Navbar/Navbar"
+// import Navbar from "../Navbar/Navbar"
 
-function Dashboard({
-  children,
-  setPaginaAtual,
-  paginaAtual
-}) {
+// function Dashboard({
+//   children,
+//   setPaginaAtual,
+//   paginaAtual
+// }) {
 
-  return (
+//   return (
 
-    <div className="flex h-screen">
+//     <div className="flex h-screen">
 
-      <div className="w-[300px]">
+//       <div className="w-[300px]">
 
-        <Navbar
-          setPaginaAtual={setPaginaAtual}
-          paginaAtual={paginaAtual}
-        />
+//         <Navbar
+//           setPaginaAtual={setPaginaAtual}
+//           paginaAtual={paginaAtual}
+//         />
 
-      </div>
+//       </div>
 
-      <main className="flex-1 p-8 bg-cyan-950 overflow-auto">
+//       <main className="flex-1 p-8 bg-cyan-950 overflow-auto">
 
-        {children}
+//         {children}
 
-      </main>
+//       </main>
 
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default Dashboard
+// export default Dashboard

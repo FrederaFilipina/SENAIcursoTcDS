@@ -9,7 +9,7 @@ export async function createMoradorService({
     senha
 }) {
 
-    if (!nome || !bloco || !num_ap || !usuario || !senha) {
+    if (!nome || !bloco || !num_ap || !usuario) {
         throw new Error('Todos os campos são obrigatórios')
     }
 
@@ -51,12 +51,11 @@ export async function updateMoradorService(
         nome,
         bloco,
         num_ap,
-        usuario,
-        senha
+        usuario
     }
 ) {
 
-    if (!nome || !bloco || !num_ap || !usuario || !senha) {
+    if (!nome || !bloco || !num_ap || !usuario) {
         throw new Error('Todos os campos são obrigatórios')
     }
 
@@ -72,8 +71,7 @@ export async function updateMoradorService(
             nome,
             bloco,
             num_ap,
-            usuario,
-            senha
+            usuario
         }
     )
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import Dashboard from "../../components/Dashboard/Dashboard"
+import MainContent from "../../components/Main/mainContent"
 import BttnUsuario from "../../components/BttnUsuario/BttnUsuario"
 import BttnMeusRecados from "../../components/BttnMeusRecados/BttnMeusRecados"
 import BttnMural from "../../components/BttnMural/BttnMural"
 
-function Home() {
+
+function HomeScreen() {
   const [paginaAtual, setPaginaAtual] = useState(null)
 
   function alterarPagina(novaPagina) {
@@ -49,13 +50,13 @@ function Home() {
   }
 
   return (
-    <Dashboard
+    <MainContent
       paginaAtual={paginaAtual}
       setPaginaAtual={alterarPagina}
     >
       {renderizarPagina()}
-    </Dashboard>
+    </MainContent>
   )
 }
 
-export default Home
+export default HomeScreen

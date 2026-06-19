@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import TelaInicial from "./pages/TelaInicial/TelaInicial"
-import Home from "./pages/Home/home"
+import HomePage from "./pages/Home/homePage"
+import HomeScreen from "./pages/Home/homeScreen"
+
 import {ToastContainer} from 'react-toastify'
+
+
 
 
 
@@ -10,9 +13,10 @@ function App() {
     
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TelaInicial />} />
-        <Route path="/dashboard" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/homescreen" element={<HomeScreen />} />
       </Routes>
+      
       <ToastContainer
         position="top-right"
         autoClose={3000}

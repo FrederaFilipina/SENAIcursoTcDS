@@ -64,3 +64,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/91421ffa4eeb288640c2ee5e55d0ee24aff8f4f8
 
 22. Teste de Sistemas - SA_Back/Front: Ajustado o Sql para seja possivel cadastrar mais de um usuário por apartamento e ajustados os componentes do usuario e mural para que fosse possível editar as informações e para aparecer os recados.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/6bc5a616058bb9f56e2ccf460128be631ead8ba6
+
+23. Teste de Sistemas - SA_Back/Front: Refeito todo o layout do frontend para deixar melhor apresentavel e por conta disso, foi alterado a questão de senha nos arquivos Repositories e Services no Backend.

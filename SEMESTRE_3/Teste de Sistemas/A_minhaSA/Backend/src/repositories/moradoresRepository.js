@@ -81,23 +81,21 @@ export async function atualizarMorador(
 ) {
 
     const query = `
-        UPDATE moradores
-        SET
-            nome = $1,
-            bloco = $2,
-            num_ap = $3,
-            usuario = $4,
-            senha = $5
-        WHERE id = $6
-        RETURNING *
-    `
+    UPDATE moradores
+    SET
+        nome = $1,
+        bloco = $2,
+        num_ap = $3,
+        usuario = $4
+    WHERE id = $5
+    RETURNING *
+`
 
     const values = [
         nome,
         bloco,
         num_ap,
         usuario,
-        senha,
         id
     ]
 
