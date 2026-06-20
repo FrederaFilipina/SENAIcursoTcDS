@@ -78,5 +78,8 @@
 
 25. Teste de Sistemas - SA_Backend: Refeito PostegreSQL para incluir um ENUM referente aos tipos de recados. Realizado também uma revisão em todo o fluxo de autenticação, então os arquivos Repository, Service, Controller e Route foram modificados.
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/0a24ff426b044daa2ea9578f8ec52d038a30df32
-    
+
 26. Teste de Sistemas - SA_Backend: Realizado uma revisão em todo o fluxo sobre moradores, então os arquivos Repository, Service e Controller foram modificados.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/91803f5f31fd412e6a79febe08b69143bf87a228
+
+27. Teste de Sistemas - SA_Backend: Realizado uma revisão em todo o fluxo sobre moradores, então os arquivos Repository, Service, Controller e Route foram modificados.
