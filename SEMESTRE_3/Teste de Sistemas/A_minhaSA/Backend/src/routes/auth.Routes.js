@@ -1,33 +1,9 @@
 import { Router } from 'express'
-import { loginService } from '../services/authServices.js'
+import { login } from '../controllers/authController.js'
 
 const router = Router()
 
-router.post('/login', async (req, res) => {
-
-    try {
-
-        const {
-            usuario,
-            senha
-        } = req.body
-
-        const morador = await loginService({
-            usuario,
-            senha
-        })
-
-        return res.status(200).json({
-            message: 'Login realizado com sucesso',
-            morador
-        })
-
-    } catch (error) {
-
-        return res.status(401).json({
-            message: error.message
-        })
-    }
-})
+// Delegar ao controller
+router.post('/login', login)
 
 export default router

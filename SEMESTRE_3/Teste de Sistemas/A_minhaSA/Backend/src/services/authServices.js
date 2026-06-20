@@ -1,10 +1,6 @@
 import { buscarUsuario } from '../repositories/authRepository.js'
 
-export async function loginService({
-    usuario,
-    senha
-}) {
-
+export async function loginService({ usuario, senha }) {
     if (!usuario || !senha) {
         throw new Error('Usuário e senha são obrigatórios')
     }
@@ -19,11 +15,9 @@ export async function loginService({
         throw new Error('Senha inválida')
     }
 
+    // Retornar apenas os dados essenciais
     return {
         id: morador.id,
-        nome: morador.nome,
-        bloco: morador.bloco,
-        num_ap: morador.num_ap,
         usuario: morador.usuario
     }
 }

@@ -73,3 +73,7 @@
     ↪ http://github.com/FrederaFilipina/SENAIcursoTcDS/commit/2b6de83f67cea02718a31ea0662e4a13a2019969
 
 25. Teste de Sistemas - SA_Frontend: Ajustes desnecessários!
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/12a8b1f644b588e9486372b84a3a8a914cd13f62
+
+
+25. Teste de Sistemas - SA_Backend: Refeito PostegreSQL para incluir um ENUM referente aos tipos de recados. Realizado também uma revisão em todo o fluxo de autenticação, então os arquivos Repository, Service, Controller e Route foram modificados.
