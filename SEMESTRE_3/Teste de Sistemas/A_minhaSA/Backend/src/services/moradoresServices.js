@@ -1,92 +1,72 @@
 import { criarMorador, listarMoradores, buscarMoradorPorId, atualizarMorador, deletarMorador } from '../repositories/moradoresRepository.js'
 
-
-export async function createMoradorService({
-    nome,
-    bloco,
-    num_ap,
-    usuario,
-    senha
-}) {
-
-    if (!nome || !bloco || !num_ap || !usuario) {
+export async function createMoradorService({ nome, bloco, num_ap, usuario, senha }) {
+    if (!nome || !bloco || !num_ap || !usuario || !senha) {
         throw new Error('Todos os campos são obrigatórios')
     }
 
-    const novoMorador = await criarMorador({
-        nome,
-        bloco,
-        num_ap,
-        usuario,
-        senha
-    })
+    try {
+        const novoMorador = await criarMorador({ nome, bloco, num_ap, usuario, senha })
+        return novoMorador
 
-    return novoMorador
-}//↪ Criar usuário de morador
+    } catch (error) {
+        throw new Error('Erro ao criar morador: ' + error.message)
+    }
+}
 
 
 export async function getMoradoresService() {
+    try {
+        const moradores = await listarMoradores()
+        return moradores
 
-    const moradores = await listarMoradores()
-
-    return moradores
-}//↪ Ler todo os usuários criados
+    } catch (error) {
+        throw new Error('Erro ao listar moradores: ' + error.message)
+    }
+}
 
 
 export async function getMoradorByIdService(id) {
+    try {
+        const morador = await buscarMoradorPorId(id)
+        if (!morador) {
+            throw new Error('Morador não encontrado')
+        }
+        return morador
 
-    const morador = await buscarMoradorPorId(id)
-
-    if (!morador) {
-        throw new Error('Morador não encontrado')
+    } catch (error) {
+        throw new Error('Erro ao buscar morador: ' + error.message)
     }
-
-    return morador
-}//↪ Ler um único usuário
+}
 
 
-export async function updateMoradorService(
-    id,
-    {
-        nome,
-        bloco,
-        num_ap,
-        usuario
-    }
-) {
-
+export async function updateMoradorService(id, { nome, bloco, num_ap, usuario }) {
     if (!nome || !bloco || !num_ap || !usuario) {
         throw new Error('Todos os campos são obrigatórios')
     }
 
-    const moradorExistente = await buscarMoradorPorId(id)
-
-    if (!moradorExistente) {
-        throw new Error('Morador não encontrado')
-    }
-
-    const moradorAtualizado = await atualizarMorador(
-        id,
-        {
-            nome,
-            bloco,
-            num_ap,
-            usuario
+    try {
+        const moradorAtualizado = await atualizarMorador(id, { nome, bloco, num_ap, usuario })
+        if (!moradorAtualizado) {
+            throw new Error('Morador não encontrado para atualização')
         }
-    )
+        return moradorAtualizado
 
-    return moradorAtualizado
-}//↪ Atualizar os dados de um único usuário
+    } catch (error) {
+        throw new Error('Erro ao atualizar morador: ' + error.message)
+    }
+}
 
 
 export async function deleteMoradorService(id) {
+    try {
+        const moradorDeletado = await deletarMorador(id)
+        if (!moradorDeletado) {
+            throw new Error('Morador não encontrado para exclusão')
+        }
+        return moradorDeletado
 
-    const moradorExistente = await buscarMoradorPorId(id)
-
-    if (!moradorExistente) {
-        throw new Error('Morador não encontrado')
+    } catch (error) {
+        throw new Error('Erro ao deletar morador: ' + error.message)
     }
-
-    const moradorDeletado = await deletarMorador(id)
-    return moradorDeletado
-}//↪ Deletar o úsuario de um único modador
+}
