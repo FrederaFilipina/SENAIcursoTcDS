@@ -70,3 +70,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/e54d78ed7bb27017c1dab4a7e68bc99627eb200b
 
 24. Teste de Sistemas - SA_Frontend: Ajustes para que os recados fiquem amostra para todos no Mural e alterado a cor do texto quando vai editar o recado.
+    ↪ http://github.com/FrederaFilipina/SENAIcursoTcDS/commit/2b6de83f67cea02718a31ea0662e4a13a2019969
+
+25. Teste de Sistemas - SA_Frontend: Ajustes desnecessários!

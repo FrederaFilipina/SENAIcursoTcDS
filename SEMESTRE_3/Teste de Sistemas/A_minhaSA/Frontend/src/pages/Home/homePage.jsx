@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormLogin from "../../components/Form/formLogin";
 import FormRegister from "../../components/Form/formRegister";
 import iconImg from "../../assets/iconImg.png";
+import Img from "../../assets/Img.jpg"
 import { FaRegBuilding } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
 
@@ -27,10 +28,8 @@ function HomePage() {
             Mais praticidade, transparência e conexão para o dia a dia dos moradores.
           </p>
 
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcXwn85DwYHQ7lHVW0V-_g8zX65Gh6mPQSv6IshD7r1O8q9pvUWEhzM3049npdCwYVYgvhYJKpni3_6Qz7oTGl_Mj3K8PDniARt3XEZyOFAHOYbIMVjDOq-kWRRVd1zRJ99mECpL0cKCqq7SRw8RuaZCXiLMf1L3fJzXjRlLzUJDktobTej1A-Ps7LRAiV1vrrpjmx1taODK-dH6ljlTgBInrCrPCj3VnLzW0bFlJlMZMGSRuM_eDJlshR_S6sbwWlOSNIJ7Xh4Tg"
-            alt="Condomínio"
-            className="absolute right-[10%] top-[91%] -translate-y-1/2 translate-x-1/2 w-75 h-75 object-cover rounded-full opacity-50"
+          <img src={Img} alt="Condomínio"
+            className="absolute right-[10%] top-[90%] -translate-y-1/2 translate-x-1/2 w-75 h-75 object-cover rounded-full opacity-50"
           />
 
         </div>
@@ -83,13 +82,13 @@ function HomePage() {
             )}
 
             {tela === "login" && (
-              <FormLogin voltar={() => setTela("home")} 
+              <FormLogin Voltar={() => setTela("home")} 
               irCadastro={() => setTela("register")}/>
               
             )}
 
             {tela === "register" && (
-              <FormRegister voltar={() => setTela("home")} />
+              <FormRegister Voltar={() => setTela("home")} />
             )}
 
           </div>

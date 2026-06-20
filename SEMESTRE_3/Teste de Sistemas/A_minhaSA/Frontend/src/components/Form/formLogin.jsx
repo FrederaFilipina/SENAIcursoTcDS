@@ -6,7 +6,7 @@ import minhaSA from '../../service/minhaSA'
 import { FaUser, FaLock } from 'react-icons/fa';
 import { GiExitDoor } from "react-icons/gi";
 
-function FormLogin({ voltar, irCadastro }) {
+function FormLogin({ Voltar, irCadastro }) {
 
     const navigate = useNavigate()
 
@@ -105,7 +105,7 @@ function FormLogin({ voltar, irCadastro }) {
 
                     <button
                         type="button"
-                        onClick={voltar}
+                        onClick={Voltar}
                         className="flex items-center cursor-pointer text-cyan-950 hover:text-cyan-700"
                     >
                         <span>Voltar</span>

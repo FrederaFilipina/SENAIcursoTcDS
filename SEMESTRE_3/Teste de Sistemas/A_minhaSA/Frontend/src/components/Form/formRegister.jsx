@@ -3,9 +3,9 @@ import { toast } from "react-toastify"
 import minhaSA from "../../service/minhaSA"
 
 import { FaUser, FaLock, FaBuilding, FaDoorOpen, FaUserPlus } from "react-icons/fa"
-import { CiLogout } from "react-icons/ci"
 
-function FormRegister({ voltar }) {
+
+function FormRegister({ Voltar }) {
 
     const [nome, setNome] = useState("")
     const [bloco, setBloco] = useState("")
@@ -56,7 +56,7 @@ function FormRegister({ voltar }) {
             setSenha("")
 
             // opcional: volta para login/home
-            voltar()
+            Voltar()
 
         } catch (error) {
             toast.error(
@@ -185,22 +185,16 @@ function FormRegister({ voltar }) {
             </div>
 
             {/* Botão */}
-            <button
-                type="submit"
-                className="w-full h-12 bg-cyan-950 text-2xl text-yellow-400 rounded-xl font-bold cursor-pointer transition-all duration-200 hover:bg-cyan-700 hover:scale-105 active:bg-cyan-500 active:scale-95 flex items-center justify-center gap-2"
-            >
+            <button type="submit"
+                className="w-full h-12 bg-cyan-950 text-2xl text-yellow-400 rounded-xl font-bold cursor-pointer transition-all duration-200 hover:bg-cyan-700 hover:scale-105 active:bg-cyan-500 active:scale-95 flex items-center justify-center gap-2">
                 <span>Cadastrar</span>
                 <FaUserPlus size={24} />
             </button>
 
             {/* Voltar */}
             <div className="flex justify-center">
-                <button
-                    type="button"
-                    onClick={voltar}
-                    className="flex items-center gap-1 text-cyan-950 hover:text-cyan-700"
-                >
-                    <CiLogout />
+                <button type="button" onClick={Voltar}
+                    className="flex items-center gap-1 text-cyan-950 hover:text-cyan-700">
                     Voltar
                 </button>
             </div>
