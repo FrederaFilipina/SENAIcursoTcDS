@@ -83,3 +83,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/91803f5f31fd412e6a79febe08b69143bf87a228
 
 27. Teste de Sistemas - SA_Backend: Realizado uma revisão em todo o fluxo sobre moradores, então os arquivos Repository, Service, Controller e Route foram modificados.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/b7ba5ea1cc5c5542ae0a26e6a508c33f87d15985
+
+28. Teste de Sistemas - SA_Backend: Por conta de ter modificado os arquivos de Repository, Service, Controller e Route, os testes foram deletados para serem recriados e os primeiros testes feitos foram os positivos e negativos referente a autenticação.
