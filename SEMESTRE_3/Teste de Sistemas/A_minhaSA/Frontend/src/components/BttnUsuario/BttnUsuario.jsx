@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import minhaSA from "../../service/minhaSA"
@@ -7,13 +7,40 @@ import { FaUserAstronaut } from "react-icons/fa6";
 function BttnUsuario() {
 
   const navigate = useNavigate()
-  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"))
+  const usuarioStorage = JSON.parse(localStorage.getItem("usuarioLogado"))
+  const [usuarioLogado, setUsuarioLogado] = useState(null)
   const [modoEdicao, setModoEdicao] = useState(false)
-  const [nome, setNome] = useState(usuarioLogado?.nome || "")
-  const [bloco, setBloco] = useState(usuarioLogado?.bloco || "")
-  const [num_ap, setNumAp] = useState(usuarioLogado?.num_ap || "")
-  const [usuario, setUsuario] = useState(usuarioLogado?.usuario || "")
-  const [senha, setSenha] = useState(usuarioLogado?.senha || "")
+  const [nome, setNome] = useState("")
+  const [bloco, setBloco] = useState("")
+  const [num_ap, setNumAp] = useState("")
+  const [usuario, setUsuario] = useState("")
+  const [senha, setSenha] = useState("")
+
+  useEffect(() => {
+
+    async function carregarUsuario() {
+
+      try {
+
+        const response = await minhaSA.get(`/moradores/${usuarioStorage.id}`)
+        const dados = response.data
+
+        setUsuarioLogado(dados)
+        setNome(dados.nome)
+        setBloco(dados.bloco)
+        setNumAp(dados.num_ap)
+        setUsuario(dados.usuario)
+
+      } catch (error) {
+        console.error("Erro ao buscar usuário:", error)
+        toast.error("Erro ao carregar informações do usuário")
+      }
+
+    }
+
+    if (usuarioStorage?.id) { carregarUsuario() }
+
+  }, [])
 
   async function handleSalvar(e) {
 
@@ -21,40 +48,24 @@ function BttnUsuario() {
 
     try {
 
-      // Validação do bloco
-      if (!["A", "B"].includes(bloco)) {
-        toast.error("O bloco deve ser A ou B")
+      if (!["A", "B"].includes(bloco)) { toast.error("O bloco deve ser A ou B")
         return
       }
 
-      // Validação do apartamento
-      const apartamentoValido =
-        /^[1-4]0[1-8]$/.test(num_ap) ||
-        /^50[1-2]$/.test(num_ap)
+      const apartamentoValido = /^[1-4]0[1-8]$/.test(num_ap) || /^50[1-2]$/.test(num_ap)
 
       if (!apartamentoValido) {
-        toast.error(
-          "Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502."
-        )
+        toast.error( "Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502." )
         return
       }
 
-      // Busca usuários cadastrados
       const response = await minhaSA.get("/moradores")
-
       const usuariosSalvos = response.data
+      const usuarioExiste = usuariosSalvos.find( (u) => u.usuario === usuario && u.id !== usuarioLogado.id )
 
-      // Verifica se o usuário já existe
-      const usuarioExiste = usuariosSalvos.find(
-        (u) =>
-          u.usuario === usuario &&
-          u.id !== usuarioLogado.id
-      )
-
-      if (usuarioExiste) {
-        toast.error("Usuário já existe")
-        return
-      }
+      if (usuarioExiste) 
+        { toast.error("Usuário já existe")
+        return }
 
       console.log("usuarioLogado:", usuarioLogado)
 
@@ -66,18 +77,13 @@ function BttnUsuario() {
         usuario: usuario.trim()
       }
 
-      console.log("Enviando:", usuarioAtualizado)
-      await minhaSA.put(
-        `/moradores/${usuarioLogado.id}`,
-        usuarioAtualizado
-      )
+      console.log("Enviando:", usuarioAtualizado) 
+      await minhaSA.put( `/moradores/${usuarioLogado.id}`, usuarioAtualizado )
 
-      localStorage.setItem(
-        "usuarioLogado",
-        JSON.stringify(usuarioAtualizado)
-      )
+      localStorage.setItem( "usuarioLogado", JSON.stringify(usuarioAtualizado) )
 
       toast.success("Dados atualizados com sucesso")
+      setTimeout(() => { window.location.reload() }, 1000)
 
       setModoEdicao(false)
 
@@ -86,18 +92,13 @@ function BttnUsuario() {
       console.error("Erro completo:", error)
       console.error("Resposta da API:", error.response?.data)
 
-      toast.error(
-        error.response?.data?.message ||
-        "Erro ao atualizar usuário"
-      )
+      toast.error( error.response?.data?.message || "Erro ao atualizar usuário" )
     }
   }
 
   async function handleExcluirUsuario() {
 
-    const confirmar = confirm(
-      "Tem certeza que deseja excluir sua conta?"
-    )
+    const confirmar = confirm( "Tem certeza que deseja excluir sua conta?" )
 
     if (!confirmar) {
       return
@@ -105,12 +106,9 @@ function BttnUsuario() {
 
     try {
 
-      await minhaSA.delete(
-        `/moradores/${usuarioLogado.id}`
-      )
+      await minhaSA.delete( `/moradores/${usuarioLogado.id}` )
 
       localStorage.removeItem("usuarioLogado")
-
       toast.success("Usuário excluído com sucesso")
 
       navigate("/")
@@ -118,7 +116,6 @@ function BttnUsuario() {
     } catch (error) {
 
       console.error(error)
-
       toast.error("Erro ao excluir usuário")
     }
   }
@@ -195,9 +192,7 @@ function BttnUsuario() {
                 </div>
 
               </div>
-
             </div>
-
           </div>
 
         </div>
@@ -225,10 +220,8 @@ function BttnUsuario() {
 
                 </div>
 
-
                 {/* Dados + botão alterar */}
                 <div className="grid md:grid-cols-3 items-center gap-8">
-
 
                   {/* Bloco */}
                   <div className="flex flex-col items-start">
@@ -270,12 +263,9 @@ function BttnUsuario() {
                     </button>
 
                   </div>
-
                 </div>
 
-
                 <hr />
-
 
                 {/* Excluir */}
                 <div className="flex justify-center">
@@ -288,15 +278,12 @@ function BttnUsuario() {
                   </button>
 
                 </div>
-
               </div>
 
             ) : (
 
-              <form
-                onSubmit={handleSalvar}
-                className="space-y-6"
-              >
+              <form onSubmit={handleSalvar} className="space-y-6">
+
                 <div className="grid md:grid-cols-2 gap-8">
 
                   {/* Nome */}
@@ -310,7 +297,6 @@ function BttnUsuario() {
                       className="w-full px-4 py-3 rounded-xl border border-white bg-cyan-950 text-xl font-semibold text-white hover:border-cyan-300 focus:outline-none focus:border-cyan-500 focus:bg-yellow-500/50 transition-all" />
 
                   </div>
-
 
                   {/* Usuário */}
                   <div className="md:col-span-2">
@@ -344,7 +330,6 @@ function BttnUsuario() {
 
                   </div>
 
-
                   {/* Apartamento */}
                   <div className="flex flex-col items-start">
 
@@ -353,21 +338,16 @@ function BttnUsuario() {
                     </label>
 
                     <input type="text" value={num_ap}
-                    onChange={(e) => setNumAp( e.target.value.replace(/\D/g, "") ) }
-                    className="w-36 h-14 rounded-xl border border-white bg-cyan-950 text-xl font-semibold text-white text-center hover:border-cyan-300 focus:outline-none focus:border-cyan-500 focus:bg-yellow-500/50 transition-all" />
+                      onChange={(e) => setNumAp(e.target.value.replace(/\D/g, ""))}
+                      className="w-36 h-14 rounded-xl border border-white bg-cyan-950 text-xl font-semibold text-white text-center hover:border-cyan-300 focus:outline-none focus:border-cyan-500 focus:bg-yellow-500/50 transition-all" />
 
                   </div>
-
-
                 </div>
-
 
                 <hr />
 
-
                 {/* Botões */}
                 <div className="flex flex-col md:flex-row justify-center gap-6">
-
 
                   <button
                     type="submit"
@@ -376,7 +356,6 @@ function BttnUsuario() {
                     Alterações
                   </button>
 
-
                   <button
                     type="button"
                     onClick={() => setModoEdicao(false)}
@@ -384,18 +363,14 @@ function BttnUsuario() {
                     Cancelar
                   </button>
 
-
                 </div>
               </form>
 
             )}
 
           </div>
-
         </div>
-
       </div>
-
     </div>
   )
 }

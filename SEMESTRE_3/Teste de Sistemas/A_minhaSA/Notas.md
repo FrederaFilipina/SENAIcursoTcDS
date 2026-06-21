@@ -95,4 +95,7 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/2d831e3a8b7a58652d941b989e94ea028150d205
 
 31. Teste de Sistemas - SA_Backend: Agora os testes criados foram os positivos e negativos referente aos recados.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/986a2ef449960fccdb1f8f6ad9d3d177a7498195
+
+32. Teste de Sistemas - SA_Frontend: Modificado o componente BttnUsuario para atender as alterações feitas no Backend. E por contada da restruturação do Backend, os testes serão refeitos.
     ↪ 
