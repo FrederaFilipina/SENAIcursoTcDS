@@ -1,9 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 
-import authRoutes from '../routes/auth.Routes.js'
-import moradoresRoutes from '../routes/moradores.Routes.js'
-import recadosRoutes from '../routes/recados.Routes.js'
+import authRoutes from '../routes/auth.Route.js'
+import moradoresRoutes from '../routes/moradores.Route.js'
+import recadosRoutes from '../routes/recados.Route.js'
 
 const app = express()
 const PORT = 3000

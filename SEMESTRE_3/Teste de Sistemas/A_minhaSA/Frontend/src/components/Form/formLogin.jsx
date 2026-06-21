@@ -43,7 +43,7 @@ function FormLogin({ Voltar, irCadastro }) {
         <>
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-2 w-full text-left gap-4"
+                className="flex flex-col gap-2 w-full text-left"
             >
                 <div className="flex gap-4">
                     <label className="flex flex-col gap-1 flex-1">
