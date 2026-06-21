@@ -92,3 +92,7 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/208b0868382930db1cdec21c59d2f3a0945ede36
 
 30. Teste de Sistemas - SA_Back/Front: Ajustes desnecessários!
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/2d831e3a8b7a58652d941b989e94ea028150d205
+
+31. Teste de Sistemas - SA_Backend: Agora os testes criados foram os positivos e negativos referente aos recados.
+    ↪ 
