@@ -1,17 +1,5 @@
-/*Para zerar o Banco de Dados:*/
-TRUNCATE TABLE recados, moradores
-RESTART IDENTITY CASCADE;
-
-/*Para buscar os dados de*/
-    /*Moradores:*/
-    SELECT *
-    FROM moradores;
-    
-    /*Recados:*/
-    SELECT *
-    FROM recados;
-
 /*Para criar as tabelas e colunas*/
+
 -- Criação da tabela moradores
 CREATE TABLE moradores (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
