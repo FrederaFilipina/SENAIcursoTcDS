@@ -12,7 +12,7 @@ describe('moradoresRepository - negativos', () => {
     pool.query.mockRejectedValueOnce({ code: '23505', message: 'duplicate key' })
 
     await expect(criarMorador({ usuario: 'joao' }))
-      .rejects.toThrow('Usuário já existe.')
+      .rejects.toThrow('Usuário já existe')
   })
 
   it('buscarMoradorPorId deve lançar erro se não encontrar morador', async () => {

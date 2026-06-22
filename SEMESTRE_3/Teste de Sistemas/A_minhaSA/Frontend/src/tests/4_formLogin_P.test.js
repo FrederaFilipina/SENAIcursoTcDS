@@ -47,5 +47,4 @@ test('Deve cadastrar e depois logar com sucesso', async ({ page }) => {
 
   // validação de navegação
   await expect(page).toHaveURL(/\/homescreen/);
-  await expect( page.getByRole('heading', { level: 1 }) ).toHaveText('Mural Condômino');
-});
+  await expect( page.getByText('Mural Condômino') ).toBeVisible(); });

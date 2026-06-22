@@ -101,3 +101,6 @@
     ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/cd88cd8ff44f4761228607883458d248026c1e5c
 
 33. Teste de Sistemas - SA_Frontend: Recriado os testes positivos e negativos do frontend.
+    ↪ https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/cdcdb4c7b777bebb408296c088b73f8d97230737
+
+34. Teste de Sistemas - SA_Documents: Feito ajuste no arquivo 1.1authRepository_P.test.js e 1.2moradorRepository_N.js além de ter rodado os testes novamente. E preenchido a documentação dos testes tanto do front, quanto do back.
