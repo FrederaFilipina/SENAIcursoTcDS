@@ -21,7 +21,7 @@ export async function criarMorador({ nome, bloco, num_ap, usuario, senha }) {
 
     } catch (error) {
         if (error.code === '23505'){ // violação de UNIQUE (usuario duplicado)
-            throw new Error('Usuário já existe.')
+            throw new Error('Usuário já existe')
         }
         throw new Error('Erro ao criar morador: ' + error.message)
     }

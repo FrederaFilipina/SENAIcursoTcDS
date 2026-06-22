@@ -48,24 +48,26 @@ function BttnUsuario() {
 
     try {
 
-      if (!["A", "B"].includes(bloco)) { toast.error("O bloco deve ser A ou B")
+      if (!["A", "B"].includes(bloco)) {
+        toast.error("O bloco deve ser A ou B")
         return
       }
 
       const apartamentoValido = /^[1-4]0[1-8]$/.test(num_ap) || /^50[1-2]$/.test(num_ap)
 
       if (!apartamentoValido) {
-        toast.error( "Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502." )
+        toast.error("Apartamento inválido. Utilize números entre 101-108, 201-208, 301-308, 401-408, 501 ou 502.")
         return
       }
 
       const response = await minhaSA.get("/moradores")
       const usuariosSalvos = response.data
-      const usuarioExiste = usuariosSalvos.find( (u) => u.usuario === usuario && u.id !== usuarioLogado.id )
+      const usuarioExiste = usuariosSalvos.find((u) => u.usuario === usuario && u.id !== usuarioLogado.id)
 
-      if (usuarioExiste) 
-        { toast.error("Usuário já existe")
-        return }
+      if (usuarioExiste) {
+        toast.error("Usuário já existe")
+        return
+      }
 
       console.log("usuarioLogado:", usuarioLogado)
 
@@ -77,10 +79,10 @@ function BttnUsuario() {
         usuario: usuario.trim()
       }
 
-      console.log("Enviando:", usuarioAtualizado) 
-      await minhaSA.put( `/moradores/${usuarioLogado.id}`, usuarioAtualizado )
+      console.log("Enviando:", usuarioAtualizado)
+      await minhaSA.put(`/moradores/${usuarioLogado.id}`, usuarioAtualizado)
 
-      localStorage.setItem( "usuarioLogado", JSON.stringify(usuarioAtualizado) )
+      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioAtualizado))
 
       toast.success("Dados atualizados com sucesso")
       setTimeout(() => { window.location.reload() }, 1000)
@@ -92,13 +94,13 @@ function BttnUsuario() {
       console.error("Erro completo:", error)
       console.error("Resposta da API:", error.response?.data)
 
-      toast.error( error.response?.data?.message || "Erro ao atualizar usuário" )
+      toast.error(error.response?.data?.message || "Erro ao atualizar usuário")
     }
   }
 
   async function handleExcluirUsuario() {
 
-    const confirmar = confirm( "Tem certeza que deseja excluir sua conta?" )
+    const confirmar = confirm("Tem certeza que deseja excluir sua conta?")
 
     if (!confirmar) {
       return
@@ -106,7 +108,7 @@ function BttnUsuario() {
 
     try {
 
-      await minhaSA.delete( `/moradores/${usuarioLogado.id}` )
+      await minhaSA.delete(`/moradores/${usuarioLogado.id}`)
 
       localStorage.removeItem("usuarioLogado")
       toast.success("Usuário excluído com sucesso")
@@ -214,7 +216,9 @@ function BttnUsuario() {
                     Nome Completo:
                   </label>
 
-                  <div className="w-full px-4 py-3 rounded-xl border text-xl font-semibold text-white bg-cyan-950">
+                  <div id="usuario" type="text" value={usuario}
+                    onChange={(e) => setUsuario(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border text-xl font-semibold text-white bg-cyan-950">
                     {usuarioLogado?.nome}
                   </div>
 
@@ -289,11 +293,12 @@ function BttnUsuario() {
                   {/* Nome */}
                   <div className="md:col-span-2">
 
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label htmlFor="nome"
+                      className="block text-sm font-medium text-white mb-2">
                       Nome Completo:
                     </label>
 
-                    <input type="text" value={nome} onChange={(e) => setNome(e.target.value)}
+                    <input id="nome" type="text" value={nome} onChange={(e) => setNome(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-white bg-cyan-950 text-xl font-semibold text-white hover:border-cyan-300 focus:outline-none focus:border-cyan-500 focus:bg-yellow-500/50 transition-all" />
 
                   </div>
@@ -301,11 +306,12 @@ function BttnUsuario() {
                   {/* Usuário */}
                   <div className="md:col-span-2">
 
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label htmlFor="usuario"
+                    className="block text-sm font-medium text-white mb-2">
                       Usuário:
                     </label>
 
-                    <input type="text" value={usuario} onChange={(e) => setUsuario(e.target.value)}
+                    <input id="usuario" type="text" value={usuario} onChange={(e) => setUsuario(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-white bg-cyan-950 text-xl font-semibold text-white hover:border-cyan-300 focus:outline-none focus:border-cyan-500 focus:bg-yellow-500/50 transition-all" />
 
                   </div>
@@ -314,13 +320,12 @@ function BttnUsuario() {
                   {/* Bloco */}
                   <div className="flex flex-col items-start">
 
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label htmlFor="bloco"
+                    className="block text-sm font-medium text-white mb-2">
                       Bloco:
                     </label>
 
-                    <select
-                      value={bloco}
-                      onChange={(e) => setBloco(e.target.value)}
+                    <select id="bloco" value={bloco} onChange={(e) => setBloco(e.target.value)}
                       className="w-36 h-14 rounded-xl border border-white bg-cyan-950 text-xl font-semibold text-white text-center hover:border-cyan-300 focus:outline-none focus:border-cyan-500 focus:bg-yellow-500/50 transition-all" >
 
                       <option value="A" className="bg-white text-black"> Bloco A </option>
@@ -333,11 +338,12 @@ function BttnUsuario() {
                   {/* Apartamento */}
                   <div className="flex flex-col items-start">
 
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label htmlFor="apartamento"
+                    className="block text-sm font-medium text-white mb-2">
                       Apartamento:
                     </label>
 
-                    <input type="text" value={num_ap}
+                    <input id="apartamento" type="text" value={num_ap}
                       onChange={(e) => setNumAp(e.target.value.replace(/\D/g, ""))}
                       className="w-36 h-14 rounded-xl border border-white bg-cyan-950 text-xl font-semibold text-white text-center hover:border-cyan-300 focus:outline-none focus:border-cyan-500 focus:bg-yellow-500/50 transition-all" />
 
