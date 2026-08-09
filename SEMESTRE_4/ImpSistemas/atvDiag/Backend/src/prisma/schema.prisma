@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Usuario {
+  id    Int    @id @default(autoincrement())
+  nome  String
+  email String @unique
+  senha String
+
+  agendamentos Agendamento[]
+  historicos   Historico[]
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+model Cliente {
+  id          Int    @id @default(autoincrement())
+  nome        String
+  telefone    String
+  rua         String
+  numero      String
+  bairro      String
+  observacoes String
+
+  agendamentos Agendamento[]
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+model Profissional {
+  id       Int                @id @default(autoincrement())
+  nome     String
+  telefone String
+  status   StatusProfissional @default(DISPONIVEL)
+
+  agendamentos     Agendamento[]
+  disponibilidades Disponibilidade[]
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+enum StatusProfissional {
+  DISPONIVEL
+  OCUPADO
+  FERIAS
+  AFASTADO
+}
+
+model Disponibilidade {
+  id Int @id @default(autoincrement())
+
+  profissionalId Int
+  profissional   Profissional @relation(fields: [profissionalId], references: [id], onDelete: Cascade)
+
+  data       DateTime
+  horaInicio String
+  horaFim    String
+  disponivel Boolean  @default(true)
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+model Agendamento {
+  id Int @id @default(autoincrement())
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  clienteId Int
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
+
+  profissionalId Int
+  profissional   Profissional @relation(fields: [profissionalId], references: [id])
+
+  dataServico DateTime
+  horaInicio  String
+  horaFim     String?
+
+  observacoes String?
+  status      StatusAgendamento @default(AGENDADO)
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+enum StatusAgendamento {
+  AGENDADO
+  EM_ANDAMENTO
+  CONCLUIDO
+  CANCELADO
+}
+
+model Historico {
+  id Int @id @default(autoincrement())
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  descricao String
+  dataHora  DateTime @default(now())
+
+  criadoEm DateTime @default(now())
+}
