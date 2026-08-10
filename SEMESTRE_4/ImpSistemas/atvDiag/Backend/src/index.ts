@@ -1,12 +1,26 @@
-import express from "express"
+import express from "express";
+import cors from "cors";
 
-const port = 3000
-const app = express()
+import { clienteRouter } from "./routes/clienteRoute";
+import { profissionalRouter } from "./routes/profissionalRoute";
+import { agendamentoRouter } from "./routes/agendamentoRoute";
+import { usuarioRouter } from "./routes/usuarioRoute";
+import { historicoRouter } from "./routes/historicoRoute";
 
-app.get('/', (_,res) =>{
-    res.send('Olá, meu Mundinho!')
-})
+const app = express();
 
-app.listen(port, () =>{
-    console.log('Servidor de pé, ativado e ONLINE! ༼ つ ◕_◕ ༽つ')
-})
+app.use(cors());
+app.use(express.json());
+
+// Rotas da API
+app.use(clienteRouter);
+app.use(profissionalRouter);
+app.use(agendamentoRouter);
+app.use(usuarioRouter);
+app.use(historicoRouter);
+
+const port = 3000;
+
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+});
