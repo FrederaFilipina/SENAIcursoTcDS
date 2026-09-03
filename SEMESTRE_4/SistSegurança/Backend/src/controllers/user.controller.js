@@ -34,7 +34,7 @@ export const createUser = async (req, res) => {
     } else {
 
         //precisa ter entre 8 e 32 caracteres
-        if (senha.length < 8 && senha.length > 32) {
+        if (senha.length < 8 || senha.length > 32) {
             return res.status(400).json({
                 menssage: "Senha inválida.",
                 success: false
