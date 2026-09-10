@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Comentários</title>
+</head>
+
+<body>
+
+    <h1>Comentários</h1>
+
+    <textarea id="comentario" placeholder="Digite seu comentário"></textarea>
+
+    <br><br>
+
+    <button onclick="salvar()">
+        Publicar comentário
+    </button>
+
+    <hr>
+
+    <h2>Comentários publicados</h2>
+
+    <div id="lista"></div>
+
+    <script>
+
+        async function salvar() {
+
+            const comentario =
+                document.getElementById("comentario").value;
+
+            await fetch("/comentarios", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    comentario
+                })
+            });
+
+            document.getElementById("comentario").value = "";
+
+            carregar();
+        }
+
+
+        async function carregar() {
+
+            const resposta = await fetch("/comentarios");
+            const comentarios = await resposta.json();
+            const lista = document.getElementById("lista");
+
+            //trocado: innerHTML por: textContent para realizar a limpeza da lista
+            lista.textContent = "";
+
+            comentarios.forEach(comentario => {
+
+                //trocado: lista.innerHTML += ` <p>${comentario}</p> `
+                //por: const paragrafo = document.createElement("p") paragrafo.textContent = comentario
+                //para que seja criado um parágrafo sem a inserção de HTML por parte do usuário e o que é inserido, seja mostrado como texto
+                const paragrafo = document.createElement("p")
+                paragrafo.textContent = comentario
+
+                //adiciona o elemento criado à página
+                lista.appendChild(paragrafo)
+
+            });
+        }
+
+        carregar();
+
+    </script>
+
+</body>
+
+</html>
