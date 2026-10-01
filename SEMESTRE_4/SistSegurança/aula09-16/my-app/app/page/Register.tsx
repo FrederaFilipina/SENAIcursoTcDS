@@ -3,9 +3,15 @@
 import { register } from "../services/register"
 import { useState } from "react"
 import { errorMessage } from "../services/api"
+import { on } from "events"
+
+type Props = {
+    onBack: () => void,
+    onRegistered: (message: string) => void
+}   
 
 
-export default function Register(){
+export default function Register({onBack, onRegistered}: Props){
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -17,9 +23,11 @@ export default function Register(){
 
         setError("")
         try {
-            const result = await register(name, email, password)
 
+            const result = await register(name, email, password)
             console.log("Menssagem:", result.message)
+            
+            onRegistered(result.message)
         } catch (error) {
             setError(errorMessage(error))
         }
@@ -46,6 +54,7 @@ export default function Register(){
             </div>
 
             <button type="submit">Cadastrar</button>
+            <button type="button" onClick={onBack}> Voltar </button>
         </form>
         </>
     )
