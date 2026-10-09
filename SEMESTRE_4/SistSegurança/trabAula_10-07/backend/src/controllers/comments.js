@@ -77,3 +77,23 @@ export async function createComment(req, res) {
     message: "Comentário criado com sucesso."
   });
 }
+
+// A rota ja confirma que o usuario e administrador.
+export async function deleteComment(req, res) {
+  const id = Number(req.params.id);
+
+  if (!Number.isSafeInteger(id) || id <= 0) {
+    return res.status(400).json({ message: "ID do comentario invalido." });
+  }
+
+  const [result] = await req.app.locals.db.execute(
+    "DELETE FROM comments WHERE id = ?",
+    [id]
+  );
+
+  if (!result.affectedRows) {
+    return res.status(404).json({ message: "Comentario nao encontrado." });
+  }
+
+  res.status(204).end();
+}

@@ -82,7 +82,7 @@ export default function Register({
           type="password"
           autoComplete="new-password"
           required
-          minLength={8}
+          minLength={3}
           aria-describedby="password-help"
           disabled={busy}
           value={password}
@@ -90,7 +90,7 @@ export default function Register({
         />
 
         <small id="password-help">
-          Use pelo menos 8 caracteres. Limite: 72 bytes
+          Use pelo menos 3 caracteres. Limite: 72 bytes
           (acentos podem ocupar mais de um byte).
         </small>
 

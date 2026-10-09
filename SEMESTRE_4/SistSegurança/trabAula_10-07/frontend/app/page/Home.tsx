@@ -1,39 +1,14 @@
-﻿
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { api, errorMessage } from "../services/api";
 import type { Session } from "../services/login";
 
-type Material = {
-  id: number;
-  name: string;
-  category: string;
-};
-
-type User = {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-};
-
-type Comment = {
-  id: number;
-  comment: string;
-  created_at: string;
-  user_name: string;
-};
-
-type SearchResponse = {
-  produtos: Material[];
-  usuarios: User[];
-};
-
-type Props = {
-  session: Session;
-  onLogout: () => void;
-};
+type Material = { id: number; name: string; category: string; };
+type User = { id: number; name: string; email: string; role: string; };
+type Comment = { id: number; comment: string; created_at: string; user_name: string; };
+type SearchResponse = { produtos: Material[]; usuarios: User[]; };
+type Props = { session: Session; onLogout: () => void; };
 
 export default function Home({ session, onLogout }: Props) {
   const [materials, setMaterials] = useState<Material[]>([]);
@@ -58,6 +33,12 @@ export default function Home({ session, onLogout }: Props) {
   const [notice, setNotice] = useState("");
 
   const [deleting, setDeleting] = useState<number | null>(null);
+
+  // Recuperado da Parte 1: controla a exclusão de comentários.
+  const [deletingComment, setDeletingComment] = useState<
+    number | null
+  >(null);
+
   const [revision, setRevision] = useState(0);
 
   const [pesquisa, setPesquisa] = useState("");
@@ -69,7 +50,7 @@ export default function Home({ session, onLogout }: Props) {
 
   const isAdmin = session.user.role === "admin";
 
-  // Busca produtos e usuários de acordo com o perfil autenticado.
+  // Busca produtos e usuários conforme a pesquisa.
   useEffect(() => {
     let active = true;
 
@@ -121,7 +102,7 @@ export default function Home({ session, onLogout }: Props) {
     setBuscaRealizada(pesquisa.trim());
   }
 
-  // Limpa a pesquisa e volta a exibir todos os registros.
+  // Limpa a pesquisa e recarrega os registros.
   function limparPesquisa() {
     setPesquisa("");
     setBuscaRealizada("");
@@ -140,7 +121,7 @@ export default function Home({ session, onLogout }: Props) {
     setRevision((current) => current + 1);
   }
 
-  // Exclui um produto.
+  // Exclui um produto: somente administradores devem ter permissão na API.
   async function remove(material: Material) {
     if (
       !window.confirm(
@@ -238,6 +219,45 @@ export default function Home({ session, onLogout }: Props) {
     }
   }
 
+  // Recuperado da Parte 1: exclui um comentário.
+  async function removeComment(
+    materialId: number,
+    comment: Comment
+  ) {
+    if (!isAdmin) {
+      setCommentError(
+        "Somente administradores podem excluir comentários."
+      );
+      return;
+    }
+
+    if (!window.confirm("Excluir este comentário?")) {
+      return;
+    }
+
+    setDeletingComment(comment.id);
+    setCommentError("");
+
+    try {
+      await api.delete(`/comments/${comment.id}`, {
+        headers: {
+          Authorization: `Bearer ${session.token}`,
+        },
+      });
+
+      setComments((current) => ({
+        ...current,
+        [materialId]: (current[materialId] || []).filter(
+          (item) => item.id !== comment.id
+        ),
+      }));
+    } catch (error) {
+      setCommentError(errorMessage(error));
+    } finally {
+      setDeletingComment(null);
+    }
+  }
+
   // Abre ou fecha os comentários de um produto.
   function toggleComments(materialId: number) {
     const isOpen = showComments[materialId];
@@ -286,7 +306,7 @@ export default function Home({ session, onLogout }: Props) {
 
       <p>
         {isAdmin
-          ? "Você pode consultar produtos e usuários, excluir materiais e comentar."
+          ? "Você pode consultar produtos e usuários, excluir materiais e comentários e adicionar comentários."
           : "Você pode consultar produtos por nome ou categoria e adicionar comentários."}
       </p>
 
@@ -444,9 +464,32 @@ export default function Home({ session, onLogout }: Props) {
                                     key={comment.id}
                                     className="comment"
                                   >
-                                    <strong>
-                                      {comment.user_name}
-                                    </strong>
+                                    <div className="comment-header">
+                                      <strong>
+                                        {comment.user_name}
+                                      </strong>
+
+                                      {/* Exclusão de comentários: somente admin */}
+                                      {isAdmin && (
+                                        <button
+                                          className="danger comment-delete"
+                                          disabled={
+                                            deletingComment !== null
+                                          }
+                                          onClick={() =>
+                                            removeComment(
+                                              material.id,
+                                              comment
+                                            )
+                                          }
+                                        >
+                                          {deletingComment ===
+                                          comment.id
+                                            ? "Excluindo..."
+                                            : "Excluir"}
+                                        </button>
+                                      )}
+                                    </div>
 
                                     <p>{comment.comment}</p>
 
