@@ -7,5 +7,8 @@ Link:   https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/582c2f3449d72d7
 Link:   https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/aa1bfce6630a19e70c640f1b38fc9ee910d3b82b
 
 
-- commit: trabAula_10-07: 1. Ajuste no campo de comentário, para apenas quem for admin poder deletar os comentários. ()
-Link:   
+- commit: trabAula_10-07: 1. Ajuste no campo de comentário, para apenas quem for admin poder deletar os comentários. (cb104a4)
+Link:   https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/cb104a4ba5422eaa84203ddd7de0f568da67b518
+
+- commit: trabAula_10-07: 3. Implemantação do rate limit. (326c583)
+Link:   https://github.com/FrederaFilipina/SENAIcursoTcDS/commit/326c58392cfdb747f3265989764c073b4a1fd939
