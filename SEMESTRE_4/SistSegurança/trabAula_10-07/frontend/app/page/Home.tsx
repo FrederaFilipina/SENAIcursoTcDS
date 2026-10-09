@@ -1,41 +1,75 @@
-﻿"use client";
+﻿
+"use client";
 
 import { useEffect, useState } from "react";
 import { api, errorMessage } from "../services/api";
 import type { Session } from "../services/login";
 
-type Material = { id: number; name: string; category: string; };
-type User = { id: number; name: string; email: string; role: string; };
-type SearchResponse = { produtos: Material[]; usuarios: User[]; };
+type Material = {
+  id: number;
+  name: string;
+  category: string;
+};
 
-type Props = { session: Session; onLogout: () => void; };
+type User = {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+};
+
+type Comment = {
+  id: number;
+  comment: string;
+  created_at: string;
+  user_name: string;
+};
+
+type SearchResponse = {
+  produtos: Material[];
+  usuarios: User[];
+};
+
+type Props = {
+  session: Session;
+  onLogout: () => void;
+};
 
 export default function Home({ session, onLogout }: Props) {
   const [materials, setMaterials] = useState<Material[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+
+  const [comments, setComments] = useState<
+    Record<number, Comment[]>
+  >({});
+
+  const [showComments, setShowComments] = useState<
+    Record<number, boolean>
+  >({});
+
+  const [newComment, setNewComment] = useState<
+    Record<number, string>
+  >({});
+
+  const [commentError, setCommentError] = useState("");
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
 
   const [deleting, setDeleting] = useState<number | null>(null);
-
   const [revision, setRevision] = useState(0);
 
-  // Texto digitado no campo de pesquisa.
   const [pesquisa, setPesquisa] = useState("");
-
-  // Texto que realmente foi enviado para a API.
   const [buscaRealizada, setBuscaRealizada] = useState("");
 
-  // Define se o admin está vendo produtos ou usuários.
   const [visualizacao, setVisualizacao] = useState<
     "produtos" | "usuarios"
   >("produtos");
 
   const isAdmin = session.user.role === "admin";
 
-  // Busca os dados na API.
+  // Busca produtos e usuários de acordo com o perfil autenticado.
   useEffect(() => {
     let active = true;
 
@@ -84,11 +118,10 @@ export default function Home({ session, onLogout }: Props) {
   function pesquisar() {
     setError("");
     setNotice("");
-
     setBuscaRealizada(pesquisa.trim());
   }
 
-  // Limpa a pesquisa.
+  // Limpa a pesquisa e volta a exibir todos os registros.
   function limparPesquisa() {
     setPesquisa("");
     setBuscaRealizada("");
@@ -100,11 +133,10 @@ export default function Home({ session, onLogout }: Props) {
     }
   }
 
-  // Atualiza os dados.
+  // Atualiza os dados da API.
   function refresh() {
     setError("");
     setNotice("");
-
     setRevision((current) => current + 1);
   }
 
@@ -130,9 +162,7 @@ export default function Home({ session, onLogout }: Props) {
       });
 
       setMaterials((current) =>
-        current.filter(
-          (item) => item.id !== material.id
-        )
+        current.filter((item) => item.id !== material.id)
       );
 
       setNotice(`${material.name} excluído.`);
@@ -140,6 +170,85 @@ export default function Home({ session, onLogout }: Props) {
       setError(errorMessage(error));
     } finally {
       setDeleting(null);
+    }
+  }
+
+  // Busca os comentários de um produto.
+  async function loadComments(materialId: number) {
+    try {
+      setCommentError("");
+
+      const response = await api.get<Comment[]>(
+        `/comments/${materialId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session.token}`,
+          },
+        }
+      );
+
+      setComments((current) => ({
+        ...current,
+        [materialId]: response.data,
+      }));
+    } catch (error) {
+      setCommentError(errorMessage(error));
+    }
+  }
+
+  // Adiciona um comentário.
+  async function addComment(materialId: number) {
+    const text = newComment[materialId] || "";
+
+    if (text.trim().length < 1) {
+      setCommentError("Digite um comentário.");
+      return;
+    }
+
+    if (text.length > 500) {
+      setCommentError(
+        "O comentário pode ter no máximo 500 caracteres."
+      );
+      return;
+    }
+
+    try {
+      setCommentError("");
+
+      await api.post(
+        `/comments/${materialId}`,
+        {
+          comment: text,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.token}`,
+          },
+        }
+      );
+
+      setNewComment((current) => ({
+        ...current,
+        [materialId]: "",
+      }));
+
+      await loadComments(materialId);
+    } catch (error) {
+      setCommentError(errorMessage(error));
+    }
+  }
+
+  // Abre ou fecha os comentários de um produto.
+  function toggleComments(materialId: number) {
+    const isOpen = showComments[materialId];
+
+    setShowComments((current) => ({
+      ...current,
+      [materialId]: !isOpen,
+    }));
+
+    if (!isOpen) {
+      loadComments(materialId);
     }
   }
 
@@ -164,9 +273,7 @@ export default function Home({ session, onLogout }: Props) {
         </button>
       </div>
 
-      <h1 id="materials-title">
-        Materiais
-      </h1>
+      <h1 id="materials-title">Materiais</h1>
 
       <p>
         Perfil:{" "}
@@ -179,8 +286,8 @@ export default function Home({ session, onLogout }: Props) {
 
       <p>
         {isAdmin
-          ? "Você pode consultar produtos e usuários e excluir materiais."
-          : "Você pode consultar produtos por nome ou categoria."}
+          ? "Você pode consultar produtos e usuários, excluir materiais e comentar."
+          : "Você pode consultar produtos por nome ou categoria e adicionar comentários."}
       </p>
 
       {/* Barra de pesquisa */}
@@ -193,9 +300,7 @@ export default function Home({ session, onLogout }: Props) {
               : "Pesquisar produtos..."
           }
           value={pesquisa}
-          onChange={(e) =>
-            setPesquisa(e.target.value)
-          }
+          onChange={(e) => setPesquisa(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               pesquisar();
@@ -207,9 +312,7 @@ export default function Home({ session, onLogout }: Props) {
         <button
           className="secondary"
           onClick={pesquisar}
-          disabled={
-            loading || deleting !== null
-          }
+          disabled={loading || deleting !== null}
         >
           Pesquisar
         </button>
@@ -220,93 +323,73 @@ export default function Home({ session, onLogout }: Props) {
           disabled={
             loading ||
             deleting !== null ||
-            (pesquisa === "" &&
-              buscaRealizada === "")
+            (pesquisa === "" && buscaRealizada === "")
           }
         >
           Limpar
         </button>
       </div>
 
-      {/* Botões de separação do administrador */}
+      {/* Separação das visualizações do administrador */}
       {isAdmin && (
         <div className="actions">
           <button
             className="secondary"
-            onClick={() =>
-              setVisualizacao("produtos")
-            }
+            onClick={() => setVisualizacao("produtos")}
+            aria-pressed={visualizacao === "produtos"}
           >
             Produtos
           </button>
 
           <button
             className="secondary"
-            onClick={() =>
-              setVisualizacao("usuarios")
-            }
+            onClick={() => setVisualizacao("usuarios")}
+            aria-pressed={visualizacao === "usuarios"}
           >
             Usuários
           </button>
         </div>
       )}
 
-      {/* Botão atualizar */}
+      {/* Atualização */}
       <button
         className="secondary"
-        disabled={
-          loading || deleting !== null
-        }
+        disabled={loading || deleting !== null}
         onClick={refresh}
       >
         Atualizar
       </button>
 
-      {/* Mensagens */}
+      {/* Mensagens gerais */}
       {error && (
-        <p
-          className="error"
-          role="alert"
-        >
+        <p className="error" role="alert">
           {error}
         </p>
       )}
 
       {notice && (
-        <p
-          className="success"
-          role="status"
-        >
+        <p className="success" role="status">
           {notice}
         </p>
       )}
 
       {/* Conteúdo */}
       {loading ? (
-        <p role="status">
-          Carregando...
-        </p>
+        <p role="status">Carregando...</p>
       ) : (
         <>
-          {/* ========================= */}
           {/* PRODUTOS */}
-          {/* ========================= */}
-
           {visualizacao === "produtos" && (
             <>
               <h2>Produtos</h2>
 
               {materials.length > 0 ? (
                 <ul className="materials">
-                  {materials.map(
-                    (material) => (
-                      <li
-                        key={material.id}
-                      >
+                  {materials.map((material) => (
+                    <li key={material.id}>
+                      <div className="material-header">
                         <span>
-                          <strong>
-                            {material.name}
-                          </strong>
+                          <strong>{material.name}</strong>
                           {" · "}
                           {material.category}
                         </span>
@@ -314,15 +397,10 @@ export default function Home({ session, onLogout }: Props) {
                         {isAdmin ? (
                           <button
                             className="danger"
-                            disabled={
-                              deleting !== null
-                            }
-                            onClick={() =>
-                              remove(material)
-                            }
+                            disabled={deleting !== null}
+                            onClick={() => remove(material)}
                           >
-                            {deleting ===
-                            material.id
+                            {deleting === material.id
                               ? "Excluindo..."
                               : "Excluir"}
                           </button>
@@ -331,9 +409,96 @@ export default function Home({ session, onLogout }: Props) {
                             Somente leitura
                           </span>
                         )}
-                      </li>
-                    )
-                  )}
+                      </div>
+
+                      {/* COMENTÁRIOS */}
+                      <div className="comments">
+                        <h3>Comentários</h3>
+
+                        <button
+                          className="secondary"
+                          onClick={() =>
+                            toggleComments(material.id)
+                          }
+                        >
+                          {showComments[material.id]
+                            ? "Fechar comentários"
+                            : "Ver comentários"}
+                        </button>
+
+                        {showComments[material.id] && (
+                          <>
+                            {commentError && (
+                              <p
+                                className="error"
+                                role="alert"
+                              >
+                                {commentError}
+                              </p>
+                            )}
+
+                            {comments[material.id]?.length ? (
+                              comments[material.id].map(
+                                (comment) => (
+                                  <div
+                                    key={comment.id}
+                                    className="comment"
+                                  >
+                                    <strong>
+                                      {comment.user_name}
+                                    </strong>
+
+                                    <p>{comment.comment}</p>
+
+                                    <small className="muted">
+                                      {comment.created_at
+                                        ? new Date(
+                                            comment.created_at
+                                          ).toLocaleString("pt-BR")
+                                        : ""}
+                                    </small>
+                                  </div>
+                                )
+                              )
+                            ) : (
+                              <p className="muted">
+                                Nenhum comentário encontrado.
+                              </p>
+                            )}
+
+                            <textarea
+                              value={
+                                newComment[material.id] || ""
+                              }
+                              onChange={(e) =>
+                                setNewComment((current) => ({
+                                  ...current,
+                                  [material.id]: e.target.value,
+                                }))
+                              }
+                              maxLength={500}
+                              placeholder="Digite seu comentário..."
+                              aria-label={`Comentário para ${material.name}`}
+                            />
+
+                            <p className="muted">
+                              {(newComment[material.id] || "")
+                                .length}
+                              /500
+                            </p>
+
+                            <button
+                              onClick={() =>
+                                addComment(material.id)
+                              }
+                            >
+                              Comentar
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               ) : (
                 <p className="muted">
@@ -343,48 +508,36 @@ export default function Home({ session, onLogout }: Props) {
             </>
           )}
 
-          {/* ========================= */}
-          {/* USUÁRIOS */}
-          {/* ========================= */}
+          {/* USUÁRIOS: somente administrador */}
+          {isAdmin && visualizacao === "usuarios" && (
+            <>
+              <h2>Usuários</h2>
 
-          {isAdmin &&
-            visualizacao ===
-              "usuarios" && (
-              <>
-                <h2>Usuários</h2>
-
-                {users.length > 0 ? (
-                  <ul className="materials">
-                    {users.map(
-                      (user) => (
-                        <li
-                          key={user.id}
-                        >
-                          <span>
-                            <strong>
-                              {user.name}
-                            </strong>
-                            {" · "}
-                            {user.email}
-                            {" · "}
-                            <span className="muted">
-                              {user.role ===
-                              "admin"
-                                ? "Administrador"
-                                : "Usuário"}
-                            </span>
-                          </span>
-                        </li>
-                      )
-                    )}
-                  </ul>
-                ) : (
-                  <p className="muted">
-                    Nenhum usuário encontrado.
-                  </p>
-                )}
-              </>
-            )}
+              {users.length > 0 ? (
+                <ul className="materials">
+                  {users.map((user) => (
+                    <li key={user.id}>
+                      <span>
+                        <strong>{user.name}</strong>
+                        {" · "}
+                        {user.email}
+                        {" · "}
+                        <span className="muted">
+                          {user.role === "admin"
+                            ? "Administrador"
+                            : "Usuário"}
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="muted">
+                  Nenhum usuário encontrado.
+                </p>
+              )}
+            </>
+          )}
         </>
       )}
     </section>

@@ -5,7 +5,13 @@ import jwt from "jsonwebtoken";
 export async function login(req, res) {
   const { email, password } = req.body || {};
 
-  if (typeof email !== "string" || typeof password !== "string" || !email.trim() || !password || Buffer.byteLength(password) > 72) {
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    !email.trim() ||
+    !password ||
+    Buffer.byteLength(password) > 72
+  ) {
     return res.status(400).json({ message: "Informe email e senha validos." });
   }
 

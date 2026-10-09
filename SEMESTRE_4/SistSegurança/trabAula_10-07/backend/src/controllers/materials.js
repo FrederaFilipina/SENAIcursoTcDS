@@ -9,55 +9,29 @@ export async function listMaterials(req, res) {
   // USER: pode pesquisar somente produtos por nome ou categoria.
   if (req.user.role === "user") {
     const [materials] = await db.execute(
-      `
-      SELECT id, name, category
-      FROM materials
-      WHERE name LIKE ?
-         OR category LIKE ?
-      ORDER BY id
-      `,
+      `SELECT id, name, category FROM materials WHERE name LIKE ? OR category LIKE ? ORDER BY id `,
       [termo, termo]
     );
 
-    return res.json({
-      produtos: materials,
-      usuarios: []
-    });
+    return res.json({produtos: materials, usuarios: [] });
   }
 
   // ADMIN: pode pesquisar produtos e usuários.
   if (req.user.role === "admin") {
     const [materials] = await db.execute(
-      `
-      SELECT id, name, category
-      FROM materials
-      WHERE name LIKE ?
-         OR category LIKE ?
-      ORDER BY id
-      `,
+      `SELECT id, name, category FROM materials WHERE name LIKE ? OR category LIKE ? ORDER BY id`,
       [termo, termo]
     );
 
     const [users] = await db.execute(
-      `
-      SELECT id, name, email, role
-      FROM users
-      WHERE name LIKE ?
-         OR email LIKE ?
-      ORDER BY id
-      `,
+      `SELECT id, name, email, role FROM users WHERE name LIKE ? OR email LIKE ? ORDER BY id `,
       [termo, termo]
     );
 
-    return res.json({
-      produtos: materials,
-      usuarios: users
-    });
+    return res.json({ produtos: materials, usuarios: users });
   }
 
-  return res.status(403).json({
-    message: "Perfil não autorizado."
-  });
+  return res.status(403).json({ message: "Perfil não autorizado." });
 }
 
 // Exclui material: somente admin pode acessar esta função pela rota.
