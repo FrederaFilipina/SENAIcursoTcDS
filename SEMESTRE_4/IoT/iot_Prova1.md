@@ -68,6 +68,7 @@
     ↪ Low Power Wide Area   -   baixo consumo energético, transferência de dados em longas distâncias
 
 ▶ Camada transporte
+
     ↪ TCP   -   prioriza confiabilidade e entrega ordenada dos dados
     ↪ UDP   -   prioriza simplicidade e menor sobrecarga, não garantindo a entrega dos pacotes
 
